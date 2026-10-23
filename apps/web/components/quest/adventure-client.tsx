@@ -95,11 +95,9 @@ export function AdventureClient({ runId, mode }: { runId: string; mode: "live" |
           <StampBurst stamps={[`quest:${run.quest.slug}`]} placeName={run.quest.title} demo={demo} />
           {justCompleted && <p className="text-sm font-semibold text-line-green">恭喜完成全部主要任务！</p>}
           <div className="flex flex-wrap gap-2 pt-2">
-            {!demo && (
-              <Link href={`/posters/new?run=${run.runId}`} className="btn btn-primary">
-                生成故事纪念票根
-              </Link>
-            )}
+            <Link href={`/posters/new?run=${run.runId}${demo ? "&mode=demo" : ""}`} className="btn btn-primary">
+              {demo ? "生成试玩纪念票根" : "生成故事纪念票根"}
+            </Link>
             <Link href={demo ? "/demo" : "/me"} className="btn btn-quiet">
               {demo ? "回到试玩" : "查看我的东京"}
             </Link>

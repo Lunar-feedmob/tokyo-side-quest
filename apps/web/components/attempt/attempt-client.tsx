@@ -166,7 +166,7 @@ export function AttemptClient({ attemptId }: { attemptId: string }) {
             <Evidence a={a} />
             {v.reshootSuggestion && <p className="text-sm">建议：{v.reshootSuggestion}</p>}
             <div className="flex flex-wrap gap-2 pt-1">
-              <Link href={a.quest ? `/checkin/${a.place.id}?run=${a.quest.runId}&step=${a.quest.stepId}` : `/checkin/${a.place.id}`} className="btn btn-primary">
+              <Link href={reshootHref(a)} className="btn btn-primary">
                 重新拍摄
               </Link>
               {a.canRequestReview && (
@@ -193,7 +193,7 @@ export function AttemptClient({ attemptId }: { attemptId: string }) {
               <Link href={`/places/${a.place.slug}`} className="btn btn-secondary">
                 返回目标地点
               </Link>
-              <Link href={a.quest ? `/checkin/${a.place.id}?run=${a.quest.runId}&step=${a.quest.stepId}` : `/checkin/${a.place.id}`} className="btn btn-primary">
+              <Link href={reshootHref(a)} className="btn btn-primary">
                 重新拍摄
               </Link>
             </div>
@@ -258,16 +258,16 @@ export function AttemptClient({ attemptId }: { attemptId: string }) {
               </p>
             </div>
             <p className="text-xs text-muted">按固定标准给出的 AI 建议，不是权威结论。评分规则 {r.rubricVersion}。</p>
-            {!demo && (
-              <div className="flex flex-wrap gap-2">
-                <Link href={`/posters/new?attempt=${a.attemptId}`} className="btn btn-primary">
-                  生成纪念票根
-                </Link>
+            <div className="flex flex-wrap gap-2">
+              <Link href={`/posters/new?attempt=${a.attemptId}&place=${a.place.id}${demo ? "&mode=demo" : ""}`} className="btn btn-primary">
+                {demo ? "生成试玩纪念票根" : "生成纪念票根"}
+              </Link>
+              {!demo && (
                 <Link href={`/checkin/${a.place.id}`} className="btn btn-quiet">
                   再拍一张
                 </Link>
-              </div>
-            )}
+              )}
+            </div>
           </section>
         )}
         {v.status === "matched" && r.status === "unscorable" && (
@@ -308,6 +308,11 @@ export function AttemptClient({ attemptId }: { attemptId: string }) {
       </nav>
     </div>
   );
+}
+
+function reshootHref(a: AttemptView): string {
+  if (a.mode === "demo") return a.quest ? `/demo/adventure/${a.quest.runId}` : "/demo";
+  return a.quest ? `/checkin/${a.place.id}?run=${a.quest.runId}&step=${a.quest.stepId}` : `/checkin/${a.place.id}`;
 }
 
 function Steps({ a }: { a: AttemptView }) {

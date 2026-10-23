@@ -1,6 +1,14 @@
-import type { Job } from "bullmq";
+import { UnrecoverableError, type Job } from "bullmq";
+import { markPosterFailed, renderPoster } from "@tsq/core/services/posters";
 
-// Implemented with the poster feature (stage E).
 export async function posterProcessor(job: Job<{ id: string }>) {
-  throw new Error(`poster rendering not implemented yet (${job.data.id})`);
+  try {
+    return await renderPoster(job.data.id);
+  } catch (error) {
+    if (job.attemptsMade + 1 >= (job.opts.attempts ?? 1)) {
+      await markPosterFailed(job.data.id, "RENDER_FAILED");
+      throw new UnrecoverableError(error instanceof Error ? error.message : "render failed");
+    }
+    throw error;
+  }
 }
