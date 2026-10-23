@@ -156,7 +156,10 @@ function shareUrl(token: string) {
 export async function renderPoster(posterId: string) {
   const [poster] = await db().select().from(posters).where(eq(posters.id, posterId));
   if (!poster || poster.status === "deleted") return { skipped: "missing" as const };
-  await db().update(posters).set({ status: "rendering", updatedAt: new Date() }).where(eq(posters.id, posterId));
+  // A re-render (e.g. adding the share QR) keeps serving the previous image until the new one is ready.
+  if (poster.status !== "ready") {
+    await db().update(posters).set({ status: "rendering", updatedAt: new Date() }).where(eq(posters.id, posterId));
+  }
 
   let coverJpeg: Buffer | null = null;
   if (poster.snapshot.coverAssetId) {
@@ -305,7 +308,6 @@ export async function createShare(opts: { visitorId: string; posterId: string })
       .values({ posterId: p.id, ownerVisitorId: opts.visitorId, tokenHash: hashToken(token), tokenSealed: seal(token), expiresAt })
       .returning();
     // Re-render so the downloadable PNG carries the real QR code (never a placeholder).
-    await tx.update(posters).set({ status: "queued", updatedAt: new Date() }).where(eq(posters.id, p.id));
     await enqueueInTx(tx, "poster.render", p.id, renderJobId(p.id, Date.now()));
     return { shareId: share!.id, url: shareUrl(token), expiresAt, created: true };
   });
@@ -324,7 +326,6 @@ export async function revokeShare(opts: { visitorId: string; shareId: string }) 
     // Remove the now-dead QR from the private poster too.
     const [p] = await tx.select({ status: posters.status }).from(posters).where(eq(posters.id, share.posterId));
     if (p && p.status !== "deleted") {
-      await tx.update(posters).set({ status: "queued", updatedAt: new Date() }).where(eq(posters.id, share.posterId));
       await enqueueInTx(tx, "poster.render", share.posterId, renderJobId(share.posterId, Date.now()));
     }
     return { revoked: true };

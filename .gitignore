@@ -17,3 +17,4 @@ content/.cache/
 playwright-report/
 test-results/
 packages/core/assets/fonts/*.otf
+.e2e/

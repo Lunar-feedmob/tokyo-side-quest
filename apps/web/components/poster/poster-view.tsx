@@ -26,7 +26,8 @@ export function PosterViewClient({ posterId }: { posterId: string }) {
     try {
       const p = await apiGet<PosterView>(`/posters/${posterId}`);
       setPoster(p);
-      if (p.status === "queued" || p.status === "rendering") timer.current = setTimeout(() => void load(), 1500);
+      const qrPending = p.share !== null && !p.qrIncluded;
+      if (p.status === "queued" || p.status === "rendering" || qrPending) timer.current = setTimeout(() => void load(), 1500);
     } catch (e) {
       setError(e instanceof ApiError && e.code === "NOT_FOUND" ? "没有找到这张票根，可能已删除。" : errorText(e));
     }
