@@ -1,0 +1,246 @@
+{
+  "_note": "首发街区内容。坐标、介绍与文化细节为桌面核对（verificationLevel=desk），尚未实地核验。来源见各条目与 content/research/yanaka-places.json。",
+  "neighborhood": {
+    "slug": "yanaka",
+    "nameZh": "谷中",
+    "nameJa": "谷中",
+    "nameEn": "Yanaka",
+    "summary": "台东区与荒川区交界的老街区：商店街、台阶、寺町与小巷，步行尺度。",
+    "center": { "latitude": 35.7266, "longitude": 139.7667 },
+    "centerNote": "由下列首发地点坐标估算的街区中心，仅用于地图初始视角。"
+  },
+  "places": [
+    {
+      "slug": "yuyake-dandan",
+      "nameZh": "夕阳阶梯",
+      "nameJa": "夕やけだんだん",
+      "nameEn": "Yuyake Dandan",
+      "latitude": 35.7276407,
+      "longitude": 139.7673409,
+      "radiusM": 40,
+      "photoEnabled": false,
+      "photoNote": "旁边公寓于 2026 年竣工，现有授权参考图均早于此，实地补拍前只开放定位打卡。",
+      "tags": ["台阶", "街景", "傍晚"],
+      "stayMinutes": 10,
+      "content": {
+        "intro": "夕やけだんだん是从日暮里站方向的御殿坂下行至谷中银座商店街的一段缓坡石阶，位于荒川区西日暮里三丁目。站在台阶上方可以俯瞰商店街入口的门形招牌与街道。荒川区官方介绍称其名称经公开征集而定，并以能眺望晚霞闻名。",
+        "cultureNote": "1990 年日暮里三丁目町会举办“给石阶取名”征集活动，地区杂志《谷根千》的编辑、作家森まゆみ的投稿被采用，这段 36 级的缓坡台阶由此得名。",
+        "cultureSources": [
+          { "label": "荒川区 荒川ゆうネット（存档）", "url": "https://www.city.arakawa.tokyo.jp/unet/issue/0701_3/index.html", "accessedOn": "2026-10-23" },
+          { "label": "荒川区 观光景点介绍", "url": "https://www.city.arakawa.tokyo.jp/a022/shisetsuannai/kankouspot/nippori010.html", "accessedOn": "2026-10-23" }
+        ],
+        "shootingTips": "站在台阶上端向西俯拍，把台阶、扶手和下方“谷中ぎんざ”门牌放进同一画面。",
+        "distinctiveFeatures": [
+          "向西缓缓下行的宽石阶，中央与两侧设有扶手",
+          "台阶下方带山形屋顶、写着“谷中ぎんざ”的门牌",
+          "从高处看到的商店街遮阳篷、旗幡和灯笼形路灯",
+          "画面上方密集的电线杆与电线"
+        ],
+        "confusablePlaces": [
+          "从谷中银座内部向东回望台阶的视角（属于谷中银座地点）",
+          "附近的其他坡道：御殿坂、七面坂、富士见坂",
+          "东京其他带拱门招牌的商店街入口"
+        ],
+        "unsuitableAngles": ["猫、商品或行人的特写", "看不清门牌的夜景", "从下方拍摄且没有台阶的画面"],
+        "restrictions": null,
+        "coordinateSource": { "label": "OpenStreetMap way 33440592（台阶上端）", "url": "https://www.openstreetmap.org/way/33440592", "accessedOn": "2026-10-23" },
+        "verificationLevel": "desk"
+      }
+    },
+    {
+      "slug": "kannonji-tsuijibei",
+      "nameZh": "观音寺筑地塀",
+      "nameJa": "観音寺の築地塀",
+      "nameEn": "Kannon-ji Tsuijibei Wall",
+      "latitude": 35.7252816,
+      "longitude": 139.7681059,
+      "radiusM": 35,
+      "photoEnabled": true,
+      "photoNote": "参考图仅 3 张且角度相近，建议实地补拍西端视角。",
+      "tags": ["寺町", "建筑细节", "文化财"],
+      "stayMinutes": 10,
+      "content": {
+        "intro": "观音寺位于台东区谷中五丁目。寺院南侧的筑地塀以瓦片与黏土交替层层叠砌，上覆瓦顶，全长 37.6 米，设有一处小门。这道墙于 2000 年登录为国家登录有形文化财，面朝公共小巷，可在路边观看。",
+        "cultureNote": "据文化厅数据库，观音寺在明和九年（1772 年）火灾中烧毁，文政年间前后重建；这道墙建于江户末期，被认为保留了当年与浅草齐名的江户著名寺町风貌。",
+        "cultureSources": [
+          { "label": "文化厅 国指定文化财等数据库", "url": "https://kunishitei.bunka.go.jp/heritage/detail/101/00001561", "accessedOn": "2026-10-23" }
+        ],
+        "shootingTips": "在公共小巷里拍摄，让瓦片与黏土交替的横向条纹和上方瓦顶同时入镜；不要挡住通行。",
+        "distinctiveFeatures": [
+          "灰色瓦片与土黄色黏土交替叠砌的横向条纹墙面",
+          "墙顶沿线的瓦顶，带圆头瓦",
+          "嵌在墙上的小木门（潜り戸）",
+          "东端的石基、石柱与金属说明牌",
+          "墙边狭窄的柏油小巷，墙后是寺院树冠"
+        ],
+        "confusablePlaces": [
+          "观音寺位于初音の道的山门（同一寺院，但不是打卡对象）",
+          "附近约 60 米内其他寺院的围墙与山门（加纳院、本立寺、长安寺等）",
+          "谷中寺町常见的普通灰泥墙或水泥砌块墙"
+        ],
+        "unsuitableAngles": ["只拍瓦片纹理的极近特写", "寺院正殿或山门", "寺院境内"],
+        "restrictions": [
+          {
+            "text": "墙体面向公共道路，可随时从路边观看；寺院为私有宗教法人，旁为住宅，请在公共道路上拍摄、不要阻碍通行。",
+            "source": { "label": "东京都 无障碍观光指南", "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html", "accessedOn": "2026-10-23" }
+          }
+        ],
+        "coordinateSource": { "label": "OpenStreetMap way 821619430（南侧公共小巷）", "url": "https://www.openstreetmap.org/way/821619430", "accessedOn": "2026-10-23" },
+        "verificationLevel": "desk"
+      }
+    },
+    {
+      "slug": "okakura-tenshin-park",
+      "nameZh": "冈仓天心纪念公园",
+      "nameJa": "岡倉天心記念公園",
+      "nameEn": "Okakura Tenshin Memorial Park",
+      "latitude": 35.7263278,
+      "longitude": 139.7664013,
+      "radiusM": 40,
+      "photoEnabled": true,
+      "photoNote": "参考图拍摄于 2025–2026 年整修之前；核验以六角堂本体为主。",
+      "tags": ["艺术", "公园", "近代史"],
+      "stayMinutes": 10,
+      "content": {
+        "intro": "冈仓天心纪念公园位于台东区谷中五丁目，是冈仓天心旧居及日本美术院的旧址，台东区于 1967 年将其作为纪念公园开放。园内六角堂中安放着平栉田中所作的天心坐像，六角堂的门通常关闭。公园于 2026 年 3 月完成设施更新工程。",
+        "cultureNote": "园内有一块“谷中鶯”诗碑，刻有天心即兴所作的诗句，由日本画家横山大观执笔书写，并配有黄莺与红梅的图样。",
+        "cultureSources": [
+          { "label": "台东区 文化探访：冈仓天心", "url": "https://www.culture.city.taito.lg.jp/bunkatanbou/topics/famous_persons/tenshin/japanese/page_01.html", "accessedOn": "2026-10-23" },
+          { "label": "台东区 公园工程完成公告", "url": "https://www.city.taito.lg.jp/kenchiku/hanamidori/koen/kouenkouzi_kanryou.html", "accessedOn": "2026-10-23" }
+        ],
+        "shootingTips": "以六角堂为主体：朱红柱子、白墙、黑色门扇与绿色屋顶都清楚入镜。",
+        "distinctiveFeatures": [
+          "六角形小堂：朱红柱梁、白色灰泥墙、带小玻璃格的黑色双开门、铜绿色屋顶与圆形宝珠顶饰",
+          "堂前低矮的石台阶与六角形图案铺地",
+          "刻有铭文的高大自然石诗碑（谷中鶯之碑）",
+          "刻有“岡倉天心先生宅跡 日本美術院発祥之地”的方形花岗岩石柱",
+          "2026 年 3 月起更新的竹篱式围栏与游乐设施"
+        ],
+        "confusablePlaces": [
+          "东京艺术大学校园内安放天心像的六角堂（不同地点）",
+          "茨城县五浦的六角堂（与天心相关的另一处）",
+          "没有拍到六角堂的普通街区小公园"
+        ],
+        "unsuitableAngles": ["只拍游乐设施", "只拍铭牌的特写", "六角堂内部（门通常关闭）"],
+        "restrictions": null,
+        "coordinateSource": { "label": "OpenStreetMap way 45738210", "url": "https://www.openstreetmap.org/way/45738210", "accessedOn": "2026-10-23" },
+        "verificationLevel": "desk"
+      }
+    },
+    {
+      "slug": "yanaka-ginza",
+      "nameZh": "谷中银座商店街",
+      "nameJa": "谷中銀座商店街",
+      "nameEn": "Yanaka Ginza",
+      "latitude": 35.7276803,
+      "longitude": 139.7660547,
+      "radiusM": 60,
+      "photoEnabled": true,
+      "photoNote": "最新的授权街景照片拍摄于 2019 年；核验以街道整体形态为准，不以单个店铺招牌为依据。",
+      "tags": ["商店街", "日常生活", "小吃"],
+      "stayMinutes": 30,
+      "content": {
+        "intro": "谷中银座商店街位于台东区谷中三丁目与荒川区西日暮里三丁目一带。据商店街振兴组合官网，约 60 家店铺分布在全长约 170 米的短街上，以传统个人商店为主。街道东端入口连接夕やけだんだん台阶，西端与よみせ通り相接。",
+        "cultureNote": "商店街官网记载：商店街约于昭和 20 年（1945 年）前后自然形成；平成 18 年（2006 年）统一了遮阳篷并设置了竖向招牌，平成 20 年（2008 年）设置了木雕猫。",
+        "cultureSources": [
+          { "label": "谷中银座商店街 官网", "url": "https://www.yanakaginza.com/谷中ぎんざについて/", "accessedOn": "2026-10-23" }
+        ],
+        "shootingTips": "在街道中段拍一张能看出街道纵深的画面：铺装、两侧遮阳篷与竖向招牌、路灯。请避免拍摄店员和行人正脸。",
+        "distinctiveFeatures": [
+          "红褐色铺装、两侧浅色边线的狭窄步行街",
+          "两侧统一的遮阳篷（多为绿色）与竖向招牌",
+          "弯曲灯杆上的灯笼形路灯",
+          "东端写着“谷中ぎんざ”的山形门牌，背后是上行台阶"
+        ],
+        "confusablePlaces": [
+          "よみせ通り（与西端相接，路更宽、有车辆、无统一遮阳篷）",
+          "夕やけだんだん台阶上方的俯瞰视角（另一个地点）",
+          "东京其他名为“某某银座”的商店街"
+        ],
+        "unsuitableAngles": ["商品、食物或单个店铺招牌的特写", "以人物或店员为主的画面", "只有祭典装饰可辨认的画面"],
+        "restrictions": [
+          {
+            "text": "各店营业时间不同，请直接向店铺确认。个人拍摄规定未找到来源；请勿拍摄店员与行人正脸。",
+            "source": { "label": "谷中银座商店街 常见问题", "url": "https://www.yanakaginza.com/よくあるお問い合わせ/", "accessedOn": "2026-10-23" }
+          }
+        ],
+        "coordinateSource": { "label": "OpenStreetMap way 671851311（街道中段）", "url": "https://www.openstreetmap.org/way/671851311", "accessedOn": "2026-10-23" },
+        "verificationLevel": "desk"
+      }
+    },
+    {
+      "slug": "yomise-dori",
+      "nameZh": "夜店通",
+      "nameJa": "よみせ通り",
+      "nameEn": "Yomise-dori",
+      "latitude": 35.7266444,
+      "longitude": 139.7645929,
+      "radiusM": 70,
+      "photoEnabled": false,
+      "photoNote": "普通生活街道，缺少稳定的独特特征，授权参考图不足，只开放定位打卡。",
+      "tags": ["生活街道", "自由探索"],
+      "stayMinutes": 15,
+      "content": {
+        "intro": "よみせ通り是与谷中银座西端相接、大致南北走向的生活街道，沿线分布着商店与餐饮店。东京都的无障碍观光指南介绍，这里过去是夜市摊贩云集的街道，名称意为“夜店街”；街道没有人行道，步行时需留意车辆。",
+        "cultureNote": "东京都产业劳动局的观光无障碍指南称，这条街过去因夜间摊贩而热闹，“よみせ”即“夜店”。",
+        "cultureSources": [
+          { "label": "东京都 无障碍观光指南", "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html", "accessedOn": "2026-10-23" }
+        ],
+        "shootingTips": "这里只开放定位打卡。街道没有人行道，拍照时请注意来往车辆。",
+        "distinctiveFeatures": [],
+        "confusablePlaces": ["千駄木与谷中一带几乎任何一条生活街道", "谷中银座（在北侧路口垂直相接）"],
+        "unsuitableAngles": ["没有拱门招牌的普通街景"],
+        "restrictions": [
+          {
+            "text": "街道没有人行道，请注意车辆。各店营业时间不同。",
+            "source": { "label": "东京都 无障碍观光指南", "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html", "accessedOn": "2026-10-23" }
+          }
+        ],
+        "coordinateSource": { "label": "OpenStreetMap way 683454408", "url": "https://www.openstreetmap.org/way/683454408", "accessedOn": "2026-10-23" },
+        "verificationLevel": "desk"
+      }
+    },
+    {
+      "slug": "nezu-shrine",
+      "nameZh": "根津神社",
+      "nameJa": "根津神社",
+      "nameEn": "Nezu Shrine",
+      "latitude": 35.7194688,
+      "longitude": 139.7610188,
+      "radiusM": 80,
+      "photoEnabled": false,
+      "photoNote": "神社禁止“不参拜只拍照”，与拍照打卡玩法冲突；默认只开放定位打卡，需与神社确认后再考虑摄影打卡。",
+      "tags": ["神社", "延伸探索", "重要文化财"],
+      "stayMinutes": 30,
+      "content": {
+        "intro": "根津神社位于文京区根津一丁目，神社官网称其为相传由日本武尊创祀的古社。现存社殿于宝永三年（1706 年）建成，本殿、币殿、拜殿、唐门、西门、透塀与楼门均为国家重要文化财。境内以约 3000 株杜鹃闻名。",
+        "cultureNote": "神社官网介绍，楼门是江户市内神社楼门中唯一留存至今的一座；门内安放的随身像中，面向右侧的一尊据说以水户黄门为原型。",
+        "cultureSources": [
+          { "label": "根津神社 官网 境内案内", "url": "https://nedujinja.or.jp/keidaiannai/", "accessedOn": "2026-10-23" },
+          { "label": "根津神社 官网 由绪", "url": "https://nedujinja.or.jp/about/", "accessedOn": "2026-10-23" }
+        ],
+        "shootingTips": "这里只开放定位打卡。请先参拜，遵守神社的拍摄规定。",
+        "distinctiveFeatures": [
+          "朱红色两层楼门，深色瓦顶，檐口饰有金边",
+          "上层栏杆下写着“根津神社”的匾额",
+          "两侧格栅后的随身坐像",
+          "门前绿色栏杆的石拱桥（神桥）与池边"
+        ],
+        "confusablePlaces": ["境内的唐门（同为朱红色重要文化财）", "东京其他朱红色神社门", "通往乙女稻荷的千本鸟居"],
+        "unsuitableAngles": ["站在社殿前石板参道上拍摄（神社禁止）", "社殿内部（禁止）", "拍摄神职人员、巫女或其他参拜者"],
+        "restrictions": [
+          {
+            "text": "神社规定：个人参拜与观光纪念拍摄无需申请；禁止在社殿前参道（石板路）上拍摄、禁止社殿内拍摄、禁止“不参拜只拍照”、禁止长时间或多人占地拍摄、禁止大型器材、禁止无许可拍摄神职/巫女/其他参拜者；千本鸟居应从反面拍摄；禁止作为写真素材分发或销售。",
+            "source": { "label": "根津神社 官网 境内拍摄须知", "url": "https://nedujinja.or.jp/keidaisatsuei/", "accessedOn": "2026-10-23" }
+          },
+          {
+            "text": "境内免费。唐门开闭时间按月份公布（例如 10 月 5:30–17:30，11–12 月 6:00–17:00），楼门外侧区域开放时间未单独说明。",
+            "source": { "label": "根津神社 官网 开闭时间", "url": "https://nedujinja.or.jp/openclose/", "accessedOn": "2026-10-23" }
+          }
+        ],
+        "coordinateSource": { "label": "OpenStreetMap way 467555830（神桥 / 楼门前）", "url": "https://www.openstreetmap.org/way/467555830", "accessedOn": "2026-10-23" },
+        "verificationLevel": "desk"
+      }
+    }
+  ]
+}

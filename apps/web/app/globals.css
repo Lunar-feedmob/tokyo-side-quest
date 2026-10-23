@@ -1,26 +1,284 @@
 @import "tailwindcss";
 
+/* 东京支线 design tokens (spec §13.1). Ticket stubs, stamp books and line
+   maps are the visual language; colour is never the only status signal. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #fafaf7;
+  --paper-2: #f2f0e8;
+  --ink: #202522;
+  --ink-2: #3a413d;
+  --vermilion: #c7372f;
+  --vermilion-ink: #a52a23;
+  --line-green: #246b58;
+  --info-blue: #295c89;
+  --muted: #5d6762; /* darkened from #69736d for ≥4.5:1 on paper */
+  --rule: #d9d6cc;
+  --warn: #8a5a00;
+  --warn-bg: #fff4d6;
+  --danger-bg: #fdecea;
+  --ok-bg: #e7f2ee;
+  --info-bg: #e8f0f7;
+  --radius: 14px;
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Hiragino Sans", "Noto Sans CJK SC", "Noto Sans SC", "Microsoft YaHei",
+    system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-vermilion: var(--vermilion);
+  --color-line-green: var(--line-green);
+  --color-info-blue: var(--info-blue);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+:focus-visible {
+  outline: 3px solid var(--info-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Primitives ─────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.12s ease, background-color 0.12s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--vermilion);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--vermilion-ink);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-secondary:hover {
+  background: var(--paper-2);
+}
+.btn-quiet {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+.btn-block {
+  width: 100%;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+/* Ticket stub: perforated edge + notch. Reserved for quests, rewards, keepsakes. */
+.ticket {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+}
+.ticket::before {
+  left: -10px;
+}
+.ticket::after {
+  right: -10px;
+}
+.perforation {
+  border-top: 2px dashed var(--rule);
+}
+
+.stamp {
+  display: inline-grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 3px double var(--vermilion);
+  color: var(--vermilion);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.15;
+  transform: rotate(-8deg);
+  padding: 6px;
+  font-size: 0.85rem;
+}
+.stamp-quest {
+  border-color: var(--line-green);
+  color: var(--line-green);
+}
+.stamp-demo {
+  border-style: dashed;
+  border-color: var(--muted);
+  color: var(--muted);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--paper-2);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.chip-ok {
+  background: var(--ok-bg);
+  color: var(--line-green);
+}
+.chip-warn {
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+.chip-danger {
+  background: var(--danger-bg);
+  color: var(--vermilion-ink);
+}
+.chip-info {
+  background: var(--info-bg);
+  color: var(--info-blue);
+}
+
+.notice {
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+.notice-warn {
+  background: var(--warn-bg);
+  border-color: #f0d9a0;
+}
+.notice-danger {
+  background: var(--danger-bg);
+  border-color: #f2c4bf;
+}
+.notice-ok {
+  background: var(--ok-bg);
+  border-color: #bfdcd2;
+}
+.notice-info {
+  background: var(--info-bg);
+  border-color: #c5d7e8;
+}
+
+.grade {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.line-route {
+  background-image: linear-gradient(var(--line-green), var(--line-green));
+  background-size: 3px 100%;
+  background-repeat: no-repeat;
+  background-position: 13px 0;
+}
+
+.stamp-in {
+  animation: stamp-in 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: scale(1.6) rotate(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(-8deg);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
