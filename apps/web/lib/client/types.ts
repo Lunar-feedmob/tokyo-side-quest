@@ -109,7 +109,7 @@ export interface QuestRunView {
     required: boolean;
     title: string;
     proofPolicy: "location" | "photo" | "either";
-    place: { id: string; slug: string; nameZh: string; nameJa: string; available: boolean; photoEnabled: boolean };
+    place: { id: string; slug: string; nameZh: string; nameJa: string; available: boolean; photoEnabled: boolean; latitude: number; longitude: number };
     status: "completed" | "current" | "locked";
     story: string | null;
     objective: string | null;

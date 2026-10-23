@@ -37,6 +37,8 @@ async function stepsOf(questVersionId: string) {
       placeNameJa: places.nameJa,
       placeStatus: places.status,
       photoEnabled: places.photoEnabled,
+      latitude: sql<number>`ST_Y(${places.geo}::geometry)`.mapWith(Number),
+      longitude: sql<number>`ST_X(${places.geo}::geometry)`.mapWith(Number),
       proofPolicy: questSteps.proofPolicy,
       required: questSteps.required,
       title: questSteps.title,
@@ -118,7 +120,7 @@ export async function getQuestRun(opts: { visitorId: string; runId: string }) {
   if (!row) throw new AppError("NOT_FOUND", "没有找到这次故事探索");
   const steps = await stepsOf(row.version.id);
   const progress = await db()
-    .select({ stepId: questStepProgress.stepId, completedAt: questStepProgress.completedAt, method: checkins.method, arrivalVerified: checkins.arrivalVerified })
+    .select({ stepId: questStepProgress.stepId, completedAt: questStepProgress.completedAt, method: checkins.method, arrivalVerified: checkins.arrivalVerified, simulated: checkins.simulated })
     .from(questStepProgress)
     .innerJoin(checkins, eq(checkins.id, questStepProgress.checkinId))
     .where(eq(questStepProgress.runId, row.run.id));
@@ -151,7 +153,16 @@ export async function getQuestRun(opts: { visitorId: string; runId: string }) {
         required: s.required,
         title: s.title,
         proofPolicy: s.proofPolicy,
-        place: { id: s.placeId, slug: s.placeSlug, nameZh: s.placeNameZh, nameJa: s.placeNameJa, available: s.placeStatus === "published", photoEnabled: s.photoEnabled },
+        place: {
+          id: s.placeId,
+          slug: s.placeSlug,
+          nameZh: s.placeNameZh,
+          nameJa: s.placeNameJa,
+          available: s.placeStatus === "published",
+          photoEnabled: s.photoEnabled,
+          latitude: s.latitude,
+          longitude: s.longitude,
+        },
         status: p ? ("completed" as const) : s.id === currentStep?.id ? ("current" as const) : ("locked" as const),
         // Story text unlocks progressively.
         story: unlocked ? s.story : null,
@@ -160,7 +171,7 @@ export async function getQuestRun(opts: { visitorId: string; runId: string }) {
         observationQuestion: unlocked ? s.observationQuestion : null,
         completionText: p ? s.completionText : null,
         completedAt: p?.completedAt ?? null,
-        proofLabel: p ? (p.method === "location" ? "位置符合范围" : p.arrivalVerified ? "照片匹配 · 位置符合范围" : "照片地点匹配 · 未核验到访") : null,
+        proofLabel: p ? (p.method === "location" ? (p.simulated ? "位置符合范围 · 模拟定位" : "位置符合范围") : p.arrivalVerified ? "照片匹配 · 位置符合范围" : "照片地点匹配 · 未核验到访") : null,
       };
     }),
   };
