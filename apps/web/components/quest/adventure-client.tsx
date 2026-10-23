@@ -19,18 +19,24 @@ export function AdventureClient({ runId, mode }: { runId: string; mode: "live" |
   const [actionError, setActionError] = useState<string | null>(null);
   const [justCompleted, setJustCompleted] = useState(false);
 
-  const load = useCallback(async () => {
-    try {
-      setRun(await apiGet<QuestRunView>(`/quest-runs/${runId}`));
-      setError(null);
-    } catch (e) {
-      if (e instanceof ApiError) setError(e);
-    }
-  }, [runId]);
+  const [reloadKey, setReloadKey] = useState(0);
+  const load = useCallback(async () => setReloadKey((k) => k + 1), []);
 
   useEffect(() => {
-    void load();
-  }, [load]);
+    let cancelled = false;
+    apiGet<QuestRunView>(`/quest-runs/${runId}`)
+      .then((r) => {
+        if (cancelled) return;
+        setRun(r);
+        setError(null);
+      })
+      .catch((e) => {
+        if (!cancelled && e instanceof ApiError) setError(e);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [runId, reloadKey]);
 
   async function setStatus(action: "end" | "resume") {
     setBusy(true);

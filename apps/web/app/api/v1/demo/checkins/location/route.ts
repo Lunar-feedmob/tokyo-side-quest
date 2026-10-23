@@ -1,5 +1,4 @@
 import { locationCheckinRequestSchema } from "@tsq/core/contracts/api";
-import { capabilities } from "@tsq/core/config/env";
 import { locationCheckin } from "@tsq/core/services/checkins";
 import { assertWritable } from "@tsq/core/services/session";
 import { ensureVisitor, idempotent, readJson, route } from "@/lib/server/api";

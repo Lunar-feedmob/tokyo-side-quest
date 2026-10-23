@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ApiError, apiDelete, apiGet, apiPost, errorText } from "@/lib/client/api";
 
 interface PosterView {
@@ -20,32 +20,36 @@ export function PosterViewClient({ posterId }: { posterId: string }) {
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const load = useCallback(async () => {
-    try {
-      const p = await apiGet<PosterView>(`/posters/${posterId}`);
-      setPoster(p);
-      const qrPending = p.share !== null && !p.qrIncluded;
-      if (p.status === "queued" || p.status === "rendering" || qrPending) timer.current = setTimeout(() => void load(), 1500);
-    } catch (e) {
-      setError(e instanceof ApiError && e.code === "NOT_FOUND" ? "没有找到这张票根，可能已删除。" : errorText(e));
-    }
-  }, [posterId]);
+  const [reloadKey, setReloadKey] = useState(0);
+  const reload = () => setReloadKey((k) => k + 1);
 
   useEffect(() => {
-    void load();
-    return () => {
-      if (timer.current) clearTimeout(timer.current);
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const tick = async () => {
+      try {
+        const p = await apiGet<PosterView>(`/posters/${posterId}`);
+        if (cancelled) return;
+        setPoster(p);
+        const qrPending = p.share !== null && !p.qrIncluded;
+        if (p.status === "queued" || p.status === "rendering" || qrPending) timer = setTimeout(() => void tick(), 1500);
+      } catch (e) {
+        if (!cancelled) setError(e instanceof ApiError && e.code === "NOT_FOUND" ? "没有找到这张票根，可能已删除。" : errorText(e));
+      }
     };
-  }, [load]);
+    timer = setTimeout(() => void tick(), 0);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [posterId, reloadKey]);
 
   async function share() {
     setBusy(true);
     try {
       await apiPost(`/posters/${posterId}/share`);
       setConfirming(false);
-      await load();
+      reload();
     } catch (e) {
       setError(errorText(e));
     } finally {
@@ -57,7 +61,7 @@ export function PosterViewClient({ posterId }: { posterId: string }) {
     setBusy(true);
     try {
       await apiDelete(`/shares/${poster.share.shareId}`);
-      await load();
+      reload();
     } catch (e) {
       setError(errorText(e));
     } finally {
@@ -68,7 +72,7 @@ export function PosterViewClient({ posterId }: { posterId: string }) {
     setBusy(true);
     try {
       await apiPost(`/posters/${posterId}/retry`);
-      await load();
+      reload();
     } catch (e) {
       setError(errorText(e));
     } finally {

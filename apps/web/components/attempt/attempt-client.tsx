@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ApiError, apiGet, apiPost, errorText } from "@/lib/client/api";
 import type { AttemptView } from "@/lib/client/types";
-import { StampBurst } from "@/components/checkin/stamp-burst";
 
 // Result page (spec §4.6, §9). Polls with backoff while work is pending, stops
 // when the tab is hidden, and resumes from the attempt id after a refresh.
@@ -29,63 +28,53 @@ export function AttemptClient({ attemptId }: { attemptId: string }) {
   const [actionError, setActionError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [slow, setSlow] = useState(false);
-  const started = useRef(Date.now());
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const delay = useRef(1500);
+  const [pollKey, setPollKey] = useState(0);
 
-  const fetchOnce = useCallback(async () => {
-    try {
-      const a = await apiGet<AttemptView>(`/photo-attempts/${attemptId}`);
-      setAttempt(a);
-      setLoadError(null);
-      return a;
-    } catch (e) {
-      if (e instanceof ApiError) setLoadError(e);
-      return null;
-    }
-  }, [attemptId]);
-
-  const schedule = useCallback(() => {
-    if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(async () => {
-      if (document.visibilityState !== "visible") return;
-      const a = await fetchOnce();
-      setSlow(Date.now() - started.current > 60_000);
-      if (!a || isPending(a)) {
-        delay.current = Math.min(delay.current * 1.5, 10_000);
-        schedule();
-      }
-    }, delay.current);
-  }, [fetchOnce]);
-
+  // Backoff polling while work is pending; paused while the tab is hidden.
   useEffect(() => {
-    void fetchOnce().then((a) => {
-      if (!a || isPending(a)) schedule();
-    });
-    const onVisible = () => {
-      if (document.visibilityState === "visible") {
-        delay.current = 1500;
-        void fetchOnce().then((a) => {
-          if (!a || isPending(a)) schedule();
-        });
-      } else if (timer.current) clearTimeout(timer.current);
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let delay = 1500;
+    const started = Date.now();
+    const tick = async () => {
+      if (cancelled || document.visibilityState !== "visible") return;
+      try {
+        const a = await apiGet<AttemptView>(`/photo-attempts/${attemptId}`);
+        if (cancelled) return;
+        setAttempt(a);
+        setLoadError(null);
+        setSlow(Date.now() - started > 60_000);
+        if (!isPending(a)) return;
+      } catch (e) {
+        if (cancelled) return;
+        if (e instanceof ApiError) setLoadError(e);
+        if (e instanceof ApiError && (e.code === "NOT_FOUND" || e.code === "UNAUTHENTICATED")) return;
+      }
+      delay = Math.min(delay * 1.5, 10_000);
+      timer = setTimeout(() => void tick(), delay);
     };
+    const onVisible = () => {
+      clearTimeout(timer);
+      if (document.visibilityState === "visible") {
+        delay = 1500;
+        void tick();
+      }
+    };
+    timer = setTimeout(() => void tick(), 0);
     document.addEventListener("visibilitychange", onVisible);
     return () => {
+      cancelled = true;
+      clearTimeout(timer);
       document.removeEventListener("visibilitychange", onVisible);
-      if (timer.current) clearTimeout(timer.current);
     };
-  }, [fetchOnce, schedule]);
+  }, [attemptId, pollKey]);
 
   async function act(path: string, body: unknown = {}) {
     setBusy(true);
     setActionError(null);
     try {
       await apiPost(path, body);
-      delay.current = 1500;
-      started.current = Date.now();
-      const a = await fetchOnce();
-      if (a && isPending(a)) schedule();
+      setPollKey((k) => k + 1);
     } catch (e) {
       setActionError(errorText(e));
     } finally {

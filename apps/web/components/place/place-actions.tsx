@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { LocationCheckin } from "@/components/checkin/location-checkin";
+import { DistanceCheck } from "./distance-check";
 import { navigationUrl } from "@/lib/client/format";
 
 export interface PlaceActionData {
@@ -48,6 +49,7 @@ export function PlaceActions({ place }: { place: PlaceActionData }) {
         </>
       )}
       <div className="perforation" />
+      <DistanceCheck place={place} />
       <a href={navigationUrl(place)} target="_blank" rel="noreferrer" className="btn btn-quiet btn-block">
         打开导航（外部地图）
       </a>

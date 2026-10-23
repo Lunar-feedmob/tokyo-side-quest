@@ -27,17 +27,20 @@ export function MapView(props: {
   const markersRef = useRef<import("maplibre-gl").Marker[]>([]);
   const [failed, setFailed] = useState(false);
   const [ready, setReady] = useState(false);
+  const { styleUrl, places, user, center, onSelect } = props;
+  // Initial camera only; later changes are applied by the marker effect below.
+  const initialCenter = useRef(props.center ?? props.places[0] ?? { latitude: 35.7272, longitude: 139.7665 });
 
   useEffect(() => {
-    if (!props.styleUrl || !container.current) return;
+    if (!styleUrl || !container.current) return;
     let disposed = false;
     import("maplibre-gl")
       .then(({ default: maplibregl }) => {
         if (disposed || !container.current) return;
-        const c = props.center ?? props.places[0] ?? { latitude: 35.7272, longitude: 139.7665 };
+        const c = initialCenter.current;
         const map = new maplibregl.Map({
           container: container.current,
-          style: props.styleUrl!,
+          style: styleUrl,
           center: [c.longitude, c.latitude],
           zoom: 15.5,
           attributionControl: { compact: true },
@@ -56,9 +59,7 @@ export function MapView(props: {
       mapRef.current?.remove();
       mapRef.current = null;
     };
-    // Map is created once per style; markers update below.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.styleUrl]);
+  }, [styleUrl]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -68,29 +69,29 @@ export function MapView(props: {
       if (cancelled) return;
       markersRef.current.forEach((m) => m.remove());
       markersRef.current = [];
-      for (const p of props.places) {
+      for (const p of places) {
         const el = document.createElement("button");
         el.type = "button";
         el.className = `grid h-9 min-w-9 place-items-center rounded-full border-2 border-white px-2 text-xs font-bold text-white shadow ${p.explored ? "bg-[#246b58]" : "bg-[#c7372f]"}`;
         el.textContent = p.explored ? "✓" : "●";
         el.setAttribute("aria-label", `${p.nameZh}${p.explored ? "（已探索）" : ""}`);
-        el.addEventListener("click", () => props.onSelect?.(p.slug));
+        el.addEventListener("click", () => onSelect?.(p.slug));
         markersRef.current.push(new maplibregl.Marker({ element: el }).setLngLat([p.longitude, p.latitude]).addTo(map));
       }
-      if (props.user) {
+      if (user) {
         const el = document.createElement("div");
         el.className = "h-4 w-4 rounded-full border-2 border-white bg-[#295c89] shadow";
         el.setAttribute("aria-label", "设备报告的位置");
-        markersRef.current.push(new maplibregl.Marker({ element: el }).setLngLat([props.user.longitude, props.user.latitude]).addTo(map));
-        map.easeTo({ center: [props.user.longitude, props.user.latitude] });
-      } else if (props.center) {
-        map.easeTo({ center: [props.center.longitude, props.center.latitude] });
+        markersRef.current.push(new maplibregl.Marker({ element: el }).setLngLat([user.longitude, user.latitude]).addTo(map));
+        map.easeTo({ center: [user.longitude, user.latitude] });
+      } else if (center) {
+        map.easeTo({ center: [center.longitude, center.latitude] });
       }
     });
     return () => {
       cancelled = true;
     };
-  }, [ready, props.places, props.user, props.center, props.onSelect]);
+  }, [ready, places, user, center, onSelect]);
 
   if (!props.styleUrl || failed) {
     return (

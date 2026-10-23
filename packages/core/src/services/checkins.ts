@@ -5,6 +5,7 @@ import { DEFAULT_LOCATION_RULES, evaluateLocationReading, type LocationVerdict }
 import type { Mode } from "../domain/status";
 import type { PositionInput } from "../contracts/api";
 import { AppError, LOCATION_MESSAGES } from "../http/errors";
+import { enforceRateLimit } from "../infra/rate-limit";
 import { loadCheckinPlace } from "./places";
 import { applyCheckinEffects, validateQuestContext, type CheckinEffects, type QuestContext } from "./rewards";
 
@@ -54,6 +55,8 @@ export async function locationCheckin(opts: {
   if (opts.simulated && !(env().DEV_SIMULATED_LOCATION || opts.mode === "demo")) {
     throw new AppError("FORBIDDEN", "当前环境未启用模拟定位");
   }
+
+  await enforceRateLimit({ bucket: "location-checkin", subject: opts.visitorId, limit: 120, windowSeconds: 3600, message: "定位打卡太频繁，请稍后再试" });
 
   return db().transaction(async (tx) => {
     const place = await loadCheckinPlace(tx, opts.placeId);

@@ -73,7 +73,10 @@ export function ExploreClient() {
       void locate();
     }
     const hood = params.get("neighborhood");
-    if (hood && source.kind === "none") void load({ kind: "neighborhood", slug: hood });
+    if (hood && source.kind === "none") {
+      const t = setTimeout(() => void load({ kind: "neighborhood", slug: hood }), 0);
+      return () => clearTimeout(t);
+    }
   }, [params, router, locate, load, source.kind]);
 
   const userReading = source.kind === "nearby" ? source.reading : null;

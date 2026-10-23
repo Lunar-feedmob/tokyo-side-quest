@@ -28,21 +28,29 @@ export function DataSettings() {
   const [confirmAll, setConfirmAll] = useState("");
   const [deleted, setDeleted] = useState(false);
 
-  const load = useCallback(async () => {
-    try {
-      const me = await apiGet<{ hasVisitor: boolean }>("/me");
-      setHasVisitor(me.hasVisitor);
-      if (!me.hasVisitor) return;
-      const [u, s] = await Promise.all([apiGet<{ items: Upload[] }>("/me/uploads"), apiGet<{ items: Share[] }>("/shares")]);
-      setUploads(u.items);
-      setShares(s.items);
-    } catch (e) {
-      if (!(e instanceof ApiError && e.code === "UNAUTHENTICATED")) setMsg(errorText(e));
-    }
-  }, []);
+  const [reloadKey, setReloadKey] = useState(0);
+  const load = useCallback(async () => setReloadKey((k) => k + 1), []);
+
   useEffect(() => {
-    void load();
-  }, [load]);
+    let cancelled = false;
+    (async () => {
+      try {
+        const me = await apiGet<{ hasVisitor: boolean }>("/me");
+        if (cancelled) return;
+        setHasVisitor(me.hasVisitor);
+        if (!me.hasVisitor) return;
+        const [u, s] = await Promise.all([apiGet<{ items: Upload[] }>("/me/uploads"), apiGet<{ items: Share[] }>("/shares")]);
+        if (cancelled) return;
+        setUploads(u.items);
+        setShares(s.items);
+      } catch (e) {
+        if (!cancelled && !(e instanceof ApiError && e.code === "UNAUTHENTICATED")) setMsg(errorText(e));
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [reloadKey]);
 
   async function run(fn: () => Promise<unknown>, done: string) {
     setMsg(null);
