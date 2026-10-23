@@ -140,27 +140,30 @@ function brandCover(s: PosterSnapshot): Node {
 }
 
 function stampNode(label: string, color: string, dashed: boolean): Node {
+  // satori sizes the content box: 140 outer = 140 - 2×(6 border + 14 padding).
+  const lines = [...label].length > 5 ? [[...label].slice(0, 4).join(""), clampText([...label].slice(4).join(""), 5)] : [label];
   return h(
     "div",
     {
-      width: 132,
-      height: 132,
+      width: 100,
+      height: 100,
       flexShrink: 0,
       marginLeft: 14,
-      borderRadius: 66,
+      borderRadius: 140,
       border: `6px ${dashed ? "dashed" : "double"} ${color}`,
       color,
+      flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
       textAlign: "center",
       fontFamily: "Serif",
       fontWeight: 700,
-      fontSize: 26,
+      fontSize: 22,
       lineHeight: 1.15,
-      padding: 12,
+      padding: 14,
       transform: "rotate(-8deg)",
     },
-    clampText(label, 8),
+    ...lines.map((l) => h("div", { whiteSpace: "nowrap" }, l)),
   );
 }
 
