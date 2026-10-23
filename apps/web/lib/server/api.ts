@@ -1,7 +1,8 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
-import type { NextRequest } from "next/server";
+import { unstable_rethrow } from "next/navigation";
+import { connection, type NextRequest } from "next/server";
 import { z } from "zod";
 import { env } from "@tsq/core/config/env";
 import { AppError } from "@tsq/core/http/errors";
@@ -88,6 +89,8 @@ export function route<P = Record<string, string>>(
   opts: { write?: boolean } = {},
 ) {
   return async (req: NextRequest, routeCtx: { params: Promise<P> }) => {
+    // Every API response is per-request: never prerendered at build time.
+    await connection();
     const requestId = randomUUID();
     try {
       if (opts.write ?? req.method !== "GET") assertSameOrigin(req);
@@ -100,6 +103,7 @@ export function route<P = Record<string, string>>(
       if (out.status === 204) return new Response(null, { status: 204, headers: { "x-request-id": requestId } });
       return json(out.status ?? 200, { data: out.data, meta: { requestId } }, requestId, out.headers);
     } catch (error) {
+      unstable_rethrow(error); // let Next.js control-flow errors through
       return errorResponse(error, requestId);
     }
   };

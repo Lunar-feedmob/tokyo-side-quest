@@ -1,0 +1,55 @@
+# Production-style stack. Put HTTPS (Caddy/nginx) in front of `web`; geolocation
+# and secure cookies require HTTPS. Secrets come from tsq.env (not committed).
+name: tokyo-side-quest-prod
+
+x-app: &app
+  image: tokyo-side-quest:${TSQ_VERSION:-latest}
+  env_file: tsq.env
+  environment:
+    APP_ENV: production
+    DATABASE_URL: postgres://tsq:${POSTGRES_PASSWORD}@postgres:5432/tsq
+    REDIS_URL: redis://redis:6379
+  restart: unless-stopped
+  depends_on:
+    postgres: { condition: service_healthy }
+    redis: { condition: service_healthy }
+
+services:
+  postgres:
+    image: postgis/postgis:17-3.5
+    environment:
+      POSTGRES_USER: tsq
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: tsq
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: { test: ["CMD-SHELL", "pg_isready -U tsq -d tsq"], interval: 5s, retries: 20 }
+    restart: unless-stopped
+
+  redis:
+    image: redis:8.8.3-alpine
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction"]
+    volumes: [redisdata:/data]
+    healthcheck: { test: ["CMD", "redis-cli", "ping"], interval: 5s, retries: 20 }
+    restart: unless-stopped
+
+  migrate:
+    <<: *app
+    command: ["pnpm", "db:migrate"]
+    restart: "no"
+
+  web:
+    <<: *app
+    command: ["pnpm", "start"]
+    ports: ["127.0.0.1:${TSQ_PORT:-3010}:3000"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+  worker:
+    <<: *app
+    command: ["pnpm", "worker:start"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+volumes:
+  pgdata:
+  redisdata:

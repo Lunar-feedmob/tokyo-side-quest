@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useCapabilities } from "@/components/env-banner";
 import { ApiError, apiPost, ensureSession, errorText, uploadWithProgress } from "@/lib/client/api";
+import { geoMessage, useGeolocation } from "@/lib/client/use-geolocation";
 
 // Photo submission (spec §4.5): choose → preview → explicit submit. Nothing is
 // uploaded or sent to AI until the user presses submit, and a double click
@@ -48,6 +49,8 @@ export function PhotoSubmit(props: {
   const [preview, setPreview] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>({ kind: "idle" });
   const [notice, setNotice] = useState<string | null>(null);
+  const [attachLocation, setAttachLocation] = useState(false);
+  const geo = useGeolocation();
   const attemptKey = useRef<string>("");
   const uploaded = useRef<{ fileRef: File; assetId: string } | null>(null);
 
@@ -91,6 +94,8 @@ export function PhotoSubmit(props: {
         uploaded.current = { fileRef: file, assetId };
       }
       setPhase({ kind: "submitting" });
+      // Optional, user-chosen: attach the current device reading as extra evidence.
+      const position = attachLocation ? await geo.locate() : null;
       const r = await apiPost<{ attemptId: string }>(
         "/photo-attempts",
         {
@@ -98,7 +103,7 @@ export function PhotoSubmit(props: {
           assetId,
           questRunId: props.quest?.runId ?? null,
           questStepId: props.quest?.stepId ?? null,
-          position: null,
+          position,
         },
         { key: attemptKey.current },
       );
@@ -166,6 +171,13 @@ export function PhotoSubmit(props: {
                   : "提交核验"}
             </button>
           </div>
+          <label className="flex items-start gap-2 text-sm text-ink-2">
+            <input type="checkbox" className="mt-1" checked={attachLocation} onChange={(e) => setAttachLocation(e.target.checked)} disabled={busy} />
+            <span>
+              同时附带当前位置（可选）。若设备位置在范围内，结果会标为“照片匹配 · 位置符合范围”；不附带也不影响照片核验。
+            </span>
+          </label>
+          {attachLocation && geoMessage(geo.state) && <p className="text-xs text-warn">{geoMessage(geo.state)}（照片仍会照常提交）</p>}
           {phase.kind === "uploading" && (
             <div className="h-2 overflow-hidden rounded-full bg-paper-2" role="progressbar" aria-label="上传进度" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(phase.fraction * 100)}>
               <div className="h-full bg-line-green transition-[width]" style={{ width: `${Math.round(phase.fraction * 100)}%` }} />

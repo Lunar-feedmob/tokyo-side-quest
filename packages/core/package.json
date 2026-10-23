@@ -12,7 +12,8 @@
     "db:migrate": "tsx --env-file-if-exists=../../.env src/db/migrate.ts",
     "db:seed": "tsx --env-file-if-exists=../../.env src/db/seed.ts",
     "admin:create": "tsx --env-file-if-exists=../../.env src/admin/create-admin.ts",
-    "brand:render": "tsx src/posters/brand.ts"
+    "brand:render": "tsx src/posters/brand.ts",
+    "ai:smoke": "tsx --env-file-if-exists=../../.env src/admin/ai-smoke.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.1.0",

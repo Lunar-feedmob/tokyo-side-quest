@@ -22,7 +22,8 @@
     "test:integration": "vitest run --project integration",
     "test:e2e": "playwright test",
     "fonts:fetch": "node scripts/fetch-fonts.mjs",
-    "brand:render": "pnpm --filter @tsq/core brand:render"
+    "brand:render": "pnpm --filter @tsq/core brand:render",
+    "ai:smoke": "pnpm --filter @tsq/core ai:smoke"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",
