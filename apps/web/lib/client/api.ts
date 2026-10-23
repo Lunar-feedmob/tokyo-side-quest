@@ -104,3 +104,18 @@ export function errorText(error: unknown): string {
   if (error instanceof ApiError) return error.message;
   return "出现了意外问题，请稍后重试";
 }
+
+export async function apiPatch<T>(path: string, body: unknown): Promise<T> {
+  let res: Response;
+  try {
+    res = await fetch(`/api/v1${path}`, {
+      method: "PATCH",
+      credentials: "same-origin",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+  } catch {
+    throw new ApiError(0, "NETWORK_ERROR", "网络连接失败，请检查网络后重试", true, null, null);
+  }
+  return parse<T>(res);
+}
