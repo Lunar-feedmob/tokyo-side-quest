@@ -1,0 +1,10 @@
+packages:
+  - apps/*
+  - packages/*
+onlyBuiltDependencies:
+  - sharp
+  - "@resvg/resvg-js"
+  - "@node-rs/argon2"
+  - esbuild
+ignoredBuiltDependencies:
+  - unrs-resolver
