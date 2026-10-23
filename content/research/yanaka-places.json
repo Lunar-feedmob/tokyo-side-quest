@@ -1,0 +1,1171 @@
+{
+  "schema_version": 1,
+  "area": "Yanaka (谷中) and Nezu, Tokyo",
+  "researched_by": "desk research agent",
+  "access_date": "2026-10-23",
+  "places": [
+    {
+      "id": "yanaka-yuyake-dandan",
+      "status_suggestion": "draft",
+      "names": {
+        "zh": "夕阳阶梯（夕やけだんだん）",
+        "ja": "夕やけだんだん",
+        "en": "Yuyake Dandan (sunset steps)",
+        "name_notes": "Wikidata Q11430153 zh label is 夕陽階梯 (traditional); 夕阳阶梯 is our simplified rendering, not an official name. OSM name tag spells it 夕焼けだんだん; Arakawa City uses 夕やけだんだん."
+      },
+      "checkin": {
+        "lat": 35.7276407,
+        "lng": 139.7673409,
+        "point_description": "Top (east end) of the steps, where 御殿坂 meets the stairs; the classic view looks west down the steps to the 谷中ぎんざ gate.",
+        "source": {
+          "url": "https://www.openstreetmap.org/way/33440592",
+          "what": "OSM way 33440592 (highway=steps, name=夕焼けだんだん, wikidata=Q11430153); first node = upper end (incline=down along way direction). Overpass API (https://overpass-api.de/api/interpreter) query of OSM data",
+          "accessed": "2026-10-23"
+        },
+        "cross_check": [
+          {
+            "url": "https://www.wikidata.org/wiki/Q11430153",
+            "what": "Wikidata P625 35.727639,139.767083 (about 23 m from chosen point, roughly at the bottom of the steps)",
+            "accessed": "2026-10-23"
+          }
+        ],
+        "radius_m": 40,
+        "radius_reason": "Steps are short (OSM way ~31 m; ja.wikipedia says length 15 m) and the Yanaka Ginza check-in centre is only 116 m away (straight line). 40 m keeps the two circles apart. Consumer GPS in narrow streets can err 20-50 m, so field-test this radius.",
+        "verification_level": "desk-verified only (OSM + Wikidata), not field-verified"
+      },
+      "intro_zh": "夕やけだんだん是从日暮里站方向的御殿坂下行至谷中银座商店街的一段缓坡石阶，位于荒川区西日暮里三丁目。站在台阶上方可以俯瞰商店街入口的门形招牌与街道。荒川区官方介绍称其名称经公开征集而定，并以能眺望晚霞闻名。",
+      "intro_sources": [
+        {
+          "url": "https://www.city.arakawa.tokyo.jp/a022/shisetsuannai/kankouspot/nippori010.html",
+          "what": "Arakawa City official page: steps leading from 御殿坂 to 谷中銀座; name chosen by public contest (一般公募); sunset view; location 荒川区西日暮里3-13付近",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html",
+          "what": "Tokyo Metropolitan Govt accessibility guide: 'Yuyake Dandan is the name of the steps located between Gotenzaka and Yanaka Ginza'",
+          "accessed": "2026-10-23"
+        }
+      ],
+      "cultural_detail": {
+        "zh": "1990年日暮里三丁目町会举办“给石阶取名”征集活动，地区杂志《谷根千》的编辑、作家森まゆみ的投稿被采用，这段36级的缓坡台阶由此得名。",
+        "source": {
+          "url": "https://www.city.arakawa.tokyo.jp/unet/issue/0701_3/index.html",
+          "what": "荒川ゆうネット archive on Arakawa City domain (site operated 2004-2010, content as of publication): 36段のゆるやかな階段; 名付け親は森まゆみ; 1990年 日暮里三丁目町会『石段に名前を付けようコンクール』",
+          "accessed": "2026-10-23"
+        },
+        "corroboration": {
+          "url": "https://ja.wikipedia.org/wiki/谷中銀座商店街",
+          "what": "ja.wikipedia (secondary): 1990 renovation, named by 森まゆみ, 36 steps, 4.4 m wide",
+          "accessed": "2026-10-23"
+        }
+      },
+      "visual_features": [
+        "Wide, gently sloping stone/paver steps descending westward, with a central handrail and side railings (OSM: handrail:center=yes)",
+        "At the foot of the steps: the gabled gateway arch with the sign 谷中ぎんざ, with the narrow shopping street continuing beyond it",
+        "Shopping street lined with shop awnings, banners and lantern-style street lamps, seen from above",
+        "Multi-storey apartment block with white balcony railings on the right (north) side when looking down the steps",
+        "Dense overhead utility poles and wires framing the view"
+      ],
+      "confusable_places": [
+        "View of the same 谷中ぎんざ gate from inside Yanaka Ginza looking east (shows the steps from below) - belongs to the Yanaka Ginza node, not this one",
+        "Other slopes of the Nippori/Yanaka hill named by Arakawa City: 御殿坂, 七面坂, 富士見坂 (source: Arakawa archive page above)",
+        "Other Tokyo shopping-street gateways with similar arches (e.g. the よみせ通り arch sign)"
+      ],
+      "unsuitable_angles": [
+        "Close-ups of cats, shop goods or people",
+        "Night shots where the gate sign is not legible",
+        "Shots from the bottom that do not include the steps"
+      ],
+      "change_alerts": [
+        {
+          "what": "A 7-storey condominium (ウィルローズ谷中銀座, 荒川区西日暮里3-14) was built right next to the steps; reported completion late May 2026. It is likely on the left (south) side of the classic view and is NOT in any reference photo below (all pre-2026).",
+          "sources": [
+            {
+              "url": "https://toyokeizai.net/articles/-/922152",
+              "what": "Toyo Keizai article (via search snippet): 7-storey condo next to 夕焼けだんだん, completion scheduled late May 2026",
+              "accessed": "2026-10-23"
+            },
+            {
+              "url": "https://www.openstreetmap.org/way/1454469298",
+              "what": "OSM way 1454469298, building:levels=7, edited 2026-09-09",
+              "accessed": "2026-10-23"
+            },
+            {
+              "url": "https://ja.wikipedia.org/wiki/谷中銀座商店街",
+              "what": "ja.wikipedia (uncited statement): completed late May 2026, sunset now harder to see",
+              "accessed": "2026-10-23"
+            }
+          ],
+          "action": "Needs a field visit and new post-2026 reference photos before enabling photo verification."
+        }
+      ],
+      "hours": "未知（公共阶梯；未找到来源说明开放时间）",
+      "photo_restrictions": "未知（未找到来源）",
+      "safety_notes": [
+        {
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html",
+          "what": "'Be careful as the street at the top of Yuyake Dandan slope is inclined toward the stairs. Be careful of cars as the road is narrow.'",
+          "accessed": "2026-10-23"
+        }
+      ],
+      "reference_photos": [
+        {
+          "file": "File:Yanaka Ginza entrance.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_entrance.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Yanaka_Ginza_entrance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "1904.CC",
+          "license": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0",
+          "photo_date": "2025-04-17 12:33:00",
+          "uploaded": "2025-12-11T09:52:41Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "From the top of the steps looking west: steps with railings in foreground, 谷中ぎんざ gate and street below. Most recent (2025-04). People present but not central.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Yanaka Ginza Street from Yuyake Dandan (Oct 2024).jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_Street_from_Yuyake_Dandan_(Oct_2024).jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Yanaka_Ginza_Street_from_Yuyake_Dandan_%28Oct_2024%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "SuFlyer",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2024-10-27",
+          "uploaded": "2024-10-27T14:11:58Z",
+          "size_px": [
+            3645,
+            5467
+          ],
+          "view_note": "Telephoto from the steps: gate sign 谷中ぎんざ large in frame, street beyond. Uploader blurred faces. Portrait orientation.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Yūyake Dandan.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Y%C5%AByake_Dandan.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Y%C5%AByake_Dandan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "Taken on 8 September 2018, 11:16:26",
+          "uploaded": "2020-06-16T20:20:20Z",
+          "size_px": [
+            5184,
+            3888
+          ],
+          "view_note": "Wide view from upper part of the steps (EXIF GPS on steps): full staircase, railings, gate and skyline; left side shows low buildings that may now be replaced by the 2026 condo.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Ueno 003.JPG",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Ueno_003.JPG",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Ueno_003.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Ronny Siegel",
+          "license": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0",
+          "photo_date": "Taken on 4 October 2014, 02:42:37",
+          "uploaded": "2015-02-13T19:49:11Z",
+          "size_px": [
+            1115,
+            2048
+          ],
+          "view_note": "Portrait view from the very top along the central handrail, steps fully visible, gate in mid-distance (2014).",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Yanaka Ginza (53149736031).jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_(53149736031).jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Yanaka_Ginza_%2853149736031%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Dick Thomas Johnson from Tokyo, Japan",
+          "license": "CC BY 2.0",
+          "license_url": "https://creativecommons.org/licenses/by/2.0",
+          "photo_date": "2023-07-15 14:11",
+          "uploaded": "2024-01-11T06:52:56Z",
+          "size_px": [
+            6000,
+            4000
+          ],
+          "view_note": "From the top of the steps, crowd walking down; gate and street visible (2023). Use as alternate.",
+          "role": "alternate",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        }
+      ],
+      "photo_library_assessment": "5 licensed photos covering the check-in viewpoint, but ALL pre-date the 2026 condominium next to the steps. Library is likely stale on the left (south) side of the frame.",
+      "recommendation": {
+        "mode": "photo_candidate_pending_field_check",
+        "zh": "视觉特征明确（台阶+下方“谷中ぎんざ”门牌），适合摄影核验；但2026年旁边新建公寓后现有参考图可能过时，需实地补拍或确认后再启用照片核验，期间先开放定位打卡。"
+      },
+      "intro_zh_char_count": 103
+    },
+    {
+      "id": "yanaka-ginza",
+      "status_suggestion": "draft",
+      "names": {
+        "zh": "谷中银座商店街",
+        "ja": "谷中銀座商店街",
+        "en": "Yanaka Ginza Shopping Street",
+        "name_notes": "Official site styles it 谷中ぎんざ. zh is a direct simplified rendering (no official zh name found)."
+      },
+      "checkin": {
+        "lat": 35.7276803,
+        "lng": 139.7660547,
+        "point_description": "Middle of the pedestrian section of the street (OSM node on way 671851311).",
+        "source": {
+          "url": "https://www.openstreetmap.org/way/671851311",
+          "what": "OSM way 671851311 (highway=pedestrian, name=谷中銀座, wikidata=Q106701725). Overpass API (https://overpass-api.de/api/interpreter) query of OSM data",
+          "accessed": "2026-10-23"
+        },
+        "cross_check": [
+          {
+            "url": "https://www.wikidata.org/wiki/Q106701725",
+            "what": "Wikidata item has no P625 coordinate",
+            "accessed": "2026-10-23"
+          },
+          {
+            "url": "https://www.openstreetmap.org/node/8691137817",
+            "what": "OSM node 8691137817 tourism=attraction 谷中銀座 at 35.727657,139.766968 (east end, 30 m from the steps' foot)",
+            "accessed": "2026-10-23"
+          }
+        ],
+        "radius_m": 60,
+        "radius_reason": "Street is ~170 m long (official) / ~194 m in OSM. 60 m from the centre covers the middle stretch while staying 116 m from the Yuyake Dandan point and 175 m from the Yomise point (straight line).",
+        "verification_level": "desk-verified only, not field-verified"
+      },
+      "intro_zh": "谷中银座商店街位于台东区谷中三丁目与荒川区西日暮里三丁目一带。据商店街振兴组合官网，约60家店铺分布在全长约170米的短街上，以传统个人商店为主。街道东端入口连接夕やけだんだん台阶，西端与よみせ通り相接。",
+      "intro_sources": [
+        {
+          "url": "https://www.yanakaginza.com/谷中ぎんざについて/",
+          "what": "Official site of 谷中銀座商店街振興組合: 約60店舗が全長170メートルほどの短い通り; 昭和20年頃に自然発生的に生まれた",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://ja.wikipedia.org/wiki/谷中銀座商店街",
+          "what": "ja.wikipedia: 所在地 台東区谷中3丁目及び荒川区西日暮里3丁目",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/737745076",
+          "what": "OSM: west end node of 谷中銀座 way is shared with よみせ通り way 33440536",
+          "accessed": "2026-10-23"
+        }
+      ],
+      "cultural_detail": {
+        "zh": "商店街官网记载：商店街约于昭和20年（1945年）前后自然形成；平成18年（2006年）统一了遮阳篷并设置了竖向招牌，平成20年（2008年）设置了木雕猫。",
+        "source": {
+          "url": "https://www.yanakaginza.com/谷中ぎんざについて/",
+          "what": "商店街沿革: 平成18年には日よけの統一や袖看板の設置、20年には木彫り猫の設置",
+          "accessed": "2026-10-23"
+        },
+        "caveat": "Whether the wooden cats are all still in place in 2026 is not verified; do not make them a required story answer without a field check."
+      },
+      "visual_features": [
+        "Narrow pedestrian street paved in reddish-brown with lighter edge strips",
+        "Unified shop awnings (many green) and vertical projecting signs (袖看板) along both sides",
+        "Lantern-style street lamps on curved posts",
+        "Gabled gateway arch with the sign 谷中ぎんざ at the east end, with the steps rising behind it",
+        "Wooden cat carvings placed on shop fronts/roofs (installed 2008 per official site; current presence unverified)"
+      ],
+      "confusable_places": [
+        "よみせ通り (meets the west end; wider, carries vehicles, no unified awnings)",
+        "The view from the top of 夕やけだんだん (overlaps visually - that is a separate node)",
+        "Other Tokyo 'Ginza'-named shopping streets with similar arches and awnings"
+      ],
+      "unsuitable_angles": [
+        "Close-ups of goods/food or single shop signs",
+        "Shots dominated by people or staff (privacy)",
+        "Festival-only decorations (e.g. ひゃっこい祭り banners) as the main identifying feature"
+      ],
+      "hours": "各店不同（官网FAQ：营业时间因店而异，请直接向各店确认）；街道本身开放时间未知",
+      "hours_source": {
+        "url": "https://www.yanakaginza.com/よくあるお問い合わせ/",
+        "what": "Official FAQ",
+        "accessed": "2026-10-23"
+      },
+      "access_notes": "OSM tags motor_vehicle:conditional = no @ (15:00-20:00) on the pedestrian section (OSM only, not officially verified).",
+      "photo_restrictions": "个人拍摄规定：未知。官网FAQ仅说明媒体采访/拍摄只接受有新闻性或有助于商店街宣传的内容，联系方式仅限邮件。",
+      "photo_restrictions_source": {
+        "url": "https://www.yanakaginza.com/よくあるお問い合わせ/",
+        "what": "Official FAQ on 取材・撮影",
+        "accessed": "2026-10-23"
+      },
+      "reference_photos": [
+        {
+          "file": "File:Yanaka Ginza 1.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_1.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Yanaka_Ginza_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "Taken on 8 September 2018, 11:10:28",
+          "uploaded": "2020-06-16T20:20:19Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "Street level near the west end looking east (EXIF GPS 35.727681,139.765122): paving, awnings, street lamps, flower shop. 2018-09.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Yanaka Ginza 2.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_2.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Yanaka_Ginza_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "Taken on 8 September 2018, 11:12:46",
+          "uploaded": "2020-06-16T20:20:18Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "Street level near the east part looking west (EXIF GPS 35.727633,139.766678): green awnings, cat-themed shop sign, pedestrian sign 15-20. 2018-09.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Entrance of Yūyake Dandan.png",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Entrance_of_Y%C5%AByake_Dandan.png",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Entrance_of_Y%C5%AByake_Dandan.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Thomas Housieaux",
+          "license": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0",
+          "photo_date": "2019-08-27",
+          "uploaded": "2019-09-21T14:32:01Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "From inside the street looking east: 谷中ぎんざ gate arch with the steps rising behind. 2019-08. (PNG, 4032x3024)",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Gateway to Yanaka Ginza (11918411545).jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Gateway_to_Yanaka_Ginza_(11918411545).jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Gateway_to_Yanaka_Ginza_%2811918411545%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Stephen Kelly from San Francisco, CA, USA",
+          "license": "CC BY 2.0",
+          "license_url": "https://creativecommons.org/licenses/by/2.0",
+          "photo_date": "2013-09-07 21:30",
+          "uploaded": "2024-01-10T14:18:37Z",
+          "size_px": [
+            4928,
+            3264
+          ],
+          "view_note": "Gate arch and east end of the street from slightly inside, lamps and shops on both sides. 2013-09 (older). Flickr import, FlickreviewR passed.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Tokyo Yanaka 5.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Tokyo_Yanaka_5.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Tokyo_Yanaka_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Gustave67",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "2018-07-13 04:33:53",
+          "uploaded": "2018-08-23T12:35:51Z",
+          "size_px": [
+            2736,
+            3648
+          ],
+          "view_note": "Mid-street view with paving, lamps and projecting signs; festival banners (seasonal) visible. 2018-07.",
+          "role": "alternate",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        }
+      ],
+      "photo_library_assessment": "5 usable photos (2013-2019). No photos found from 2024 onward at street level; shop fronts change, so rely on permanent features (paving, lamps, gate, street proportions).",
+      "recommendation": {
+        "mode": "photo",
+        "zh": "适合摄影核验，但应以街道整体形态（铺装、路灯、遮阳篷连续性、东口门牌）判断，不以单个店铺招牌为依据。建议实地补拍2026年现状。"
+      },
+      "intro_zh_char_count": 102
+    },
+    {
+      "id": "yanaka-yomise-dori",
+      "status_suggestion": "draft",
+      "names": {
+        "zh": "夜店通（よみせ通り）",
+        "ja": "よみせ通り",
+        "en": "Yomise-dori Street",
+        "name_notes": "Tokyo Metropolitan Govt guide explains the name as 'Night Shops Street'. 夜店通 is our translation, not an official zh name."
+      },
+      "checkin": {
+        "lat": 35.7266444,
+        "lng": 139.7645929,
+        "point_description": "On よみせ通り about 110 m south of its junction with Yanaka Ginza (between the junction and Sendagi Station), near the めぐりん bus stop 谷中銀座・よみせ通り.",
+        "source": {
+          "url": "https://www.openstreetmap.org/way/683454408",
+          "what": "OSM way 683454408 (highway=residential, name=よみせ通り) node. Overpass API (https://overpass-api.de/api/interpreter) query of OSM data",
+          "accessed": "2026-10-23"
+        },
+        "cross_check": [
+          {
+            "url": "https://www.openstreetmap.org/node/6401541449",
+            "what": "OSM bus stop 谷中銀座・よみせ通り at 35.7265111,139.7645017 (~15 m away)",
+            "accessed": "2026-10-23"
+          },
+          {
+            "url": "https://nominatim.openstreetmap.org/search?q=よみせ通り&format=jsonv2",
+            "what": "Nominatim returns way 33440536 (northern section)",
+            "accessed": "2026-10-23"
+          }
+        ],
+        "radius_m": 70,
+        "radius_reason": "Long, featureless street (~340 m per Tokyo guide); a looser radius is fine because it is location-only. Stays 175 m from the Yanaka Ginza centre.",
+        "verification_level": "desk-verified only, not field-verified"
+      },
+      "intro_zh": "よみせ通り是与谷中银座西端相接、大致南北走向的生活街道，沿线分布着商店与餐饮店。东京都的无障碍观光指南介绍，这里过去是夜市摊贩云集的街道，名称意为“夜店街”；街道没有人行道，步行时需留意车辆。",
+      "intro_sources": [
+        {
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html",
+          "what": "Spot 4 Yomise-dori Street: 'In the past, this was a street bustling with night stores. Yomise Dori means \"Night Shops Street.\"' ; 'No sidewalks, so be careful.' ; address Bunkyo-ku, Taito-ku",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/737745076",
+          "what": "OSM: Yanaka Ginza west end joins よみせ通り",
+          "accessed": "2026-10-23"
+        }
+      ],
+      "cultural_detail": {
+        "zh": "东京都产业劳动局的观光无障碍指南称，这条街过去因夜间摊贩而热闹，“よみせ”即“夜店”。",
+        "source": {
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html",
+          "what": "Tokyo Sightseeing Accessibility Guide, course 13 Yanaka/Nezu/Sendagi (page last updated 2026-03-31)",
+          "accessed": "2026-10-23"
+        }
+      },
+      "visual_features": [
+        "Ordinary two-lane-width local street with painted edge lines and no raised sidewalk",
+        "A metal overhead arch with the sign よみせ通り exists (seen in a 2009 photo); its current state and exact position are unverified",
+        "Mixed low-rise shops and apartment buildings; no unified awnings"
+      ],
+      "confusable_places": [
+        "Almost any neighbourhood street in Sendagi/Yanaka",
+        "谷中銀座 (perpendicular at the north junction)",
+        "不忍通り near Sendagi Station"
+      ],
+      "unsuitable_angles": [
+        "Any generic street view without the arch sign"
+      ],
+      "hours": "各店不同（来源：东京都指南 'Varies by shop'）",
+      "photo_restrictions": "未知（未找到来源）",
+      "reference_photos": [
+        {
+          "file": "File:Yomisedori shopping street taito bunkyo tokyo 2009.JPG",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Yomisedori_shopping_street_taito_bunkyo_tokyo_2009.JPG",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Yomisedori_shopping_street_taito_bunkyo_tokyo_2009.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "User:Kentin",
+          "license": "CC BY-SA 3.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "photo_date": "2009-04",
+          "uploaded": "2010-03-07T13:28:52Z",
+          "size_px": [
+            1944,
+            2592
+          ],
+          "view_note": "Overhead arch sign よみせ通り with the street behind. 2009-04 - 17 years old; arch and shops may have changed.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:201804 Sendagi Yomise Street.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:201804_Sendagi_Yomise_Street.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/50/201804_Sendagi_Yomise_Street.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Urbs Urbium",
+          "license": "Public domain",
+          "license_url": null,
+          "photo_date": "2018-04",
+          "uploaded": "2018-04-29T14:12:22Z",
+          "size_px": [
+            1386,
+            1040
+          ],
+          "view_note": "Street view near Sendagi Station showing the open, sidewalk-less street with shops (2018-04). Generic appearance.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:YomiseStreet Cafe Sendagi.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:YomiseStreet_Cafe_Sendagi.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/25/YomiseStreet_Cafe_Sendagi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Urbs urbium",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "2017-11",
+          "uploaded": "2020-03-14T12:34:06Z",
+          "size_px": [
+            2048,
+            1536
+          ],
+          "view_note": "Single café shop front (2017-11). Transient business - NOT suitable as a verification reference; listed only for completeness.",
+          "role": "not_recommended",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        }
+      ],
+      "photo_library_assessment": "Only 2 usable photos (2009, 2018), both old; a third is a single shop front. Below the 3-5 required by spec 6.2.",
+      "recommendation": {
+        "mode": "location_only",
+        "zh": "普通生活街道，缺乏稳定的独特视觉特征且授权参考图不足，建议仅开放定位打卡，作为自由探索点，不作为故事主节点。"
+      },
+      "intro_zh_char_count": 96
+    },
+    {
+      "id": "yanaka-okakura-tenshin-park",
+      "status_suggestion": "draft",
+      "names": {
+        "zh": "冈仓天心纪念公园",
+        "ja": "岡倉天心記念公園",
+        "en": "Okakura Tenshin Memorial Park",
+        "name_notes": "zh is a direct simplified rendering; Wikidata Q42311758 has no zh label."
+      },
+      "checkin": {
+        "lat": 35.7263278,
+        "lng": 139.7664013,
+        "point_description": "Centroid of the small park (about 700 m²); the 六角堂 hall stands inside. Address 台東区谷中5-7-10.",
+        "source": {
+          "url": "https://www.openstreetmap.org/way/45738210",
+          "what": "OSM way 45738210 (leisure=park, wikidata=Q42311758) centre. Overpass API (https://overpass-api.de/api/interpreter) query of OSM data",
+          "accessed": "2026-10-23"
+        },
+        "cross_check": [
+          {
+            "url": "https://www.wikidata.org/wiki/Q42311758",
+            "what": "Wikidata P625 35.72631,139.76644 (4 m from chosen point)",
+            "accessed": "2026-10-23"
+          }
+        ],
+        "radius_m": 40,
+        "radius_reason": "Very small park inside a residential block; 154 m from the Yanaka Ginza centre and 193 m from the Kannon-ji wall point.",
+        "verification_level": "desk-verified only, not field-verified"
+      },
+      "intro_zh": "冈仓天心纪念公园位于台东区谷中五丁目，是冈仓天心旧居及日本美术院的旧址，台东区于1967年将其作为纪念公园开放。园内六角堂中安放着平栉田中所作的天心坐像，六角堂的门通常关闭。公园于2026年3月完成设施更新工程。",
+      "intro_sources": [
+        {
+          "url": "https://www.culture.city.taito.lg.jp/bunkatanbou/topics/famous_persons/tenshin/japanese/page_01.html",
+          "what": "Taito City culture guide: 日本美術院の跡を台東区が記念し昭和42年(1967)に開園; 六角堂に平櫛田中作の天心坐像; 通常は六角堂の扉は閉じています",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://www.city.taito.lg.jp/kenchiku/hanamidori/koen/kouenkouzi_kanryou.html",
+          "what": "Taito City: 岡倉天心記念公園施設更新工事, park closed 令和7年10月-令和8年3月, completed 令和8年3月27日",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://filmcommission.city.taito.lg.jp/location/okakuratenshin-memorialpark/",
+          "what": "Taito Film Commission: 所在地 台東区谷中5-7-10",
+          "accessed": "2026-10-23"
+        }
+      ],
+      "cultural_detail": {
+        "zh": "园内有一块“谷中鶯”诗碑，刻有天心即兴所作的诗句，由日本画家横山大观执笔书写，并配有黄莺与红梅的图样。",
+        "source": {
+          "url": "https://www.culture.city.taito.lg.jp/bunkatanbou/topics/famous_persons/tenshin/japanese/page_01.html",
+          "what": "日本美術院跡の谷中鶯の碑: 天心が即興で詠んだ詩の碑が、横山大観の筆により建てられています。歌には、鶯と紅梅の絵が添えられています。",
+          "accessed": "2026-10-23"
+        }
+      },
+      "visual_features": [
+        "Small hexagonal hall (六角堂): vermilion pillars and beams, white plaster walls, black double doors with small glass panes, green copper-coloured roof with a round finial",
+        "Low stone platform and steps in front of the hall, hexagon-patterned paving",
+        "Tall natural-stone poem stele (谷中鶯の碑) with carved inscription",
+        "Square granite pillar inscribed 岡倉天心先生宅跡 日本美術院発祥之地",
+        "Entrance with low natural-stone wall and a small stone name post 岡倉天心記念公園",
+        "Since 2026-03: bamboo-fence-style screen fence (replacing old concrete wall), new step play equipment and seesaw (per Taito City)"
+      ],
+      "confusable_places": [
+        "The 六角堂 with Hirakushi Denchu's Tenshin statue on the Tokyo University of the Arts campus (Taito City page mentions it) - different place",
+        "The original Rokkakudo at Izura (五浦), Ibaraki, linked to Tenshin",
+        "Generic small neighbourhood parks with play equipment (if the hall is not in frame)"
+      ],
+      "unsuitable_angles": [
+        "Playground-only shots",
+        "Close-ups of the inscription plaque only",
+        "Interior of the hall (doors usually closed)"
+      ],
+      "change_alerts": [
+        {
+          "what": "Park renovated Oct 2025 - Mar 2026: perimeter concrete wall replaced with bamboo-style screen fence, drinking fountain and lights replaced, new play equipment. All reference photos below are 2020-2022, before renovation.",
+          "sources": [
+            {
+              "url": "https://www.city.taito.lg.jp/kenchiku/hanamidori/koen/kouenkouzi_kanryou.html",
+              "what": "Taito City completed park works page",
+              "accessed": "2026-10-23"
+            }
+          ],
+          "action": "The hall itself appears among the post-works photos on the city page (六角堂), so the main feature should be unchanged, but backgrounds/fences differ. Re-shoot after field visit."
+        }
+      ],
+      "hours": "未知（未找到来源；六角堂门通常关闭）",
+      "photo_restrictions": "未知（未找到来源）",
+      "reference_photos": [
+        {
+          "file": "File:Okakura Tenshin Memorial Garden (Rokkakudo) 2020-01-12.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Garden_(Rokkakudo)_2020-01-12.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Okakura_Tenshin_Memorial_Garden_%28Rokkakudo%29_2020-01-12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Asanagi",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2020-01-12 13:48:10",
+          "uploaded": "2020-01-13T07:34:06Z",
+          "size_px": [
+            3023,
+            4032
+          ],
+          "view_note": "Frontal full view of the 六角堂 with steps and paving; plaque monument on right. Portrait, 2020-01 (winter).",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Okakura Tenshin Memorial Park 03.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Park_03.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Okakura_Tenshin_Memorial_Park_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Higa4",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2022-04-17 13:43:09",
+          "uploaded": "2022-04-20T12:45:44Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "Close frontal view of the hall: vermilion pillars, black doors, eaves. 2022-04.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Okakura Tenshin Memorial Garden 2020-01-12.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Garden_2020-01-12.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Okakura_Tenshin_Memorial_Garden_2020-01-12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Asanagi",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2020-01-12 13:49:04",
+          "uploaded": "2020-01-13T07:35:24Z",
+          "size_px": [
+            8270,
+            3860
+          ],
+          "view_note": "Panorama of the whole park from the entrance side: paving, old play equipment (left), hall (right), old concrete perimeter wall. 2020-01. Shows pre-renovation fence.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Okakura Tenshin Memorial Park 01.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Park_01.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Okakura_Tenshin_Memorial_Park_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Higa4",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2022-04-17 13:41:46",
+          "uploaded": "2022-04-20T12:45:44Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "Park entrance from the street: stone name post 岡倉天心記念公園, stone wall, traffic mirror; a visitor in frame. 2022-04.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Okakura Tenshin Memorial Park 06.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Park_06.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Okakura_Tenshin_Memorial_Park_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Higa4",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2022-04-17 13:44:46",
+          "uploaded": "2022-04-20T12:45:50Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "Granite pillar 岡倉天心先生宅跡 日本美術院発祥之地 among shrubs. 2022-04. Detail shot, use as alternate.",
+          "role": "alternate",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        }
+      ],
+      "photo_library_assessment": "5 CC0 photos with several angles (good licence position), but all pre-date the 2026 renovation.",
+      "recommendation": {
+        "mode": "photo",
+        "zh": "六角堂造型独特，适合摄影核验，判断应以六角堂本体为主；围栏与游具已在2026年更新，参考图需补充改造后照片。"
+      },
+      "intro_zh_char_count": 106
+    },
+    {
+      "id": "yanaka-kannonji-tsuijibei",
+      "status_suggestion": "draft",
+      "names": {
+        "zh": "观音寺筑地塀（瓦土墙）",
+        "ja": "観音寺の築地塀",
+        "en": "Kannon-ji Temple Tsuijibei (roofed mud-and-tile wall)",
+        "name_notes": "Registered name 観音寺築地塀 (かんのんじついじべい). Tokyo guide uses 'Kannonji Temple, Roofed Mud Wall'. zh is our rendering."
+      },
+      "checkin": {
+        "lat": 35.7252816,
+        "lng": 139.7681059,
+        "point_description": "Midpoint of the wall along the public alley on the temple's south side (the wall faces the alley; no need to enter the temple).",
+        "source": {
+          "url": "https://www.openstreetmap.org/way/821619430",
+          "what": "OSM way 821619430 (barrier=wall, name:en=Tsuijibei) midpoint; runs alongside public alley OSM way 45738213. Overpass API (https://overpass-api.de/api/interpreter) query of OSM data",
+          "accessed": "2026-10-23"
+        },
+        "cross_check": [
+          {
+            "url": "https://www.wikidata.org/wiki/Q106645233",
+            "what": "Wikidata P625 for the temple 35.725639,139.768083 (40 m north of the wall, inside temple grounds)",
+            "accessed": "2026-10-23"
+          },
+          {
+            "url": "https://kunishitei.bunka.go.jp/heritage/detail/101/00001561",
+            "what": "Agency for Cultural Affairs DB: 所在地 台東区谷中5-8-28; wall bounds the south side of the precinct",
+            "accessed": "2026-10-23"
+          }
+        ],
+        "radius_m": 35,
+        "radius_reason": "Wall is 37.6 m long (official; OSM geometry ~44 m). Several other temples lie within 60 m (加納院, 本立寺, 長安寺, 養傳寺 per OSM), so keep tight; field-test GPS.",
+        "verification_level": "desk-verified only, not field-verified"
+      },
+      "intro_zh": "观音寺位于台东区谷中五丁目。寺院南侧的筑地塀以瓦片与黏土交替层层叠砌，上覆瓦顶，全长37.6米，设有一处小门。这道墙于2000年登录为国家登录有形文化财，面朝公共小巷，可在路边观看。",
+      "intro_sources": [
+        {
+          "url": "https://kunishitei.bunka.go.jp/heritage/detail/101/00001561",
+          "what": "国指定文化財等データベース: 観音寺築地塀, 登録有形文化財(建造物), 練塀・瓦葺・延長37.6m, 登録年月日 2000.04.28, 瓦と粘土を交互に積み重ねて造り、潜り戸一所を備える",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html",
+          "what": "Spot 2 Kannonji Temple, Roofed Mud Wall: address 5-8-28 Yanaka; 'Traffic is light on the road in front of the wall'",
+          "accessed": "2026-10-23"
+        }
+      ],
+      "cultural_detail": {
+        "zh": "据文化厅数据库，观音寺在明和九年（1772年）火灾中烧毁，文政年间前后重建；这道墙建于江戸末期，被认为保留了当年与浅草齐名的江户著名寺町风貌。",
+        "source": {
+          "url": "https://kunishitei.bunka.go.jp/heritage/detail/101/00001561",
+          "what": "解説文: 観音寺は明和9年(1772)の火災で灰燼に帰した後、文政年間頃に再興された…浅草と並ぶ江戸有数の寺町であった当時の面影を伝える。時代: 江戸末期 1830-1867",
+          "accessed": "2026-10-23"
+        },
+        "note": "ja.wikipedia says the wall was built in the 文政 era (1818-1831); the official DB dates it 江戸末期 (1830-1867). Use the official wording."
+      },
+      "visual_features": [
+        "Long low wall built of alternating horizontal bands of grey roof tiles and earthen clay",
+        "Tiled coping roof along the top with round-ended tiles",
+        "Small wooden wicket door (潜り戸) set into the wall",
+        "Stone base and stone posts at the east corner, with metal registration/description plaques",
+        "Narrow asphalt alley running alongside, tree canopy of the temple behind"
+      ],
+      "confusable_places": [
+        "Kannon-ji's own main gate (山門) on 初音の道 - same temple, different feature; not the check-in target",
+        "Walls/gates of neighbouring temples within ~60 m (加納院, 本立寺, 長安寺, 養傳寺, 海蔵院 - OSM)",
+        "Ordinary plastered or concrete block walls in Yanaka's temple district"
+      ],
+      "unsuitable_angles": [
+        "Extreme close-up of tile texture only",
+        "Shots of the temple's main hall or gate",
+        "Inside the temple precinct"
+      ],
+      "hours": "墙体面向公共道路，可随时从路边观看（东京都指南：Fee Free / Hours Free）；寺院境内开放时间未知",
+      "hours_source": {
+        "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html",
+        "what": "Spot 2 facility information",
+        "accessed": "2026-10-23"
+      },
+      "photo_restrictions": "未知（未找到来源）。墙为私有宗教法人财产，旁为住宅，应在公共道路上拍摄、不阻碍通行。",
+      "reference_photos": [
+        {
+          "file": "File:Kanonji Tuijibei 01.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Kanonji_Tuijibei_01.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Kanonji_Tuijibei_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Suikotei",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "14 December 2019, 15:28:11",
+          "uploaded": "2019-12-17T14:49:25Z",
+          "size_px": [
+            4320,
+            3240
+          ],
+          "view_note": "Along the alley from the east corner looking west: full length of tile-and-clay layers, tiled coping, plaques on corner. 2019-12.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Kannon-ji Tsuijibei.JPG",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Kannon-ji_Tsuijibei.JPG",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Kannon-ji_Tsuijibei.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Abasaa",
+          "license": "Public domain",
+          "license_url": null,
+          "photo_date": "2021-03-14",
+          "uploaded": "2021-05-22T01:50:25Z",
+          "size_px": [
+            2560,
+            1920
+          ],
+          "view_note": "Same corner, closer: layered tiles, round-end coping tiles, plaques, stone posts; alley on left. 2021-03. Licence PD-self.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Kanonji Tuijibei 02.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Kanonji_Tuijibei_02.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Kanonji_Tuijibei_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Suikotei",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "14 December 2019, 15:28:50",
+          "uploaded": "2019-12-17T14:49:25Z",
+          "size_px": [
+            4205,
+            3154
+          ],
+          "view_note": "Section with the wooden wicket door (潜り戸) and residential building behind. 2019-12.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        }
+      ],
+      "photo_library_assessment": "Exactly 3 licensed photos (2019-2021), two from almost the same angle. Meets the spec minimum but angle diversity is weak; no view from the west end.",
+      "recommendation": {
+        "mode": "photo",
+        "zh": "瓦片与黏土交替的层状纹理非常独特，适合摄影核验；参考图仅3张且角度相近，建议实地补拍西端视角后再正式启用。"
+      },
+      "intro_zh_char_count": 91
+    },
+    {
+      "id": "nezu-shrine-romon",
+      "status_suggestion": "draft",
+      "names": {
+        "zh": "根津神社（楼门）",
+        "ja": "根津神社",
+        "en": "Nezu Shrine (Romon gate)",
+        "name_notes": "Wikidata Q335612 zh label 根津神社."
+      },
+      "checkin": {
+        "lat": 35.7194688,
+        "lng": 139.7610188,
+        "point_description": "神橋 (shinkyō bridge) / open plaza in front of the 楼門, inside the shrine grounds but outside the inner 唐門 area.",
+        "source": {
+          "url": "https://www.openstreetmap.org/way/467555830",
+          "what": "OSM way 467555830 (bridge=yes, name=神橋) centre; 楼門 is OSM way 164586227 at 35.719662,139.760941 (23 m away). Overpass API (https://overpass-api.de/api/interpreter) query of OSM data",
+          "accessed": "2026-10-23"
+        },
+        "cross_check": [
+          {
+            "url": "https://www.wikidata.org/wiki/Q335612",
+            "what": "Wikidata P625 35.720226,139.760717 (shrine centre, 88 m away)",
+            "accessed": "2026-10-23"
+          },
+          {
+            "url": "https://www.openstreetmap.org/way/464629204",
+            "what": "OSM shrine precinct way 464629204",
+            "accessed": "2026-10-23"
+          }
+        ],
+        "radius_m": 80,
+        "radius_reason": "Large precinct (官网: 七千坪); isolated from the other nodes (≥861 m), so a wider radius is safe.",
+        "verification_level": "desk-verified only, not field-verified"
+      },
+      "intro_zh": "根津神社位于文京区根津一丁目，神社官网称其为相传由日本武尊创祀的古社。现存社殿于宝永三年（1706年）建成，本殿、币殿、拜殿、唐门、西门、透塀与楼门均为国家重要文化财。境内以约3000株杜鹃闻名。",
+      "intro_sources": [
+        {
+          "url": "https://nedujinja.or.jp/about/",
+          "what": "Official: 御由緒; 宝永3年(1706)完成…欠けずに現存し、国の重要文化財; つつじ 100種3,000株",
+          "accessed": "2026-10-23"
+        },
+        {
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html",
+          "what": "Spot 6 Nezu-jinja Shrine: address 1-28-9 Nezu, Bunkyo-ku; free entry to grounds",
+          "accessed": "2026-10-23"
+        }
+      ],
+      "cultural_detail": {
+        "zh": "神社官网介绍，楼门是江户市内神社楼门中唯一留存至今的一座；门内安放的随身像中，面向右侧的一尊据说以水户黄门为原型。",
+        "source": {
+          "url": "https://nedujinja.or.jp/keidaiannai/",
+          "what": "境内案内 ③楼門: 江戸内の神社の楼門で唯一残っているもの。安置してある随身の向かって右側は水戸黄門だと言われています。",
+          "accessed": "2026-10-23"
+        },
+        "note": "The Mito Kōmon statement is phrased by the shrine as 'it is said' (と言われています); keep that hedge."
+      },
+      "visual_features": [
+        "Two-storey vermilion tower gate with dark tiled hip-and-gable roof and gold-trimmed eaves",
+        "Centre plaque reading 根津神社 under the upper balcony",
+        "Seated guardian (随身) figures in the side bays behind green lattice fences",
+        "Green-railed arched stone bridge (神橋) and pond edge in front",
+        "Tall cedar/evergreen trees flanking the gate"
+      ],
+      "confusable_places": [
+        "唐門 (inner gate, also vermilion, also Important Cultural Property)",
+        "Other vermilion shrine gates in Tokyo",
+        "千本鳥居 path to 乙女稲荷 (resembles Fushimi Inari)"
+      ],
+      "unsuitable_angles": [
+        "Standing on the stone pavement in front of the shrine buildings (forbidden by shrine)",
+        "Inside the shrine buildings (forbidden)",
+        "千本鳥居 from the side where donor names are written (shrine asks to shoot from the opposite side or blur)",
+        "Photos of priests, miko or other worshippers"
+      ],
+      "hours": "境内入场免费（东京都指南）。唐门开闭时间按月份（神社官网图片）：1月6:00-17:00；2月6:00-17:30；3月6:00-18:00；4-5月5:30-18:00；6-8月5:00-18:00；9月5:30-18:00；10月5:30-17:30；11-12月6:00-17:00；1月1日0:00-19:00。楼门外侧区域开放时间未单独说明（未知）。",
+      "hours_source": {
+        "url": "https://nedujinja.or.jp/openclose/",
+        "what": "Official 唐門開閉時間 table (published as image 開閉時間２.jpg, uploaded 2026-06); read by researcher",
+        "accessed": "2026-10-23"
+      },
+      "photo_restrictions": "神社官网明确：个人参拜及观光纪念拍摄无需申请；禁止在社殿前参道（石板路）上拍摄、禁止社殿内拍摄、禁止“不参拜只拍照”、禁止长时间或多人占地拍摄、禁止大型器材、禁止无许可拍摄神职/巫女/其他参拜者；千本鸟居应从反面拍摄或在发布时模糊处理；禁止作为写真素材分发/销售；商业网站刊载用拍摄需申请。",
+      "photo_restrictions_source": {
+        "url": "https://nedujinja.or.jp/keidaisatsuei/",
+        "what": "Official 境内での撮影について",
+        "accessed": "2026-10-23"
+      },
+      "reference_photos": [
+        {
+          "file": "File:Nezu-jinja 22.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Nezu-jinja_22.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Nezu-jinja_22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Higa4",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2022-04-09 11:29:54",
+          "uploaded": "2022-04-10T06:00:34Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "Frontal view of the 楼門 from the plaza: plaque, guardian bays, green lattice. 2022-04. (Commons description wrongly says 台東区谷中; image is Nezu in Bunkyo.)",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Nezu Shrine Romon 2010.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Nezu_Shrine_Romon_2010.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Nezu_Shrine_Romon_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Wiiii",
+          "license": "CC BY-SA 3.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "photo_date": "2010",
+          "uploaded": "2010-06-10T21:54:04Z",
+          "size_px": [
+            2070,
+            1530
+          ],
+          "view_note": "Clean frontal elevation of the 楼門 on a clear day. 2010.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Nezu-jinja Romon 1.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Nezu-jinja_Romon_1.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/Nezu-jinja_Romon_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Zairon",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "photo_date": "2018-04-05 04:05:34",
+          "uploaded": "2019-02-19T16:42:11Z",
+          "size_px": [
+            4592,
+            3448
+          ],
+          "view_note": "Oblique view with the green-railed 神橋 in foreground and 楼門 behind. 2018-04.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        },
+        {
+          "file": "File:Nezu-jinja 21.jpg",
+          "file_page_url": "https://commons.wikimedia.org/wiki/File:Nezu-jinja_21.jpg",
+          "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Nezu-jinja_21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "author": "Higa4",
+          "license": "CC0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "photo_date": "2022-04-09 11:29:24",
+          "uploaded": "2022-04-10T06:00:31Z",
+          "size_px": [
+            4032,
+            3024
+          ],
+          "view_note": "Wide view from the approach: 神橋, 楼門, trees, gravel plaza. 2022-04.",
+          "role": "primary",
+          "metadata_source": "Commons API prop=imageinfo&iiprop=url|extmetadata, accessed 2026-10-23",
+          "visually_checked": "480px thumbnail viewed by researcher on 2026-10-23 (thumbnail stored only in scratchpad, not in repo)"
+        }
+      ],
+      "photo_library_assessment": "4 good licensed photos (2010-2022) of the 楼門 from the check-in area.",
+      "recommendation": {
+        "mode": "location_only_by_default",
+        "zh": "楼门特征鲜明、参考图充足，技术上适合摄影核验；但神社明确禁止“不参拜只拍照”及部分拍摄行为，且距谷中主线约0.9公里。建议作为延伸探索点，默认仅定位打卡；若要启用摄影打卡，应先与神社确认并在界面提示拍摄礼仪。"
+      },
+      "intro_zh_char_count": 98
+    }
+  ],
+  "story_nodes": {
+    "story_title": "猫店长的失落明信片",
+    "spec_ref": "development-spec.md 12.3",
+    "fiction_disclaimer": "猫店长 is fictional; real-place facts are shown separately with sources. Story text must not present unverified history or shop stories as fact.",
+    "main_nodes": [
+      {
+        "step": 1,
+        "spec_task": "观察街区入口的空间或招牌特征",
+        "place_id": "yanaka-yuyake-dandan",
+        "checkin_mode": "location now; photo after field re-shoot",
+        "observation_prompt_zh": "站在台阶上方，找到下方商店街入口门牌上写的四个字（谷中ぎんざ）。",
+        "answer_basis": "Gate sign visible in all reference photos; must be re-confirmed on site after the 2026 condo."
+      },
+      {
+        "step": 2,
+        "spec_task": "找到老街中的一种建筑细节",
+        "place_id": "yanaka-kannonji-tsuijibei",
+        "checkin_mode": "photo (after adding a west-end reference photo) / location",
+        "observation_prompt_zh": "这道墙是用哪两种材料一层一层交替砌成的？（瓦片与黏土）",
+        "answer_basis": "Agency for Cultural Affairs DB: 瓦と粘土を交互に積み重ねて造り"
+      },
+      {
+        "step": 3,
+        "spec_task": "发现艺术与日常生活的连接",
+        "place_id": "yanaka-okakura-tenshin-park",
+        "checkin_mode": "photo",
+        "observation_prompt_zh": "日本美术院的旧址如今成了街坊的小公园。找到园中的六角形小堂，数一数它有几条边。",
+        "answer_basis": "六角堂 is hexagonal (name + photos); Taito City sources for the 美術院 history."
+      },
+      {
+        "step": 4,
+        "spec_task": "选择最想留下的一幕，完成最后一次打卡",
+        "place_id": "yanaka-ginza",
+        "checkin_mode": "photo or location",
+        "observation_prompt_zh": "在商店街里选一个你最想寄出的画面拍下来（避免拍摄店员和行人正脸）。",
+        "answer_basis": "Free choice; verification uses street-level permanent features. Optional bonus: look for wooden cat carvings (official site says installed 2008; presence in 2026 unverified, so not a required answer)."
+      }
+    ],
+    "optional_nodes": [
+      {
+        "place_id": "yanaka-yomise-dori",
+        "role": "free exploration after the ending, location-only; leads toward Sendagi Station"
+      },
+      {
+        "place_id": "nezu-shrine-romon",
+        "role": "extension, location-only by default (shrine photo etiquette)"
+      }
+    ],
+    "walking_order": [
+      "yanaka-yuyake-dandan",
+      "yanaka-kannonji-tsuijibei",
+      "yanaka-okakura-tenshin-park",
+      "yanaka-ginza",
+      "yanaka-yomise-dori",
+      "nezu-shrine-romon"
+    ],
+    "suggested_start": "JR/Keisei Nippori Station west exit, then up 御殿坂 to the top of the steps (start coordinates not researched here)",
+    "route_logic": "From the top of the steps, go back east along 御殿坂 and south along 初音の道 (OSM way 233714978) to Kannon-ji's south alley; then west to the park; then north into Yanaka Ginza; exit west onto よみせ通り toward Sendagi Station; Nezu is a separate extension to the south-west.",
+    "legs_straight_line": [
+      {
+        "from": "yanaka-yuyake-dandan",
+        "to": "yanaka-kannonji-tsuijibei",
+        "straight_line_m": 271
+      },
+      {
+        "from": "yanaka-kannonji-tsuijibei",
+        "to": "yanaka-okakura-tenshin-park",
+        "straight_line_m": 193
+      },
+      {
+        "from": "yanaka-okakura-tenshin-park",
+        "to": "yanaka-ginza",
+        "straight_line_m": 154
+      },
+      {
+        "from": "yanaka-ginza",
+        "to": "yanaka-yomise-dori",
+        "straight_line_m": 175
+      },
+      {
+        "from": "yanaka-yomise-dori",
+        "to": "nezu-shrine-romon",
+        "straight_line_m": 861
+      }
+    ],
+    "main_route_straight_line_total_m": 618,
+    "distance_disclaimer": "All distances are straight-line (haversine, WGS84) between the check-in coordinates above, NOT walking distances. Actual walking paths are longer (e.g. the step-1 to step-2 leg requires going around via 御殿坂/初音の道). Walking routes were not measured or field-checked.",
+    "pairwise_straight_line_m": {
+      "yanaka-yuyake-dandan__yanaka-ginza": 116,
+      "yanaka-yuyake-dandan__yanaka-yomise-dori": 272,
+      "yanaka-yuyake-dandan__yanaka-okakura-tenshin-park": 169,
+      "yanaka-yuyake-dandan__yanaka-kannonji-tsuijibei": 271,
+      "yanaka-yuyake-dandan__nezu-shrine-romon": 1073,
+      "yanaka-ginza__yanaka-yomise-dori": 175,
+      "yanaka-ginza__yanaka-okakura-tenshin-park": 154,
+      "yanaka-ginza__yanaka-kannonji-tsuijibei": 325,
+      "yanaka-ginza__nezu-shrine-romon": 1020,
+      "yanaka-yomise-dori__yanaka-okakura-tenshin-park": 167,
+      "yanaka-yomise-dori__yanaka-kannonji-tsuijibei": 351,
+      "yanaka-yomise-dori__nezu-shrine-romon": 861,
+      "yanaka-okakura-tenshin-park__yanaka-kannonji-tsuijibei": 193,
+      "yanaka-okakura-tenshin-park__nezu-shrine-romon": 904,
+      "yanaka-kannonji-tsuijibei__nezu-shrine-romon": 909
+    }
+  },
+  "notes": {
+    "research_date": "2026-10-23",
+    "method": "Desk research only: OSM via Overpass API & Nominatim, Wikidata API, official municipal/shrine/商店街 websites, Agency for Cultural Affairs DB, Wikimedia Commons API. Reference photo thumbnails were viewed in a scratch directory to write view notes; nothing was downloaded into the repo.",
+    "not_field_verified": "No coordinate, radius, feature, hour or route has been checked on site.",
+    "gaps": [
+      "Taito City official tourism site t-navi.city.taito.lg.jp (spot/1105, spot/1076, cited in spec 12.1) was unreachable on 2026-10-23: TLS certificate mismatch, and with verification bypassed it returns a notice that the site is suspended indefinitely due to a PHP vulnerability. Replaced with Taito City culture pages, city park works page, Film Commission page and the national cultural property DB.",
+      "GO TOKYO Yanaka & Nezu page (cited in spec 12.1) returned HTTP 502 on 2026-10-23; not used.",
+      "よみせ通り: only 2 usable licensed photos (2009, 2018) -> location-only.",
+      "観音寺の築地塀: only 3 licensed photos, two nearly the same angle; no west-end view.",
+      "夕やけだんだん: all 5 photos pre-date the 7-storey condominium completed next to the steps (reported May 2026); the scene has likely changed.",
+      "岡倉天心記念公園: all photos pre-date the Oct 2025 - Mar 2026 renovation (fence, play equipment changed).",
+      "谷中銀座: newest street-level photo is 2019; shop fronts change frequently.",
+      "Opening hours / photo rules not found for 夕やけだんだん, 岡倉天心記念公園, よみせ通り, and personal photography at 谷中銀座.",
+      "Exact position and current state of the よみせ通り arch sign unverified.",
+      "Presence of 谷中銀座 wooden cat carvings in 2026 unverified.",
+      "Chinese names are the researcher's renderings except where noted (Wikidata zh labels for 夕陽階梯 and 根津神社)."
+    ],
+    "accuracy_doubts": [
+      "OSM geometry lengths differ from official figures (Kannon-ji wall: OSM ~44 m vs official 37.6 m; steps: OSM ~31 m vs ja.wikipedia 15 m; Yanaka Ginza: OSM ~194 m vs official ~170 m). Coordinates are probably good to ~10-20 m but not surveyed.",
+      "Small radii (35-40 m) may be unreliable with phone GPS in narrow streets; field calibration needed.",
+      "Some facts rest on secondary sources: the 2026 condominium completion date (Toyo Keizai via search snippet; ja.wikipedia uncited); ja.wikipedia used only for corroboration.",
+      "The Arakawa archive page for the naming of 夕やけだんだん is an archived city sub-site (2004-2010) - official but old.",
+      "Several Commons descriptions are imprecise (Higa4's Nezu photos say 台東区谷中; Nezu is in 文京区). Images themselves were visually checked.",
+      "Nezu Shrine's hours were read from an image on the official site, transcribed manually."
+    ],
+    "licence_notes": [
+      "All proposed photos are real photographs on Wikimedia Commons under CC0, PD-self, CC BY 2.0/3.0/4.0 or CC BY-SA 3.0/4.0 (Flickr imports checked: FlickreviewR passed for the two checked). No AI-generated images.",
+      "CC BY / BY-SA require attribution (author, licence, link) wherever the image is shown; BY-SA additionally requires derivatives (e.g. crops distributed to users) to be shared under the same licence. Prefer CC0/PD images where an image might be displayed or transformed.",
+      "Commons 'Restrictions' metadata was empty for all selected files, but many street photos include identifiable people; prefer using them only as internal AI reference, not public display.",
+      "Nezu Shrine forbids distributing/selling photos of its grounds as stock material; using third-party Commons photos as internal verification reference is a different use, but confirm with the shrine before any public display.",
+      "This is not legal advice; have the licence handling reviewed."
+    ],
+    "substitutions": "No candidate was replaced. よみせ通り is kept but demoted to location-only free exploration; 根津神社 is kept as an optional extension (distance ~0.9 km, photo etiquette).",
+    "reference_library_version_suggestion": "yanaka-ref-2026-10-23-desk"
+  }
+}
