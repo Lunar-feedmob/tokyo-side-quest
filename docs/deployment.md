@@ -21,7 +21,7 @@ docker compose -f docker-compose.prod.yml run --rm web pnpm db:seed      # 首�
 docker compose -f docker-compose.prod.yml run --rm -it web pnpm admin:create
 ```
 
-`docker-compose.prod.yml` 包含 postgres、redis、migrate（一次性任务）、web 和 worker。对象存储默认使用外部 S3 兼容服务，在 `tsq.env` 中配置；如果要自托管，可以参照开发用的 `docker-compose.yml` 加一个 SeaweedFS 服务。
+`docker-compose.prod.yml` 包含 postgres、redis、migrate（一次性任务）、web 和 worker。对象存储默认使用外部 S3 兼容服务，在 `tsq.env` 中配置；如果要自托管，叠加 `docker-compose.selfhost-storage.yml`（SeaweedFS，只在 compose 内网可见），说明见文件开头。
 
 ## HTTPS（必需）
 
