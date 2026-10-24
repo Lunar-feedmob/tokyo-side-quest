@@ -10,12 +10,12 @@
 | --- | --- | --- |
 | 类型检查 | `pnpm typecheck` | ✅ 3 个包均无错误 |
 | Lint | `pnpm lint` | ✅ 0 error、0 warning |
-| 单元测试 | `pnpm test` | ✅ __UNIT__ |
-| 集成测试（真实 PG/Redis/S3，测试替身 AI） | `pnpm test:integration` | ✅ __INTEGRATION__ |
-| E2E：试玩与接口安全（dev，390 / 1440） | `pnpm test:e2e --project=mobile-390 --project=desktop-1440` | ✅ __E2E_DEV__ |
-| E2E：真实模式流程（隔离的测试部署，360 / 1440） | `scripts/e2e-stack.sh start` 后运行 `--project=live-360 --project=live-1440` | ✅ __E2E_LIVE__ |
+| 单元测试 | `pnpm test` | ✅ 3 个文件 34/34 通过 |
+| 集成测试（真实 PG/Redis/S3，测试替身 AI） | `pnpm test:integration` | ✅ 4 个文件 27/27 通过 |
+| E2E：试玩与接口安全（dev，390 / 1440） | `pnpm test:e2e --project=mobile-390 --project=desktop-1440` | ✅ 16/16 通过（2.0 分钟） |
+| E2E：真实模式流程（隔离的测试部署，360 / 1440） | `scripts/e2e-stack.sh start` 后运行 `--project=live-360 --project=live-1440` | ✅ 18/18 通过（1.3 分钟） |
 | 生产构建 | `pnpm build` | ✅ |
-| Docker 镜像 | `docker build .` | __DOCKER__ |
+| Docker 镜像 | `docker build .` | ✅ `tokyo-side-quest:a3ce939` 构建成功，所有 API 路由均为动态（ƒ） |
 | 真实 AI 冒烟测试 | `pnpm ai:smoke` | ❌ 未运行：没有 AI Key |
 
 ## §19.1 规则测试
@@ -111,3 +111,4 @@
 | 参考图偏旧或不足 | 夕やけだんだん、よみせ通り、根津神社只能定位打卡；其余 3 处可能出现 uncertain | 实地补拍并记录授权 |
 | 没有真机 HTTPS 验证 | — | 部署 HTTPS 后用手机验证 |
 | 没有正式账号和跨设备同步 | 清除浏览器数据会丢失记录（页面已提示） | 属于 P1 |
+| 构建警告：海报字体路径在运行时拼接，Turbopack 会追踪整个项目 | 无；镜像内容约 424MB，略大 | 把字体路径改成静态子目录，或加 `turbopackIgnore` 并在 Dockerfile 显式复制字体 |

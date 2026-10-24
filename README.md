@@ -61,6 +61,8 @@ npx playwright test --project=live-360 --project=live-1440
 scripts/e2e-stack.sh stop
 ```
 
+`scripts/e2e-stack.sh start` 会执行 `next build`，和 `pnpm dev` 共用 `apps/web/.next`。之后如果开发服务器出现页面反复整页刷新（浏览器控制台提示 “HMR hash mismatch”），停掉 `pnpm dev`，删除 `apps/web/.next/dev` 再重启即可。
+
 ## 生产构建
 
 ```bash
