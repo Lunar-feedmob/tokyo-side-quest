@@ -80,7 +80,7 @@ export class OpenAiCompatibleVisionProvider implements VisionProvider {
       throw new AiError("AI_UNAVAILABLE", "无法连接 AI 服务");
     }
 
-    if (res.status === 401 || res.status === 403) throw new AiError("AI_AUTH", "AI 服务鉴权失败，请检查 AI_API_KEY");
+    if (res.status === 401 || res.status === 403) throw new AiError("AI_AUTH", "AI 服务鉴权失败，请检查 API Key");
     if (res.status === 429) throw new AiError("AI_RATE_LIMITED", "AI 服务限流");
     if (res.status >= 400 && res.status < 500) {
       throw new AiError("AI_BAD_REQUEST", `AI 请求被拒绝（HTTP ${res.status}）`);

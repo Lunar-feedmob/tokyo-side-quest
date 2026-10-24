@@ -80,34 +80,23 @@ export function resetEnvCache(): void {
 }
 
 export interface Capabilities {
-  ai: { configured: boolean; provider: string | null; model: string | null; missing: string[] };
   storage: { configured: boolean; missing: string[] };
-  map: { configured: boolean };
   demo: boolean;
   simulatedLocation: boolean;
   testEnvironment: boolean;
 }
 
+/**
+ * Environment-only capabilities. AI and map can also be configured in the admin
+ * console, so they are resolved asynchronously by services/settings
+ * (resolveAi / resolveMap) rather than here.
+ */
 export function capabilities(e: Env = env()): Capabilities {
-  const aiMissing: string[] = [];
-  if (!e.AI_PROVIDER) aiMissing.push("AI_PROVIDER");
-  if (e.AI_PROVIDER && e.AI_PROVIDER !== "fake") {
-    if (!e.AI_API_KEY) aiMissing.push("AI_API_KEY");
-    if (!e.AI_VISION_MODEL) aiMissing.push("AI_VISION_MODEL");
-    if (e.AI_PROVIDER === "openai-compatible" && !e.AI_API_BASE_URL) aiMissing.push("AI_API_BASE_URL");
-  }
   const storageMissing = (
     ["STORAGE_ENDPOINT", "STORAGE_BUCKET", "STORAGE_ACCESS_KEY_ID", "STORAGE_SECRET_ACCESS_KEY"] as const
   ).filter((k) => !e[k]);
   return {
-    ai: {
-      configured: aiMissing.length === 0,
-      provider: e.AI_PROVIDER ?? null,
-      model: e.AI_PROVIDER === "fake" ? "fake" : (e.AI_VISION_MODEL ?? null),
-      missing: aiMissing,
-    },
     storage: { configured: storageMissing.length === 0, missing: storageMissing },
-    map: { configured: Boolean(e.MAP_STYLE_URL) },
     demo: e.DEMO_ENABLED === "true",
     simulatedLocation: e.DEV_SIMULATED_LOCATION && e.APP_ENV !== "production",
     testEnvironment: e.APP_ENV === "test",

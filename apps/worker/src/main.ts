@@ -7,6 +7,7 @@ import { closeRedis, redis } from "@tsq/core/infra/redis";
 import { publishOutboxBatch } from "@tsq/core/queue/outbox";
 import { closeQueues, QUEUES, redisConnection } from "@tsq/core/queue/queues";
 import { runHousekeeping } from "@tsq/core/services/maintenance";
+import { resolveAi } from "@tsq/core/services/settings";
 import { markStageFailed, processRate, processVerify, type Stage } from "@tsq/core/services/processing";
 import { ensureBucket } from "@tsq/core/storage/s3";
 import { posterProcessor } from "./posters";
@@ -71,7 +72,9 @@ async function attemptsProcessor(job: Job<{ id: string }>) {
 
 async function main() {
   const caps = capabilities();
-  log("worker starting", { ai: caps.ai.configured ? caps.ai.provider : `missing:${caps.ai.missing.join(",")}` });
+  // AI settings can change at runtime (admin console); each job resolves them again.
+  const ai = await resolveAi();
+  log("worker starting", { ai: ai.configured ? `${ai.source}:${ai.provider}` : `missing:${ai.missing.join(",")}` });
   if (caps.storage.configured) await ensureBucket();
 
   const connection = redisConnection();

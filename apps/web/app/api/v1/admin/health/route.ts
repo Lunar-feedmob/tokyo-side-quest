@@ -6,5 +6,12 @@ import { requireAdmin } from "@/lib/server/admin";
 export const GET = route(async () => {
   await requireAdmin("content");
   const { capabilities } = await import("@tsq/core/config/env");
-  return { data: { ...(await readiness()), missing: { ai: capabilities().ai.missing, storage: capabilities().storage.missing } } };
+  const { resolveAi } = await import("@tsq/core/services/settings");
+  const ai = await resolveAi();
+  return {
+    data: {
+      ...(await readiness()),
+      missing: { ai: ai.problem ? [ai.problem] : ai.missing, storage: capabilities().storage.missing },
+    },
+  };
 });

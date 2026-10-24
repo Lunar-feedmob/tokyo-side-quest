@@ -60,11 +60,10 @@ export async function createPhotoAttempt(
     clientIp: string | null;
   } & QuestContext,
 ): Promise<CreateResult> {
-  const versions = currentAiVersions("live");
+  const versions = await currentAiVersions("live");
   if (!versions) {
-    throw new AppError("AI_NOT_CONFIGURED", "照片核验服务暂未开通，你可以先使用定位打卡或在线试玩", {
-      missing: capabilities().ai.missing,
-    });
+    // Which settings are missing is shown to admins only (spec §16.3).
+    throw new AppError("AI_NOT_CONFIGURED", "照片核验服务暂未开通，你可以先使用定位打卡或在线试玩");
   }
   const asset = await loadOwnReadyAsset(opts.visitorId, opts.assetId);
 
@@ -190,7 +189,7 @@ export async function createDemoAttempt(
     if (!asset) throw new AppError("NOT_FOUND", "试玩样例图片尚未准备好");
     await validateQuestContext(tx, { ...opts, mode: "demo", method: "photo" });
 
-    const versions = currentAiVersions("demo")!;
+    const versions = (await currentAiVersions("demo"))!;
     const evalKey = evaluationCacheKey({
       visitorId: opts.visitorId,
       mode: "demo",
@@ -386,7 +385,7 @@ export async function retryAttempt(opts: { visitorId: string; attemptId: string 
     if (a.cancelledAt) throw new AppError("ATTEMPT_NOT_RETRYABLE", "这次照片打卡已取消");
     const stage = retryableStage(a);
     if (!stage) throw new AppError("ATTEMPT_NOT_RETRYABLE", "这次照片打卡当前不需要重试");
-    if (stage === "verify" && a.mode === "live" && !currentAiVersions("live")) {
+    if (stage === "verify" && a.mode === "live" && !(await currentAiVersions("live"))) {
       throw new AppError("AI_NOT_CONFIGURED", "照片核验服务暂未开通");
     }
     const retryCount = a.retryCount + 1;

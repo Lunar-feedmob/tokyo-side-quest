@@ -3,6 +3,7 @@ import { sql } from "drizzle-orm";
 import { capabilities } from "@tsq/core/config/env";
 import { db } from "@tsq/core/db/client";
 import { redis } from "@tsq/core/infra/redis";
+import { resolveAi, resolveMap } from "@tsq/core/services/settings";
 import { putObject, getObject } from "@tsq/core/storage/s3";
 
 // Readiness and capability check (spec §16.3). Reports each dependency
@@ -19,6 +20,7 @@ async function check(fn: () => Promise<unknown>): Promise<{ ok: boolean; error?:
 
 export async function readiness() {
   const caps = capabilities();
+  const [aiConfig, mapConfig] = await Promise.all([resolveAi(), resolveMap()]);
   const database = await check(async () => {
     const r = await db().execute(sql`select count(*) from __drizzle_migrations`).catch(async () =>
       db().execute(sql`select count(*) from drizzle.__drizzle_migrations`),
@@ -36,8 +38,8 @@ export async function readiness() {
         await getObject("health/probe.txt");
       })
     : { ok: false, error: "not configured" };
-  const ai = caps.ai.configured ? { ok: true } : { ok: false, error: `missing ${caps.ai.missing.join(", ")}` };
-  const map = caps.map.configured ? { ok: true } : { ok: false, error: "MAP_STYLE_URL not set (list view still works)" };
+  const ai = aiConfig.configured ? { ok: true } : { ok: false, error: "not configured" };
+  const map = mapConfig.configured ? { ok: true } : { ok: false, error: "not configured (list view still works)" };
   const core = database.ok && queue.ok && worker.ok && storage.ok;
   return {
     ready: core,

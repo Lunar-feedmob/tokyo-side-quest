@@ -42,11 +42,11 @@ pnpm worker:dev             # 另开一个终端：后台 Worker（核验、评�
 
 | 功能 | 需要配置 | 未配置时的表现 |
 | --- | --- | --- |
-| 照片核验与评分 | `AI_PROVIDER`、`AI_API_KEY`、`AI_VISION_MODEL`（见 `.env.example`） | 提交入口说明“照片核验服务暂未开通”，不会生成任何结果 |
-| 地图 | `MAP_STYLE_URL`（MapLibre style） | 显示“地图暂不可用”，列表照常可用 |
+| 照片核验与评分 | 后台 `/admin` →“设置”（owner）：选 Anthropic 或 OpenAI 兼容协议，填接口地址、API Key、模型；也可以用 `.env` 的 `AI_*` 变量 | 提交入口说明“照片核验服务暂未开通”，不会生成任何结果 |
+| 地图 | 后台“设置”填 MapTiler API Key；也可以用 `.env` 的 `MAP_STYLE_URL`（任意 MapLibre style） | 显示“地图暂不可用”，列表照常可用 |
 | 手机定位 | HTTPS 访问 | 浏览器拒绝定位，页面说明原因并提供手动入口 |
 
-配置 AI 后运行 `pnpm ai:smoke`，会用授权样例图做一次真实模型冒烟测试，结果追加到 `docs/ai-evaluation-runs.jsonl`。
+后台设置优先于 `.env`；清除后台设置后回到 `.env` 的配置。设置页的“测试连接”会用表单里的值发一次真实的小请求，不保存。配置 AI 后运行 `pnpm ai:smoke`，会用授权样例图做一次真实模型冒烟测试，结果追加到 `docs/ai-evaluation-runs.jsonl`。
 
 ## 检查与测试
 

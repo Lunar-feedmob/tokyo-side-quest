@@ -37,7 +37,7 @@ export async function setupDatabase() {
 
 export async function resetData() {
   await db().execute(sql`
-    truncate table audit_logs, ai_calls, outbox_events, idempotency_keys, share_links, posters,
+    truncate table app_settings, audit_logs, ai_calls, outbox_events, idempotency_keys, share_links, posters,
       review_requests, stamp_awards, place_progress, quest_step_progress, checkins, photo_ratings,
       place_verifications, photo_attempts, photo_evaluations, quest_runs, quest_steps, quest_versions,
       quests, reference_images, place_versions, places, neighborhoods, assets, admin_sessions, admins,

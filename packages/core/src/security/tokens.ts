@@ -32,7 +32,8 @@ export function seal(plaintext: string): string {
 export function unseal(sealed: string): string {
   const [iv, tag, body] = sealed.split(".").map((p) => Buffer.from(p, "base64url"));
   if (!iv || !tag || !body) throw new Error("malformed sealed value");
-  const decipher = createDecipheriv("aes-256-gcm", sealKey(), iv);
+  // Fixed 16-byte tag: a truncated tag must not authenticate.
+  const decipher = createDecipheriv("aes-256-gcm", sealKey(), iv, { authTagLength: 16 });
   decipher.setAuthTag(tag);
   return Buffer.concat([decipher.update(body), decipher.final()]).toString("utf8");
 }

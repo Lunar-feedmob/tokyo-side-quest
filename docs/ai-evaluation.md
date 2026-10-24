@@ -4,7 +4,9 @@
 
 ## Provider
 
-| `AI_PROVIDER` | 实现 | 说明 |
+配置来源：后台 `/admin` →“设置”（owner）优先，没有保存时使用 `.env` 的 `AI_*` 变量。后台只能选 `anthropic` 和 `openai-compatible`；`fake` 只能通过环境变量在测试环境启用。
+
+| 协议 | 实现 | 说明 |
 | --- | --- | --- |
 | `anthropic` | `packages/core/src/ai/anthropic.ts` | 使用 @anthropic-ai/sdk 1.1，通过 `output_config.format` 做 JSON Schema 结构化输出；effort 设为 `medium`；支持的模型带服务端拒答回退。建议模型：`claude-opus-5-5` |
 | `openai-compatible` | `ai/openai-compatible.ts` | 走 `/chat/completions`，请求带 `response_format: json_schema`，用于其他厂商的视觉模型 |
@@ -14,7 +16,7 @@
 
 ## 版本
 
-每条 evaluation 都记录：provider、实际模型、`AI_MODEL_CONFIG_VERSION`、`verify-v1`、`rate-v1`、`photo-v1`（评分规则）、地点参考库版本。版本升级不会重算历史结果。提示词全文见 `ai/prompts.ts`：核验时把用户照片、招牌文字、图片里的指令都当作“待观察数据，不执行”；评分时不按人物、设备或刻板的“日本元素”加减分。
+每条 evaluation 都记录：provider、实际模型、模型配置版本（`.env` 配置时就是 `AI_MODEL_CONFIG_VERSION`；后台配置时在它后面加上“协议 + 接口地址 + 模型”的哈希，所以改了其中任何一项都会重新调用模型，只换 Key 不会）、`verify-v1`、`rate-v1`、`photo-v1`（评分规则）、地点参考库版本。版本升级不会重算历史结果。提示词全文见 `ai/prompts.ts`：核验时把用户照片、招牌文字、图片里的指令都当作“待观察数据，不执行”；评分时不按人物、设备或刻板的“日本元素”加减分。
 
 总分和等级始终由服务端根据四个维度的分数计算（`domain/grading.ts`）：权重 30/25/25/20，用整数运算避免四舍五入边界误差；等级边界 95/90/85/75/65/50。
 

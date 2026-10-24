@@ -2,13 +2,13 @@ import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { and, eq, inArray } from "drizzle-orm";
 import { aiVersions, createVisionProvider } from "../ai";
-import { capabilities } from "../config/env";
 import { closeDb, db } from "../db/client";
 import { assets, places, placeVersions, referenceImages } from "../db/schema";
 import { ratePhoto } from "../domain/grading";
 import { closeRedis } from "../infra/redis";
 import { modelKeyFor } from "../storage/images";
 import { getObject } from "../storage/s3";
+import { resolveAi } from "../services/settings";
 
 // `pnpm ai:smoke` — real-model smoke test (spec §18 stage B, §19.3). Uses the
 // configured provider on licensed images that are NOT in the reference set:
@@ -23,14 +23,14 @@ async function img(objectKey: string) {
 }
 
 async function main() {
-  const caps = capabilities();
-  if (!caps.ai.configured || caps.ai.provider === "fake") {
-    console.error(`未配置真实 AI（缺少 ${caps.ai.missing.join(", ") || "真实 provider"}），无法运行冒烟测试。`);
+  const ai = await resolveAi();
+  if (!ai.configured || ai.provider === "fake") {
+    console.error(`未配置真实 AI（${ai.problem ?? `缺少 ${ai.missing.join(", ") || "真实 provider"}`}），无法运行冒烟测试。`);
     process.exitCode = 2;
     return;
   }
-  const provider = createVisionProvider();
-  const versions = aiVersions()!;
+  const provider = await createVisionProvider();
+  const versions = (await aiVersions())!;
   const targets = await db()
     .select({ id: places.id, slug: places.slug, versionId: places.publishedVersionId })
     .from(places)

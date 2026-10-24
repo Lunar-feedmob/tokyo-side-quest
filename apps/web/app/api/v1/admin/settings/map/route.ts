@@ -1,0 +1,14 @@
+import { clearSettings, mapSettingsInputSchema, saveMapSettings } from "@tsq/core/services/settings";
+import { readJson, route } from "@/lib/server/api";
+import { requireAdmin } from "@/lib/server/admin";
+
+export const POST = route(async ({ req }) => {
+  const admin = await requireAdmin("owner");
+  const body = await readJson(req, mapSettingsInputSchema);
+  return { data: await saveMapSettings(admin, body) };
+});
+
+export const DELETE = route(async () => {
+  const admin = await requireAdmin("owner");
+  return { data: await clearSettings(admin, "map") };
+});

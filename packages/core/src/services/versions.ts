@@ -48,6 +48,6 @@ export function attemptDedupeKey(evaluationKey: string, ctx: string): string {
   return sha256Hex("attempt-v1", evaluationKey, ctx);
 }
 
-export function currentAiVersions(mode: "live" | "demo"): AiVersions | null {
+export async function currentAiVersions(mode: "live" | "demo"): Promise<AiVersions | null> {
   return mode === "demo" ? DEMO_VERSIONS : aiVersions();
 }

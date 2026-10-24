@@ -707,3 +707,14 @@ export const auditLogs = pgTable(
   },
   (t) => [index("audit_logs_created_idx").on(t.createdAt)],
 );
+
+/**
+ * Runtime settings edited in the admin console (AI provider, map basemap).
+ * One row per section; `value` never holds a plaintext AI key (it is sealed).
+ */
+export const appSettings = pgTable("app_settings", {
+  key: text("key").primaryKey(), // ai | map
+  value: jsonb("value").$type<Record<string, unknown>>().notNull(),
+  updatedBy: uuid("updated_by").references(() => admins.id, { onDelete: "set null" }),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});

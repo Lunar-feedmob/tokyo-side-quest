@@ -119,7 +119,7 @@ function classify(error: unknown): AiError {
   if (error instanceof Anthropic.APIConnectionTimeoutError) return new AiError("AI_TIMEOUT", "AI 服务请求超时");
   if (error instanceof Anthropic.APIUserAbortError) return new AiError("AI_TIMEOUT", "AI 请求已取消或超时");
   if (error instanceof Anthropic.AuthenticationError || error instanceof Anthropic.PermissionDeniedError) {
-    return new AiError("AI_AUTH", "AI 服务鉴权失败，请检查 AI_API_KEY");
+    return new AiError("AI_AUTH", "AI 服务鉴权失败，请检查 API Key");
   }
   if (error instanceof Anthropic.RateLimitError) return new AiError("AI_RATE_LIMITED", "AI 服务限流");
   if (error instanceof Anthropic.BadRequestError || error instanceof Anthropic.NotFoundError) {

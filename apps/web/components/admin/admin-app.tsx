@@ -6,6 +6,7 @@ import { ApiError, apiDelete, apiGet, apiPost, errorText } from "@/lib/client/ap
 import { tokyoDateTime } from "@/lib/client/format";
 import { PlacesAdmin } from "./places-admin";
 import { QuestsAdmin } from "./quests-admin";
+import { SettingsAdmin } from "./settings-admin";
 
 interface Admin {
   id: string;
@@ -19,6 +20,7 @@ const TABS = [
   ["quests", "故事", "content"],
   ["ai", "AI 任务", "content"],
   ["health", "系统状态", "content"],
+  ["settings", "设置", "owner"],
   ["audit", "操作日志", "owner"],
 ] as const;
 const RANK = { reviewer: 1, editor: 2, owner: 3 } as const;
@@ -79,6 +81,7 @@ export function AdminApp() {
       {tab === "quests" && <QuestsAdmin />}
       {tab === "ai" && <AiCalls />}
       {tab === "health" && <Health />}
+      {tab === "settings" && <SettingsAdmin />}
       {tab === "audit" && <Audit />}
     </div>
   );

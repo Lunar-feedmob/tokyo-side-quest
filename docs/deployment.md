@@ -47,8 +47,10 @@ server {
 ## 发布前检查
 
 1. `GET /api/v1/health/ready` 返回 200，并且 database、queue、worker、storage 全部为 ok。
-2. 以管理员身份打开 `/admin` →“系统状态”，确认 AI 和地图的配置缺项符合预期。
+2. 用 owner 账号打开 `/admin` →“设置”，填写视觉 AI 和 MapTiler key（或者用 `.env`），先点“测试连接”。再到“系统状态”确认 AI 和地图的状态符合预期。
 3. 配置了 AI 时运行 `pnpm ai:smoke`，确认真实调用正常。
+
+后台保存的 AI Key 用 `SESSION_SECRET` 派生的密钥加密（AES-256-GCM）。**更换 `SESSION_SECRET` 后需要在后台重新填写 AI Key**，在那之前照片核验会显示未开通，后台会提示“无法解密”。MapTiler key 是浏览器端公开 key，请在 MapTiler 后台把 Allowed HTTP origins 限制为站点域名。
 4. 用手机通过 HTTPS 打开 `/explore`，验证定位允许和拒绝两种情况。
 
 ## 数据保护

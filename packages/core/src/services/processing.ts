@@ -42,7 +42,7 @@ export type Stage = "verify" | "rate";
 export class StageAborted extends Error {}
 
 interface ProcessorDeps {
-  provider?: () => VisionProvider;
+  provider?: () => VisionProvider | Promise<VisionProvider>;
   faults?: FakeFaults;
 }
 
@@ -115,7 +115,7 @@ async function obtainVerification(
     : [];
   if (refs.length === 0) throw new AiError("AI_BAD_REQUEST", "地点缺少参考图，无法核验");
 
-  const provider = (deps.provider ?? (() => createVisionProvider(deps.faults)))();
+  const provider = await (deps.provider ?? (() => createVisionProvider(deps.faults)))();
   const started = Date.now();
   try {
     if (await isCancelled(a.id)) throw new StageAborted();
@@ -301,7 +301,7 @@ async function obtainRating(
 
   const [version] = await db().select().from(placeVersions).where(eq(placeVersions.id, a.placeVersionId));
   const [asset] = await db().select().from(assets).where(eq(assets.id, a.assetId));
-  const provider = (deps.provider ?? (() => createVisionProvider(deps.faults)))();
+  const provider = await (deps.provider ?? (() => createVisionProvider(deps.faults)))();
   const started = Date.now();
   try {
     if (await isCancelled(a.id)) throw new StageAborted();
