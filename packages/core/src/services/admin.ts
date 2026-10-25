@@ -175,7 +175,8 @@ export async function adminListPlaces() {
       latitude: sql<number>`ST_Y(${places.geo}::geometry)`.mapWith(Number),
       longitude: sql<number>`ST_X(${places.geo}::geometry)`.mapWith(Number),
       publishedVersion: sql<number | null>`(select version from place_versions v where v.id = ${places.publishedVersionId})`,
-      referenceCount: sql<number>`(select count(*) from reference_images r where r.place_id = ${places.id} and r.status = 'active')`.mapWith(Number),
+      // Qualified on purpose: an unqualified "id" inside the subquery would bind to reference_images.id.
+      referenceCount: sql<number>`(select count(*) from reference_images r where r.place_id = "places"."id" and r.status = 'active')`.mapWith(Number),
       updatedAt: places.updatedAt,
     })
     .from(places)
@@ -280,7 +281,8 @@ export async function adminPublishPlace(admin: AdminPrincipal, placeId: string) 
 
 export const referenceUploadSchema = z.object({
   viewNote: z.string().min(2).max(300),
-  sourceUrl: z.url(),
+  /** Null for photos the project took itself (field survey); the author and usage basis then say so. */
+  sourceUrl: z.url().nullable(),
   author: z.string().min(1).max(120),
   license: z.string().min(2).max(60),
   usageBasis: z.string().min(4).max(300),

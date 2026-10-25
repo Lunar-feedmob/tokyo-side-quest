@@ -22,7 +22,7 @@ import { sha256Hex } from "../security/tokens";
 export interface ReferenceImageInput {
   bytes: Buffer;
   viewNote: string;
-  sourceUrl: string;
+  sourceUrl: string | null;
   author: string;
   license: string;
   usageBasis: string;
@@ -62,8 +62,8 @@ export async function storeImageAsset(
 }
 
 export async function addReferenceImage(placeId: string, input: ReferenceImageInput) {
-  if (!input.sourceUrl || !input.license || !input.usageBasis || !input.author) {
-    throw new AppError("VALIDATION_ERROR", "参考图必须记录来源、作者、许可和使用依据");
+  if (!input.license || !input.usageBasis || !input.author) {
+    throw new AppError("VALIDATION_ERROR", "参考图必须记录作者、许可和使用依据");
   }
   return db().transaction(async (tx) => {
     const asset = await storeImageAsset(tx, input.bytes, "reference");

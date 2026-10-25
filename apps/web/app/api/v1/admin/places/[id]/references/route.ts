@@ -12,7 +12,7 @@ export const POST = route<{ id: string }>(async ({ req, params }) => {
   if (!(file instanceof File)) throw new AppError("VALIDATION_ERROR", "缺少图片");
   const meta = referenceUploadSchema.parse({
     viewNote: form.get("viewNote"),
-    sourceUrl: form.get("sourceUrl"),
+    sourceUrl: (form.get("sourceUrl") as string | null) || null,
     author: form.get("author"),
     license: form.get("license"),
     usageBasis: form.get("usageBasis"),

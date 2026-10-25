@@ -123,9 +123,13 @@ async function PlaceContent({ params }: { params: Promise<{ slug: string }> }) {
                     />
                     <p className="text-xs text-muted">
                       {r.author} ·{" "}
-                      <a href={r.sourceUrl} className="underline" target="_blank" rel="noreferrer">
-                        {r.license}
-                      </a>
+                      {r.sourceUrl ? (
+                        <a href={r.sourceUrl} className="underline" target="_blank" rel="noreferrer">
+                          {r.license}
+                        </a>
+                      ) : (
+                        r.license
+                      )}
                     </p>
                   </li>
                 ))}

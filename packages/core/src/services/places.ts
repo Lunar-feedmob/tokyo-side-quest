@@ -132,7 +132,7 @@ export interface PlaceDetail extends PlaceSummary {
   content: PlaceContent | null;
   referenceVersion: string | null;
   publishedAt: Date | null;
-  references: { id: string; viewNote: string; author: string; license: string; sourceUrl: string; publicDisplay: boolean }[];
+  references: { id: string; viewNote: string; author: string; license: string; sourceUrl: string | null; publicDisplay: boolean }[];
   methods: { location: boolean; photo: boolean };
 }
 

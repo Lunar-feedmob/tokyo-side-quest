@@ -7,6 +7,7 @@ import { tokyoDateTime } from "@/lib/client/format";
 import { PlacesAdmin } from "./places-admin";
 import { QuestsAdmin } from "./quests-admin";
 import { SettingsAdmin } from "./settings-admin";
+import { SurveyAdmin } from "./survey-admin";
 
 interface Admin {
   id: string;
@@ -17,6 +18,7 @@ interface Admin {
 const TABS = [
   ["reviews", "人工复核", "review"],
   ["places", "地点与参考图", "content"],
+  ["survey", "实地踏勘", "content"],
   ["quests", "故事", "content"],
   ["ai", "AI 任务", "content"],
   ["health", "系统状态", "content"],
@@ -78,6 +80,7 @@ export function AdminApp() {
       </nav>
       {tab === "reviews" && <Reviews />}
       {tab === "places" && <PlacesAdmin />}
+      {tab === "survey" && <SurveyAdmin />}
       {tab === "quests" && <QuestsAdmin />}
       {tab === "ai" && <AiCalls />}
       {tab === "health" && <Health />}

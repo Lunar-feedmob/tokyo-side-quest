@@ -240,7 +240,7 @@ export const referenceImages = pgTable(
       .notNull()
       .references(() => assets.id),
     viewNote: text("view_note").notNull(),
-    sourceUrl: text("source_url").notNull(),
+    sourceUrl: text("source_url"), // null for photos taken by the project's own field survey
     author: text("author").notNull(),
     license: text("license").notNull(),
     usageBasis: text("usage_basis").notNull(),
@@ -250,6 +250,31 @@ export const referenceImages = pgTable(
     createdAt: createdAt(),
   },
   (t) => [index("reference_images_place_idx").on(t.placeId)],
+);
+
+/**
+ * On-site calibration records from the admin field-survey screen: GPS samples
+ * taken by an admin standing at a place, and free-text observations. They feed
+ * a manual coordinate/radius update; nothing user-facing reads them.
+ */
+export const placeSurveyEntries = pgTable(
+  "place_survey_entries",
+  {
+    id: id(),
+    placeId: uuid("place_id")
+      .notNull()
+      .references(() => places.id),
+    adminId: uuid("admin_id").references(() => admins.id, { onDelete: "set null" }),
+    kind: text("kind").notNull(), // "position" | "note"
+    label: text("label").notNull(),
+    latitude: doublePrecision("latitude"),
+    longitude: doublePrecision("longitude"),
+    accuracyM: real("accuracy_m"),
+    readings: integer("readings"),
+    note: text("note"),
+    createdAt: createdAt(),
+  },
+  (t) => [index("place_survey_entries_place_idx").on(t.placeId, t.createdAt)],
 );
 
 export const quests = pgTable(

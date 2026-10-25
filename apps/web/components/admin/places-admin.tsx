@@ -29,7 +29,7 @@ interface PlaceDetail {
     stayMinutes: number | null;
     draft: unknown;
   };
-  references: { id: string; viewNote: string; author: string; license: string; sourceUrl: string; status: string; publicDisplay: boolean; imageUrl: string }[];
+  references: { id: string; viewNote: string; author: string; license: string; sourceUrl: string | null; status: string; publicDisplay: boolean; imageUrl: string }[];
   versions: { id: string; version: number; publishedAt: string; photoEnabled: boolean; referenceVersion: string }[];
 }
 
@@ -170,9 +170,13 @@ function PlaceEditor({ id, onChanged }: { id: string; onChanged: () => void }) {
               <p className="line-clamp-2">{r.viewNote}</p>
               <p className="text-muted">
                 {r.author} ·{" "}
-                <a href={r.sourceUrl} className="underline" target="_blank" rel="noreferrer">
-                  {r.license}
-                </a>
+                {r.sourceUrl ? (
+                  <a href={r.sourceUrl} className="underline" target="_blank" rel="noreferrer">
+                    {r.license}
+                  </a>
+                ) : (
+                  r.license
+                )}
                 {r.publicDisplay ? " · 可公开展示" : " · 仅内部核验"}
               </p>
               {r.status === "active" ? (
@@ -224,7 +228,7 @@ function ReferenceUpload({ placeId, onDone }: { placeId: string; onDone: () => v
       <p className="font-semibold">添加参考图（必须是真实照片并记录授权；AI 生成图不能作为核验参考）</p>
       <input name="photo" type="file" accept="image/jpeg,image/png,image/webp" required />
       <input name="viewNote" placeholder="取景说明" required className="w-full rounded border border-rule px-2 py-1" />
-      <input name="sourceUrl" placeholder="来源页面 URL" type="url" required className="w-full rounded border border-rule px-2 py-1" />
+      <input name="sourceUrl" placeholder="来源页面 URL（项目自己拍的照片留空）" type="url" className="w-full rounded border border-rule px-2 py-1" />
       <div className="grid grid-cols-2 gap-2">
         <input name="author" placeholder="作者" required className="rounded border border-rule px-2 py-1" />
         <input name="license" placeholder="许可，如 CC BY 4.0 / 自摄" required className="rounded border border-rule px-2 py-1" />
