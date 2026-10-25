@@ -15,8 +15,8 @@
       "nameZh": "夕阳阶梯",
       "nameJa": "夕やけだんだん",
       "nameEn": "Yuyake Dandan",
-      "latitude": 35.7276407,
-      "longitude": 139.7673409,
+      "latitude": 35.7276462,
+      "longitude": 139.7671692,
       "radiusM": 40,
       "photoEnabled": false,
       "photoNote": "旁边公寓于 2026 年竣工，现有授权参考图均早于此，实地补拍前只开放定位打卡。",
@@ -43,7 +43,7 @@
         ],
         "unsuitableAngles": ["猫、商品或行人的特写", "看不清门牌的夜景", "从下方拍摄且没有台阶的画面"],
         "restrictions": null,
-        "coordinateSource": { "label": "OpenStreetMap way 33440592（台阶上端）", "url": "https://www.openstreetmap.org/way/33440592", "accessedOn": "2026-10-23" },
+        "coordinateSource": { "label": "OpenStreetMap way 33440592（台阶中点）", "url": "https://www.openstreetmap.org/way/33440592", "accessedOn": "2026-10-25", "note": "桌面校准：台阶长 31 m（OSM），打卡点取中点，台阶两端离它 15.5 m。尚未实地验证。" },
         "verificationLevel": "desk"
       }
     },
@@ -54,7 +54,7 @@
       "nameEn": "Kannon-ji Tsuijibei Wall",
       "latitude": 35.7252816,
       "longitude": 139.7681059,
-      "radiusM": 35,
+      "radiusM": 45,
       "photoEnabled": true,
       "photoNote": "参考图仅 3 张且角度相近，建议实地补拍西端视角。",
       "tags": ["寺町", "建筑细节", "文化财"],
@@ -85,7 +85,7 @@
             "source": { "label": "东京都 无障碍观光指南", "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/en/course07.html", "accessedOn": "2026-10-23" }
           }
         ],
-        "coordinateSource": { "label": "OpenStreetMap way 821619430（南侧公共小巷）", "url": "https://www.openstreetmap.org/way/821619430", "accessedOn": "2026-10-23" },
+        "coordinateSource": { "label": "OpenStreetMap way 821619430（南侧公共小巷）", "url": "https://www.openstreetmap.org/way/821619430", "accessedOn": "2026-10-25", "note": "桌面校准：墙长 44 m，打卡点在墙中段，两端离它 22 m；窄巷里 GPS 误差大，半径从 35 m 放宽到 45 m。尚未实地验证。" },
         "verificationLevel": "desk"
       }
     },
@@ -132,9 +132,9 @@
       "nameZh": "谷中银座商店街",
       "nameJa": "谷中銀座商店街",
       "nameEn": "Yanaka Ginza",
-      "latitude": 35.7276803,
-      "longitude": 139.7660547,
-      "radiusM": 60,
+      "latitude": 35.7276882,
+      "longitude": 139.7657699,
+      "radiusM": 90,
       "photoEnabled": true,
       "photoNote": "最新的授权街景照片拍摄于 2019 年；核验以街道整体形态为准，不以单个店铺招牌为依据。",
       "tags": ["商店街", "日常生活", "小吃"],
@@ -164,7 +164,7 @@
             "source": { "label": "谷中银座商店街 常见问题", "url": "https://www.yanakaginza.com/よくあるお問い合わせ/", "accessedOn": "2026-10-23" }
           }
         ],
-        "coordinateSource": { "label": "OpenStreetMap way 671851311（街道中段）", "url": "https://www.openstreetmap.org/way/671851311", "accessedOn": "2026-10-23" },
+        "coordinateSource": { "label": "OpenStreetMap way 737745076 + 671851311（整条步行街的中点）", "url": "https://www.openstreetmap.org/way/671851311", "accessedOn": "2026-10-25", "note": "桌面校准：步行街全长约 167 m，打卡点取中点，半径 90 m 覆盖两端（最远 84 m）。尚未实地验证。" },
         "verificationLevel": "desk"
       }
     },
