@@ -1,0 +1,36 @@
+{
+  "name": "tokyo-side-quest",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.7",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @tsq/web dev",
+    "build": "pnpm --filter @tsq/web build",
+    "start": "pnpm --filter @tsq/web start",
+    "worker:dev": "pnpm --filter @tsq/worker dev",
+    "worker:start": "pnpm --filter @tsq/worker start",
+    "db:generate": "pnpm --filter @tsq/core db:generate",
+    "db:migrate": "pnpm --filter @tsq/core db:migrate",
+    "db:seed": "pnpm --filter @tsq/core db:seed",
+    "admin:create": "pnpm --filter @tsq/core admin:create",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm --filter @tsq/web lint",
+    "test": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
+    "test:e2e": "playwright test",
+    "fonts:fetch": "node scripts/fetch-fonts.mjs",
+    "brand:render": "pnpm --filter @tsq/core brand:render",
+    "ai:smoke": "pnpm --filter @tsq/core ai:smoke"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@tsq/core": "workspace:*",
+    "drizzle-orm": "0.45.4",
+    "sharp": "0.35.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

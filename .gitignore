@@ -10,3 +10,11 @@ playwright-report/
 test-results/
 *.log
 .openai/
+*.tsbuildinfo
+.turbo/
+content/research/*.tmp
+content/.cache/
+playwright-report/
+test-results/
+packages/core/assets/fonts/*.otf
+.e2e/

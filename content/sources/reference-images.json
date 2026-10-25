@@ -1,0 +1,303 @@
+{
+  "_note": "Reference photos for photo verification. Real photos only (no AI-generated images). Generated from content/research/yanaka-places.json on 2026-10-23; licences as stated on each Wikimedia Commons file page at that date. Not legal advice.",
+  "places": {
+    "yuyake-dandan": [
+      {
+        "file": "File:Yanaka Ginza entrance.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_entrance.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Yanaka_Ginza_entrance.jpg",
+        "author": "1904.CC",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "photoDate": "2025-04-17 12:33:00",
+        "viewNote": "From the top of the steps looking west: steps with railings in foreground, 谷中ぎんざ gate and street below. Most recent (2025-04). People present but not central.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Yanaka Ginza Street from Yuyake Dandan (Oct 2024).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_Street_from_Yuyake_Dandan_(Oct_2024).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Yanaka_Ginza_Street_from_Yuyake_Dandan_%28Oct_2024%29.jpg",
+        "author": "SuFlyer",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2024-10-27",
+        "viewNote": "Telephoto from the steps: gate sign 谷中ぎんざ large in frame, street beyond. Uploader blurred faces. Portrait orientation.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Yūyake Dandan.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Y%C5%AByake_Dandan.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Y%C5%AByake_Dandan.jpg",
+        "author": "Christophe95",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "Taken on 8 September 2018, 11:16:26",
+        "viewNote": "Wide view from upper part of the steps (EXIF GPS on steps): full staircase, railings, gate and skyline; left side shows low buildings that may now be replaced by the 2026 condo.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Ueno 003.JPG",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Ueno_003.JPG",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/74/Ueno_003.JPG",
+        "author": "Ronny Siegel",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "photoDate": "Taken on 4 October 2014, 02:42:37",
+        "viewNote": "Portrait view from the very top along the central handrail, steps fully visible, gate in mid-distance (2014).",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Yanaka Ginza (53149736031).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_(53149736031).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Yanaka_Ginza_%2853149736031%29.jpg",
+        "author": "Dick Thomas Johnson from Tokyo, Japan",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "photoDate": "2023-07-15 14:11",
+        "viewNote": "From the top of the steps, crowd walking down; gate and street visible (2023). Use as alternate.",
+        "publicDisplay": false
+      }
+    ],
+    "yanaka-ginza": [
+      {
+        "file": "File:Yanaka Ginza 1.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_1.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Yanaka_Ginza_1.jpg",
+        "author": "Christophe95",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "Taken on 8 September 2018, 11:10:28",
+        "viewNote": "Street level near the west end looking east (EXIF GPS 35.727681,139.765122): paving, awnings, street lamps, flower shop. 2018-09.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Yanaka Ginza 2.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_2.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Yanaka_Ginza_2.jpg",
+        "author": "Christophe95",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "Taken on 8 September 2018, 11:12:46",
+        "viewNote": "Street level near the east part looking west (EXIF GPS 35.727633,139.766678): green awnings, cat-themed shop sign, pedestrian sign 15-20. 2018-09.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Entrance of Yūyake Dandan.png",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Entrance_of_Y%C5%AByake_Dandan.png",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/Entrance_of_Y%C5%AByake_Dandan.png",
+        "author": "Thomas Housieaux",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "photoDate": "2019-08-27",
+        "viewNote": "From inside the street looking east: 谷中ぎんざ gate arch with the steps rising behind. 2019-08. (PNG, 4032x3024)",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Gateway to Yanaka Ginza (11918411545).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Gateway_to_Yanaka_Ginza_(11918411545).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Gateway_to_Yanaka_Ginza_%2811918411545%29.jpg",
+        "author": "Stephen Kelly from San Francisco, CA, USA",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "photoDate": "2013-09-07 21:30",
+        "viewNote": "Gate arch and east end of the street from slightly inside, lamps and shops on both sides. 2013-09 (older). Flickr import, FlickreviewR passed.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Yanaka Ginza (53149155977).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_(53149155977).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Yanaka_Ginza_%2853149155977%29.jpg",
+        "author": "Dick Thomas Johnson from Tokyo, Japan",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "photoDate": "2023-07-15 14:12",
+        "viewNote": "Street level at the east end (foot of the steps) looking west through the gabled 谷中ぎんざ gate arch: lamp posts, projecting signs, crowd in the street beyond; white construction hoarding on the left edge. 2023-07, newest street-level view of the gate. Several identifiable pedestrians in the foreground (masked woman bottom right, man centre). Flickr import, FlickreviewR passed.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Tokyo Yanaka 5.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Yanaka_5.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Tokyo_Yanaka_5.jpg",
+        "author": "Gustave67",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "2018-07-13 04:33:53",
+        "viewNote": "Mid-street view with paving, lamps and projecting signs; festival banners (seasonal) visible. 2018-07.",
+        "publicDisplay": false
+      }
+    ],
+    "yomise-dori": [
+      {
+        "file": "File:Yomisedori shopping street taito bunkyo tokyo 2009.JPG",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yomisedori_shopping_street_taito_bunkyo_tokyo_2009.JPG",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Yomisedori_shopping_street_taito_bunkyo_tokyo_2009.JPG",
+        "author": "User:Kentin",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "photoDate": "2009-04",
+        "viewNote": "Overhead arch sign よみせ通り with the street behind. 2009-04 - 17 years old; arch and shops may have changed.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:201804 Sendagi Yomise Street.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:201804_Sendagi_Yomise_Street.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/50/201804_Sendagi_Yomise_Street.jpg",
+        "author": "Urbs Urbium",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "photoDate": "2018-04",
+        "viewNote": "Street view near Sendagi Station showing the open, sidewalk-less street with shops (2018-04). Generic appearance.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:YomiseStreet Cafe Sendagi.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:YomiseStreet_Cafe_Sendagi.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/YomiseStreet_Cafe_Sendagi.jpg",
+        "author": "Urbs urbium",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "2017-11",
+        "viewNote": "Single café shop front (2017-11). Transient business - NOT suitable as a verification reference; listed only for completeness.",
+        "publicDisplay": false
+      }
+    ],
+    "okakura-tenshin-park": [
+      {
+        "file": "File:Okakura Tenshin Memorial Garden (Rokkakudo) 2020-01-12.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Garden_(Rokkakudo)_2020-01-12.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Okakura_Tenshin_Memorial_Garden_%28Rokkakudo%29_2020-01-12.jpg",
+        "author": "Asanagi",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2020-01-12 13:48:10",
+        "viewNote": "Frontal full view of the 六角堂 with steps and paving; plaque monument on right. Portrait, 2020-01 (winter).",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Okakura Tenshin Memorial Park 03.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Park_03.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Okakura_Tenshin_Memorial_Park_03.jpg",
+        "author": "Higa4",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2022-04-17 13:43:09",
+        "viewNote": "Close frontal view of the hall: vermilion pillars, black doors, eaves. 2022-04.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Okakura Tenshin Memorial Garden 2020-01-12.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Garden_2020-01-12.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/68/Okakura_Tenshin_Memorial_Garden_2020-01-12.jpg",
+        "author": "Asanagi",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2020-01-12 13:49:04",
+        "viewNote": "Panorama of the whole park from the entrance side: paving, old play equipment (left), hall (right), old concrete perimeter wall. 2020-01. Shows pre-renovation fence.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Okakura Tenshin Memorial Park 01.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Park_01.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/19/Okakura_Tenshin_Memorial_Park_01.jpg",
+        "author": "Higa4",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2022-04-17 13:41:46",
+        "viewNote": "Park entrance from the street: stone name post 岡倉天心記念公園, stone wall, traffic mirror; a visitor in frame. 2022-04.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Okakura Tenshin Memorial Park 06.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Okakura_Tenshin_Memorial_Park_06.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Okakura_Tenshin_Memorial_Park_06.jpg",
+        "author": "Higa4",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2022-04-17 13:44:46",
+        "viewNote": "Granite pillar 岡倉天心先生宅跡 日本美術院発祥之地 among shrubs. 2022-04. Detail shot, use as alternate.",
+        "publicDisplay": true
+      }
+    ],
+    "kannonji-tsuijibei": [
+      {
+        "file": "File:Kanonji Tuijibei 01.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kanonji_Tuijibei_01.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Kanonji_Tuijibei_01.jpg",
+        "author": "Suikotei",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "14 December 2019, 15:28:11",
+        "viewNote": "Along the alley from the east corner looking west: full length of tile-and-clay layers, tiled coping, plaques on corner. 2019-12.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Kannon-ji Tsuijibei.JPG",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kannon-ji_Tsuijibei.JPG",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Kannon-ji_Tsuijibei.JPG",
+        "author": "Abasaa",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "photoDate": "2021-03-14",
+        "viewNote": "Same corner, closer: layered tiles, round-end coping tiles, plaques, stone posts; alley on left. 2021-03. Licence PD-self.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Kanonji Tuijibei 02.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kanonji_Tuijibei_02.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Kanonji_Tuijibei_02.jpg",
+        "author": "Suikotei",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "14 December 2019, 15:28:50",
+        "viewNote": "Section with the wooden wicket door (潜り戸) and residential building behind. 2019-12.",
+        "publicDisplay": true
+      }
+    ],
+    "nezu-shrine": [
+      {
+        "file": "File:Nezu-jinja 22.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Nezu-jinja_22.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Nezu-jinja_22.jpg",
+        "author": "Higa4",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2022-04-09 11:29:54",
+        "viewNote": "Frontal view of the 楼門 from the plaza: plaque, guardian bays, green lattice. 2022-04. (Commons description wrongly says 台東区谷中; image is Nezu in Bunkyo.)",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Nezu Shrine Romon 2010.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Nezu_Shrine_Romon_2010.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Nezu_Shrine_Romon_2010.jpg",
+        "author": "Wiiii",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "photoDate": "2010",
+        "viewNote": "Clean frontal elevation of the 楼門 on a clear day. 2010.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Nezu-jinja Romon 1.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Nezu-jinja_Romon_1.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Nezu-jinja_Romon_1.jpg",
+        "author": "Zairon",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "2018-04-05 04:05:34",
+        "viewNote": "Oblique view with the green-railed 神橋 in foreground and 楼門 behind. 2018-04.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:Nezu-jinja 21.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Nezu-jinja_21.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Nezu-jinja_21.jpg",
+        "author": "Higa4",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "photoDate": "2022-04-09 11:29:24",
+        "viewNote": "Wide view from the approach: 神橋, 楼門, trees, gravel plaza. 2022-04.",
+        "publicDisplay": false
+      }
+    ]
+  }
+}

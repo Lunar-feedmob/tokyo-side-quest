@@ -2,86 +2,86 @@
 
 **不用做攻略，花一小时，成为一段东京故事的主角。**
 
-An open product specification for location-based Tokyo exploration, AI photo check-ins, story quests, and collectible travel posters.
+基于位置的东京街区探索网页应用：发现附近地点 → 自由探索或领取原创故事 → 定位或拍照打卡 → AI 核对照片地点 → 七档摄影评级 → 收藏印章与作品 → 生成纪念票根。
 
-> 当前阶段：产品定义与开发规格。仓库目前提供可交给开发 AI 执行的详细文档，尚未包含可运行的应用程序。
+> 状态（2026-10-23）：P0 主体功能已实现，单元测试、集成测试和端到端测试都已通过。**以下几项尚未完成真实环境验证**：真实 AI 调用、手机 HTTPS 实地定位、地图底图。详情见 [docs/acceptance.md](docs/acceptance.md)。
 
-## 产品构想
+规格文档：[docs/development-spec.md](docs/development-spec.md)
 
-东京支线将附近地点、原创城市故事和摄影探索连接起来：
+## 已实现
 
-1. **发现附近**：定位当前位置或手动选择街区，发现可以探索的地点。
-2. **领取支线**：选择一段有开场、线索、任务和结局的街区故事，也可直接自由探索。
-3. **完成打卡**：定位打卡或拍照打卡，两种入口独立可用。
-4. **AI 地点核验**：将用户照片与经过审核的真实地点参考资料对比。
-5. **摄影评级**：地点匹配后，按构图、光影、清晰度和场景表达给予 SSS、SS、S、A、B、C、D 七档评价。
-6. **收藏与分享**：保存作品、足迹和城市印章，生成个人纪念票根海报。
+- 发现附近：只在用户主动点击后定位，定位失败、拒绝或超时时可以手动选择街区；PostGIS 按直线距离检索；有地图和列表两种视图（未配置底图时只显示列表）。
+- 首发街区谷中：6 个地点档案，坐标和资料都标注来源（桌面核对）；原创故事《猫店长的失落明信片》有 4 个主要任务。
+- 定位打卡：由服务端计算距离，并检查定位精度和读数时间；靠近边界时提示重新定位；原始坐标在 24 小时后清除。
+- 拍照打卡：照片清除 EXIF 后异步处理，**先核对地点，再评价摄影**，七档等级由服务端根据分数计算；有缓存去重、失败重试和人工复核。
+- 访客身份（无需注册）、足迹、印章（数据库唯一约束保证不重复发放）、作品和历史最佳、故事进度（可结束、可恢复）。
+- 1080×1440 PNG 纪念票根：用户主动创建分享链接后才公开，并带二维码；撤销后链接立即失效。
+- 在线试玩：固定样例结果，明确标注，与真实数据完全隔离。
+- 管理后台：管理员认证、地点与参考图版本管理、故事版本管理、人工复核、AI 任务、系统状态和操作日志。
+- 数据设置：删除单张照片、撤销分享、清空全部访客数据。
+- 宣传素材：首页、品牌主海报、分享预览图、印章设计（`apps/web/public/brand/`）。
 
-```mermaid
-flowchart LR
-    A[发现附近] --> B[自由探索或故事任务]
-    B --> C[定位或照片打卡]
-    C --> D[核验与摄影评价]
-    D --> E[印章、作品与纪念海报]
+## 本地运行
+
+需要 Node 22 以上、pnpm 10、Docker（含 Compose）。
+
+```bash
+pnpm install
+pnpm fonts:fetch            # 下载并校验票根所需的 Noto CJK 字体（OFL）
+cp .env.example .env        # 填写 SESSION_SECRET（openssl rand -hex 32）
+docker compose up -d        # PostGIS、Redis、SeaweedFS（S3 兼容）
+pnpm db:migrate
+pnpm db:seed                # 导入谷中内容；会从 Wikimedia Commons 下载授权参考图
+pnpm dev                    # Web：http://localhost:3000
+pnpm worker:dev             # 另开一个终端：后台 Worker（核验、评分、海报、删除）
 ```
 
-## 开发文档
+管理员账号用 `pnpm admin:create` 交互式创建，密码不会出现在命令行参数或日志里。后台地址是 `/admin`。
 
-请从 [AI 开发执行文档](docs/development-spec.md) 开始。
+### 启用真实功能
 
-文档包含 24 个章节：
+| 功能 | 需要配置 | 未配置时的表现 |
+| --- | --- | --- |
+| 照片核验与评分 | 后台 `/admin` →“设置”（owner）：选 Anthropic 或 OpenAI 兼容协议，填接口地址、API Key、模型；也可以用 `.env` 的 `AI_*` 变量 | 提交入口说明“照片核验服务暂未开通”，不会生成任何结果 |
+| 照片核验每日额度 | 后台“设置”→“每日额度”（owner）；默认用 `.env` 的 `AI_DAILY_CALL_LIMIT`（200 次/天，东京时间 0 点重置） | 额度用完后，提交入口说明“今天的名额已用完，东京时间明天 0 点恢复”，引导改用定位打卡；已受理的照片照常处理完 |
+| 地图 | 后台“设置”填 MapTiler API Key；也可以用 `.env` 的 `MAP_STYLE_URL`（任意 MapLibre style） | 显示“地图暂不可用”，列表照常可用 |
+| 手机定位 | HTTPS 访问 | 浏览器拒绝定位，页面说明原因并提供手动入口 |
 
-- 产品目标、首版范围与页面级流程。
-- 系统架构、数据模型、API 合同与异步任务。
-- 定位范围、图片处理、AI 地点核验与七档摄影评分规则。
-- 故事进度、奖励幂等、人工复核与异常恢复。
-- 视觉规范、海报分享、数据删除与运行配置。
-- 分阶段实施计划、测试场景、AI 评估与最终验收清单。
+后台设置优先于 `.env`；清除后台设置后回到 `.env` 的配置。设置页的“测试连接”会用表单里的值发一次真实的小请求，不保存。配置 AI 后运行 `pnpm ai:smoke`，会用授权样例图做一次真实模型冒烟测试，结果追加到 `docs/ai-evaluation-runs.jsonl`。
 
-**交给 AI 开发时**：提供完整文档，并使用其中第 22 节的启动提示词。先实现一条真实纵向链路，再扩展首版功能。
+## 检查与测试
 
-## 首版实施范围
+```bash
+pnpm typecheck
+pnpm lint
+pnpm test                   # 单元测试：评分边界、定位规则、图片处理
+pnpm test:integration       # 集成测试：真实 Postgres/Redis/S3，测试替身 AI
+pnpm test:e2e               # Playwright：试玩流程与接口安全（需要 pnpm dev + worker 在运行）
+scripts/e2e-stack.sh start  # 隔离的测试部署（:3100，测试替身 AI，独立数据库）
+npx playwright test --project=live-360 --project=live-1440
+scripts/e2e-stack.sh stop
+```
 
-计划从一个东京街区开始：
+`scripts/e2e-stack.sh start` 会执行 `next build`，和 `pnpm dev` 共用 `apps/web/.next`。之后如果开发服务器出现页面反复整页刷新（浏览器控制台提示 “HMR hash mismatch”），停掉 `pnpm dev`，删除 `apps/web/.next/dev` 再重启即可。
 
-- 6 个经过资料核对的地点档案。
-- 1 条完整原创故事，包含 4 个主要任务节点。
-- 地图、列表与真实定位打卡。
-- 图片上传、真实 AI 地点核验和摄影评价。
-- 访客数据持久化、城市印章与可恢复的任务进度。
-- 海报下载、主动分享与撤销。
-- 数据隔离、明确标识的在线试玩。
-- 基础内容管理与人工复核后台。
+## 生产构建
 
-以上为开发目标，尚未代表已实现能力。具体优先级与完成条件以开发文档为准。
+```bash
+pnpm build && pnpm start    # Web
+pnpm worker:start           # Worker（必须单独运行）
+```
 
-## 核心业务规则
+Docker 与 HTTPS 部署见 [docs/deployment.md](docs/deployment.md)。
 
-- **地点核验与摄影评分分开**：照片不匹配地点时，不生成摄影 D 级。
-- **两种打卡方式独立**：不能擅自要求同时提供定位和照片。
-- **证据准确表达**：相册照片匹配不等于用户正在现场，设备定位也不作为不可伪造的到访认证。
-- **真实模式不使用假 AI**：缺少模型服务时明确提示不可用，不随机生成成功结果和等级。
-- **真实参考图有来源**：AI 生成宣传图不能作为地点识别参考。
-- **服务端决定事实**：分数、等级、任务进度和奖励由服务端验证、持久化和去重。
+## 文档
 
-## 建议技术架构
-
-新项目默认方案为 Next.js、TypeScript、PostgreSQL/PostGIS、S3 兼容对象存储、Redis/BullMQ、独立 Node.js Worker、MapLibre 和可替换的视觉模型 Adapter。
-
-此处是架构建议，仓库当前没有安装依赖或启动脚本。依赖版本、服务提供方与部署方式由实现阶段核实并记录。
-
-## 贡献
-
-欢迎改进产品规格、补充有来源的东京地点资料，或按照首版范围推进实现。请先阅读 [贡献说明](CONTRIBUTING.md)。
-
-新增真实地点、坐标与参考照片时，应记录资料来源、核对日期和图片使用依据。不要提交私人照片、密钥、会话令牌或未获授权的第三方素材。
-
-## 方法与资料
-
-构思参考了 [phuryn/pm-skills 的 brainstorm-ideas-new](https://github.com/phuryn/pm-skills/blob/main/pm-product-discovery/skills/brainstorm-ideas-new/SKILL.md)，视觉方向参考了 [anthropics/skills 的 frontend-design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md)。
-
-东京内容来源与技术参考链接记录在开发文档中。本站点构想为独立项目，不表示与东京官方机构、商家或上述开源项目存在合作或背书。
+- [架构](docs/architecture.md)：实际实现与规格的对应关系和差异
+- [实现决策](docs/decisions.md)
+- [内容来源与授权](docs/content-provenance.md)
+- [AI 评估](docs/ai-evaluation.md)
+- [验收报告](docs/acceptance.md)
+- [部署](docs/deployment.md)
 
 ## 许可证
 
-本仓库原创内容采用 [MIT License](LICENSE)。第三方资料、照片和链接目标的权利仍归各自权利人，使用前需另行确认授权。
+原创代码与内容采用 [MIT License](LICENSE)。参考照片的权利归各自作者，按 [docs/content-provenance.md](docs/content-provenance.md) 记录的许可使用；票根字体为 Noto CJK（SIL OFL 1.1）。本项目为独立项目，与东京官方机构、商家或资料来源方没有合作或背书关系。

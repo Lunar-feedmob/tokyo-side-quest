@@ -1,0 +1,24 @@
+# Optional override: self-hosted S3-compatible storage (SeaweedFS) on the same
+# host, reachable only on the compose network. Use together with the prod file:
+#   docker compose -f docker-compose.prod.yml -f docker-compose.selfhost-storage.yml up -d
+# Needs seaweedfs-s3.json next to this file (same shape as infra/seaweedfs-s3.json,
+# with random keys) and STORAGE_ENDPOINT=http://storage:8333 in tsq.env.
+services:
+  storage:
+    image: chrislusf/seaweedfs:4.48
+    command: ["server", "-dir=/data", "-s3", "-s3.port=8333", "-s3.config=/etc/seaweedfs/s3.json", "-ip.bind=0.0.0.0"]
+    volumes:
+      - storagedata:/data
+      - ./seaweedfs-s3.json:/etc/seaweedfs/s3.json:ro
+    restart: unless-stopped
+
+  web:
+    depends_on:
+      storage: { condition: service_started }
+
+  worker:
+    depends_on:
+      storage: { condition: service_started }
+
+volumes:
+  storagedata:

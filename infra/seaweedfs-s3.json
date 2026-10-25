@@ -1,0 +1,9 @@
+{
+  "identities": [
+    {
+      "name": "tsq-local",
+      "credentials": [{ "accessKey": "tsq-local-access", "secretKey": "tsq-local-secret-change-me" }],
+      "actions": ["Admin", "Read", "List", "Tagging", "Write"]
+    }
+  ]
+}
