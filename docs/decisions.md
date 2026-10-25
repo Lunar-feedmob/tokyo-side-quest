@@ -40,5 +40,5 @@
 2. ~~地图底图~~：2026-10-25 已配置 MapTiler key（`streets-v2`），并在 MapTiler 后台限制了来源，目前只允许临时演示地址。**部署到正式域名、或演示隧道地址变了以后，都要去 MapTiler 后台更新 Allowed HTTP Origins**，否则地图加载会被拒（403）。
 3. ~~部署位置和 HTTPS 域名~~：2026-10-25 部署到 Minework 服务器（`/home/ubuntu/tokyo-side-quest`，docker compose，对象存储用自托管 SeaweedFS），地址 https://tokyo.13-58-220-167.sslip.io ，由服务器上的 Caddy 反向代理到 127.0.0.1:3010。正式站的 AI 和地图配置写在它自己的后台设置里，和演示环境分开。以后要换正式域名：加 DNS 记录，改 Caddy 配置和 `tsq.env` 的 `APP_BASE_URL`，用新的 `APP_BASE_URL` 重新构建镜像，再去 MapTiler 更新允许的来源。
 4. 是否安排人员去谷中实地补拍参考图、校准坐标和半径。Commons 上已经没有更多可用照片（D26），这是剩下唯一的办法。2026-10-25：暂时没人能去。工具已准备好（D29），去的人用 editor 账号登录正式站后台，打开“实地踏勘”，按页面上每个地点列出的任务做即可。
-5. 根津神社：维持只开放定位打卡，不主动联系神社。
+5. ~~根津神社~~：负责人 2026-10-25 确认维持只开放定位打卡，不主动联系神社。
 6. 代码推送：当前 GitHub 账号对 `toller892/tokyo-side-quest` 没有写权限，截图是通过 fork 提交的 PR #1。
