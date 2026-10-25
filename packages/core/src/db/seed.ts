@@ -17,6 +17,8 @@ const cacheDir = `${root}content/.cache/commons`;
 const USER_AGENT = "TokyoSideQuest/0.1 (content seeding; https://github.com/toller892/tokyo-side-quest)";
 
 interface RefSource {
+  /** Where the licence was checked; Commons when absent. */
+  provider?: "commons" | "flickr";
   file: string;
   filePageUrl: string;
   originalUrl: string;
@@ -69,8 +71,9 @@ async function downloadReference(src: RefSource): Promise<Buffer> {
   } catch {
     // not cached yet
   }
-  await new Promise((r) => setTimeout(r, 1200)); // be polite to Wikimedia
-  const bytes = await fetchCached(await thumbUrl(src));
+  await new Promise((r) => setTimeout(r, 1200)); // be polite to the image host
+  // Flickr entries point at the published size directly; Commons ones are resolved to a standard thumbnail.
+  const bytes = await fetchCached(src.provider === "flickr" ? src.originalUrl : await thumbUrl(src));
   await writeFile(cached, bytes);
   return bytes;
 }
@@ -137,7 +140,7 @@ async function main() {
         sourceUrl: src.filePageUrl,
         author: src.author,
         license: src.license,
-        usageBasis: `Wikimedia Commons ${src.license}${src.licenseUrl ? ` (${src.licenseUrl})` : ""}；需署名${src.license.includes("SA") ? "，衍生作品以相同协议发布" : ""}`,
+        usageBasis: `${src.provider === "flickr" ? "Flickr" : "Wikimedia Commons"} ${src.license}${src.licenseUrl ? ` (${src.licenseUrl})` : ""}；需署名${src.license.includes("SA") ? "，衍生作品以相同协议发布" : ""}`,
         publicDisplay: src.publicDisplay,
         capturedOn: src.photoDate,
       })),

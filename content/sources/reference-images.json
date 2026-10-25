@@ -1,5 +1,5 @@
 {
-  "_note": "Reference photos for photo verification. Real photos only (no AI-generated images). Generated from content/research/yanaka-places.json on 2026-10-23; licences as stated on each Wikimedia Commons file page at that date. Not legal advice.",
+  "_note": "Reference photos for photo verification. Real photos only (no AI-generated images). Generated from content/research/yanaka-places.json on 2026-10-23; licences as stated on each Wikimedia Commons file page at that date. Entries with \"provider\": \"flickr\" were added on 2026-10-25 with the licence shown on the Flickr photo page; they are downloaded from originalUrl as published there. Not legal advice.",
   "places": {
     "yuyake-dandan": [
       {
@@ -112,6 +112,30 @@
         "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
         "photoDate": "2023-07-15 14:12",
         "viewNote": "Street level at the east end (foot of the steps) looking west through the gabled 谷中ぎんざ gate arch: lamp posts, projecting signs, crowd in the street beyond; white construction hoarding on the left edge. 2023-07, newest street-level view of the gate. Several identifiable pedestrians in the foreground (masked woman bottom right, man centre). Flickr import, FlickreviewR passed.",
+        "publicDisplay": false
+      },
+      {
+        "file": "Flickr 54178606731",
+        "provider": "flickr",
+        "filePageUrl": "https://www.flickr.com/photos/31029865@N06/54178606731/",
+        "originalUrl": "https://live.staticflickr.com/65535/54178606731_5134a9e51b_b.jpg",
+        "author": "Dick Thomas Johnson",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "photoDate": "2024-02-10",
+        "viewNote": "Street level in the eastern part looking west: green awnings, lantern-style lamps on curved poles, red-brown paving, いか焼き lantern and 生ビール banner on the left. 2024-02. Crowded with identifiable people, so internal use only. Flickr 1024px.",
+        "publicDisplay": false
+      },
+      {
+        "file": "Flickr 53417016334",
+        "provider": "flickr",
+        "filePageUrl": "https://www.flickr.com/photos/67056263@N04/53417016334/",
+        "originalUrl": "https://live.staticflickr.com/65535/53417016334_bf6d057954_b.jpg",
+        "author": "Stephen Kelly",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "photoDate": "2023-10-21",
+        "viewNote": "From the steps above the east end looking west onto the gabled 谷中ぎんざ gate arch and the street beyond: gate sign, lamp posts, banners. 2023-10. Photographer watermark lower left. Identifiable people, so internal use only. Flickr 1024px.",
         "publicDisplay": false
       },
       {
