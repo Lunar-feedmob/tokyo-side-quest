@@ -83,7 +83,15 @@ export function MapView(props: {
         el.className = "h-4 w-4 rounded-full border-2 border-white bg-[#295c89] shadow";
         el.setAttribute("aria-label", "设备报告的位置");
         markersRef.current.push(new maplibregl.Marker({ element: el }).setLngLat([user.longitude, user.latitude]).addTo(map));
-        map.easeTo({ center: [user.longitude, user.latitude] });
+      }
+      // Frame every place, and the device position if there is one, so nothing starts off-screen.
+      const points: [number, number][] = places.map((p) => [p.longitude, p.latitude]);
+      if (user) points.push([user.longitude, user.latitude]);
+      if (points.length > 1) {
+        const bounds = points.reduce((b, pt) => b.extend(pt), new maplibregl.LngLatBounds(points[0], points[0]));
+        map.fitBounds(bounds, { padding: 56, maxZoom: 16.5 });
+      } else if (points.length === 1) {
+        map.easeTo({ center: points[0]! });
       } else if (center) {
         map.easeTo({ center: [center.longitude, center.latitude] });
       }
