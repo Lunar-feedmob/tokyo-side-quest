@@ -4,6 +4,9 @@ import { z } from "zod";
 // these before anything is persisted; prompts are not a substitute.
 
 const shortText = (max: number) => z.string().trim().min(1).max(max);
+// Some models behind OpenAI-compatible gateways omit a nullable field instead of
+// sending null. Absent means null; the business rules below still decide validity.
+const orNull = <T extends z.ZodType>(schema: T) => schema.nullable().default(null);
 
 export const placeVerificationOutputSchema = z
   .object({
@@ -28,7 +31,7 @@ export const placeVerificationOutputSchema = z
       "unsupported_scene",
     ]),
     userMessage: shortText(160),
-    reshootSuggestion: shortText(160).nullable(),
+    reshootSuggestion: orNull(shortText(160)),
   })
   .strict()
   .superRefine((value, ctx) => {
@@ -52,13 +55,10 @@ const score = z.number().int().min(0).max(100);
 export const photoRatingOutputSchema = z
   .object({
     scorable: z.boolean(),
-    dimensions: z
-      .object({ composition: score, lighting: score, clarity: score, expression: score })
-      .strict()
-      .nullable(),
-    strength: shortText(120).nullable(),
-    improvement: shortText(120).nullable(),
-    unscorableReason: shortText(160).nullable(),
+    dimensions: orNull(z.object({ composition: score, lighting: score, clarity: score, expression: score }).strict()),
+    strength: orNull(shortText(120)),
+    improvement: orNull(shortText(120)),
+    unscorableReason: orNull(shortText(160)),
   })
   .strict()
   .superRefine((value, ctx) => {

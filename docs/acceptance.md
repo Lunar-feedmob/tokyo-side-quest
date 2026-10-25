@@ -16,7 +16,7 @@
 | E2E：真实模式流程（隔离的测试部署，360 / 1440） | `scripts/e2e-stack.sh start` 后运行 `--project=live-360 --project=live-1440` | ✅ 18/18 通过（2026-10-25 复跑，1.2 分钟）。上传辅助函数改为等到预览出现再继续：服务刚启动时，页面 hydration 完成前选的文件会丢失，导致偶发失败 |
 | 生产构建 | `pnpm build` | ✅ |
 | Docker 镜像 | `docker build .` | ✅ `tokyo-side-quest:a3ce939` 构建成功，所有 API 路由均为动态（ƒ） |
-| 真实 AI 冒烟测试 | `pnpm ai:smoke` | ❌ 未运行：没有 AI Key |
+| 真实 AI 冒烟测试 | `pnpm ai:smoke` | ⚠️ 2026-10-25，`minimax-m3.1-flash`（OpenAI 兼容网关）：8/9 符合预期，1 次空响应记为技术错误。详见 ai-evaluation.md |
 
 ## §19.1 规则测试
 

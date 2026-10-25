@@ -37,7 +37,7 @@ export async function callStructured<S extends z.ZodType>(
     }
     let json: unknown;
     try {
-      json = JSON.parse(stripFence(reply.text));
+      json = JSON.parse(jsonPayload(reply.text));
     } catch {
       lastProblem = "response is not valid JSON";
       continue;
@@ -60,8 +60,13 @@ export async function callStructured<S extends z.ZodType>(
   throw new AiError("AI_OUTPUT_INVALID", `模型输出无法通过校验：${lastProblem}`, Date.now() - started);
 }
 
-function stripFence(text: string): string {
-  const trimmed = text.trim();
+/**
+ * The JSON part of a reply. Reasoning models behind OpenAI-compatible gateways
+ * (MiniMax, DeepSeek, Qwen…) may put a leading <think>…</think> block in the
+ * content and ignore response_format, and some wrap the JSON in a code fence.
+ */
+export function jsonPayload(text: string): string {
+  const trimmed = text.replace(/^\s*(?:<(think|thinking)>[\s\S]*?<\/\1>\s*)+/u, "").trim();
   const fence = /^```(?:json)?\s*([\s\S]*?)\s*```$/u.exec(trimmed);
   return fence?.[1] ?? trimmed;
 }
