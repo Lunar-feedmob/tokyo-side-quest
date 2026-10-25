@@ -37,7 +37,7 @@
 ## 尚需负责人确认的事项
 
 1. ~~视觉 AI~~：2026-10-25 已配置（OpenAI 兼容网关，`minimax-m3.1-flash`），冒烟测试 8/9。每日调用上限用默认的 200 次（D27），拒答回退保留（D15）。
-2. ~~地图底图~~：2026-10-25 已配置 MapTiler key（`streets-v2`），并在 MapTiler 后台限制了来源，目前只允许临时演示地址。**部署到正式域名、或演示隧道地址变了以后，都要去 MapTiler 后台更新 Allowed HTTP Origins**，否则地图加载会被拒（403）。
+2. ~~地图底图~~：2026-10-25 已配置 MapTiler key（`streets-v2`）。MapTiler 后台的 Allowed HTTP Origins 现在只允许正式站 `https://tokyo.13-58-220-167.sslip.io`（临时演示地址已删除）。**换正式域名时要先去 MapTiler 加上新域名**，否则地图加载会被拒（403）。
 3. ~~部署位置和 HTTPS 域名~~：2026-10-25 部署到 Minework 服务器（`/home/ubuntu/tokyo-side-quest`，docker compose，对象存储用自托管 SeaweedFS），地址 https://tokyo.13-58-220-167.sslip.io ，由服务器上的 Caddy 反向代理到 127.0.0.1:3010。正式站的 AI 和地图配置写在它自己的后台设置里，和演示环境分开。以后要换正式域名：加 DNS 记录，改 Caddy 配置和 `tsq.env` 的 `APP_BASE_URL`，用新的 `APP_BASE_URL` 重新构建镜像，再去 MapTiler 更新允许的来源。
 4. 是否安排人员去谷中实地补拍参考图、校准坐标和半径。Commons 上已经没有更多可用照片（D26），这是剩下唯一的办法。2026-10-25：暂时没人能去。工具已准备好（D29），去的人用 editor 账号登录正式站后台，打开“实地踏勘”，按页面上每个地点列出的任务做即可。
 5. ~~根津神社~~：负责人 2026-10-25 确认维持只开放定位打卡，不主动联系神社。
