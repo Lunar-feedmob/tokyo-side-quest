@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import sharp from "sharp";
-import type { Page } from "@playwright/test";
+import { expect, type Page } from "@playwright/test";
 
 // The TEST stack uses the fake vision provider: red → matched (S/87),
 // green → uncertain, blue → mismatched. It never runs in production.
@@ -24,7 +24,12 @@ export async function placeId(page: Page, slug: string): Promise<string> {
 export async function submitPhoto(page: Page, slug: string, colour: "red" | "green" | "blue", query = "") {
   const id = await placeId(page, slug);
   await page.goto(`/checkin/${id}${query}`);
-  await page.locator('input[type="file"]:not([capture])').setInputFiles(await colourPhoto(colour));
+  const photo = await colourPhoto(colour);
+  // A file chosen before hydration is dropped (a user would simply pick again), so retry until the preview shows.
+  await expect(async () => {
+    await page.locator('input[type="file"]:not([capture])').setInputFiles(photo);
+    await expect(page.getByAltText("待提交的照片预览")).toBeVisible({ timeout: 2_000 });
+  }).toPass({ timeout: 30_000 });
   await page.getByRole("button", { name: "提交核验" }).click();
   await page.waitForURL(/\/attempts\//u);
 }

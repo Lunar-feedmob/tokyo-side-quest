@@ -42,6 +42,8 @@ const envSchema = z.object({
   AI_VISION_MODEL: optionalString,
   AI_MODEL_CONFIG_VERSION: z.string().default("model-config-1"),
   AI_TIMEOUT_MS: z.coerce.number().int().min(1000).default(45_000),
+  // Site-wide model calls per Tokyo day; an owner can override it in the admin console.
+  AI_DAILY_CALL_LIMIT: z.coerce.number().int().min(2).default(200),
 
   DEMO_ENABLED: z.enum(["true", "false"]).default("true"),
   DEV_SIMULATED_LOCATION: boolFromString,

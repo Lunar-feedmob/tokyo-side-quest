@@ -3,6 +3,7 @@ import { sql } from "drizzle-orm";
 import { capabilities } from "@tsq/core/config/env";
 import { db } from "@tsq/core/db/client";
 import { redis } from "@tsq/core/infra/redis";
+import { aiQuotaStatus } from "@tsq/core/services/ai-quota";
 import { resolveAi, resolveMap } from "@tsq/core/services/settings";
 import { putObject, getObject } from "@tsq/core/storage/s3";
 
@@ -38,12 +39,21 @@ export async function readiness() {
         await getObject("health/probe.txt");
       })
     : { ok: false, error: "not configured" };
-  const ai = aiConfig.configured ? { ok: true } : { ok: false, error: "not configured" };
+  const quotaReached = aiConfig.configured && (await aiQuotaStatus().catch(() => null))?.exhausted === true;
+  const ai = !aiConfig.configured
+    ? { ok: false, error: "not configured" }
+    : quotaReached
+      ? { ok: false, error: "daily call limit reached" }
+      : { ok: true };
   const map = mapConfig.configured ? { ok: true } : { ok: false, error: "not configured (list view still works)" };
   const core = database.ok && queue.ok && worker.ok && storage.ok;
   return {
     ready: core,
     checks: { database, queue, worker, storage, ai, map },
-    degraded: [!ai.ok && "照片核验不可用", !map.ok && "地图不可用，仅列表"].filter(Boolean),
+    degraded: [
+      !aiConfig.configured && "照片核验不可用",
+      quotaReached && "照片核验今日额度已用完",
+      !map.ok && "地图不可用，仅列表",
+    ].filter(Boolean),
   };
 }

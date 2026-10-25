@@ -10,10 +10,10 @@
 | --- | --- | --- |
 | 类型检查 | `pnpm typecheck` | ✅ 3 个包均无错误 |
 | Lint | `pnpm lint` | ✅ 0 error、0 warning |
-| 单元测试 | `pnpm test` | ✅ 3 个文件 34/34 通过 |
-| 集成测试（真实 PG/Redis/S3，测试替身 AI） | `pnpm test:integration` | ✅ 4 个文件 27/27 通过 |
-| E2E：试玩与接口安全（dev，390 / 1440） | `pnpm test:e2e --project=mobile-390 --project=desktop-1440` | ✅ 16/16 通过（2.0 分钟） |
-| E2E：真实模式流程（隔离的测试部署，360 / 1440） | `scripts/e2e-stack.sh start` 后运行 `--project=live-360 --project=live-1440` | ✅ 18/18 通过（1.3 分钟） |
+| 单元测试 | `pnpm test` | ✅ 3 个文件 34/34 通过（2026-10-25 复跑） |
+| 集成测试（真实 PG/Redis/S3，测试替身 AI） | `pnpm test:integration` | ✅ 6 个文件 42/42 通过（2026-10-25 复跑，含后台设置和每日额度） |
+| E2E：试玩与接口安全（dev，390 / 1440） | `pnpm test:e2e --project=mobile-390 --project=desktop-1440` | ✅ 16/16 通过（2026-10-25 复跑，1.4 分钟） |
+| E2E：真实模式流程（隔离的测试部署，360 / 1440） | `scripts/e2e-stack.sh start` 后运行 `--project=live-360 --project=live-1440` | ✅ 18/18 通过（2026-10-25 复跑，1.2 分钟）。上传辅助函数改为等到预览出现再继续：服务刚启动时，页面 hydration 完成前选的文件会丢失，导致偶发失败 |
 | 生产构建 | `pnpm build` | ✅ |
 | Docker 镜像 | `docker build .` | ✅ `tokyo-side-quest:a3ce939` 构建成功，所有 API 路由均为动态（ƒ） |
 | 真实 AI 冒烟测试 | `pnpm ai:smoke` | ❌ 未运行：没有 AI Key |

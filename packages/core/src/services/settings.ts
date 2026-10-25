@@ -34,9 +34,17 @@ const storedMapSchema = z.object({
 });
 type StoredMap = z.infer<typeof storedMapSchema>;
 
+const storedQuotaSchema = z.object({
+  aiDailyCallLimit: z.number().int().min(2),
+});
+type StoredQuota = z.infer<typeof storedQuotaSchema>;
+
+type SettingKey = "ai" | "map" | "quota";
+
 interface Snapshot {
   ai: { value: StoredAi; updatedAt: Date } | null;
   map: { value: StoredMap; updatedAt: Date } | null;
+  quota: { value: StoredQuota; updatedAt: Date } | null;
 }
 
 // Web and worker are separate processes; a short TTL lets the worker pick up
@@ -51,9 +59,9 @@ export function invalidateSettingsCache(): void {
 async function snapshot(): Promise<Snapshot> {
   const hit = cache.tsqSettings;
   if (hit && Date.now() - hit.at < CACHE_TTL_MS) return hit.snapshot;
-  const s: Snapshot = { ai: null, map: null };
+  const s: Snapshot = { ai: null, map: null, quota: null };
   try {
-    const rows = await db().select().from(appSettings).where(inArray(appSettings.key, ["ai", "map"]));
+    const rows = await db().select().from(appSettings).where(inArray(appSettings.key, ["ai", "map", "quota"]));
     for (const row of rows) {
       if (row.key === "ai") {
         const parsed = storedAiSchema.safeParse(row.value);
@@ -61,6 +69,9 @@ async function snapshot(): Promise<Snapshot> {
       } else if (row.key === "map") {
         const parsed = storedMapSchema.safeParse(row.value);
         if (parsed.success) s.map = { value: parsed.data, updatedAt: row.updatedAt };
+      } else if (row.key === "quota") {
+        const parsed = storedQuotaSchema.safeParse(row.value);
+        if (parsed.success) s.quota = { value: parsed.data, updatedAt: row.updatedAt };
       }
     }
   } catch (error) {
@@ -210,7 +221,7 @@ export async function draftAi(input: AiSettingsInput): Promise<{ provider: AiPro
   };
 }
 
-async function upsert(key: "ai" | "map", value: Record<string, unknown>, adminId: string) {
+async function upsert(key: SettingKey, value: Record<string, unknown>, adminId: string) {
   await db()
     .insert(appSettings)
     .values({ key, value, updatedBy: adminId })
@@ -279,9 +290,32 @@ export async function saveMapSettings(admin: AdminPrincipal, input: z.infer<type
   return adminSettingsView();
 }
 
+// ── Daily AI quota ──────────────────────────────────────────────────────────
+
+/** Site-wide model calls allowed per Tokyo day: admin settings first, then the environment. */
+export async function resolveAiDailyLimit(): Promise<{ source: "settings" | "env"; limit: number }> {
+  const saved = (await snapshot()).quota;
+  return saved ? { source: "settings", limit: saved.value.aiDailyCallLimit } : { source: "env", limit: env().AI_DAILY_CALL_LIMIT };
+}
+
+export const quotaSettingsInputSchema = z.object({
+  aiDailyCallLimit: z.coerce
+    .number({ error: "请填写每日调用上限" })
+    .int("每日调用上限必须是整数")
+    .min(2, "每日调用上限至少为 2（一张照片通常要调用 2 次）")
+    .max(100_000, "每日调用上限不能超过 100000"),
+});
+
+export async function saveQuotaSettings(admin: AdminPrincipal, input: z.infer<typeof quotaSettingsInputSchema>) {
+  const stored: StoredQuota = { aiDailyCallLimit: input.aiDailyCallLimit };
+  await upsert("quota", stored, admin.id);
+  await audit({ actorType: "admin", actorId: admin.id, action: "settings.quota.save", targetType: "settings", targetId: "quota", meta: stored });
+  return adminSettingsView();
+}
+
 // ── Shared ──────────────────────────────────────────────────────────────────
 
-export async function clearSettings(admin: AdminPrincipal, key: "ai" | "map") {
+export async function clearSettings(admin: AdminPrincipal, key: SettingKey) {
   await db().delete(appSettings).where(inArray(appSettings.key, [key]));
   invalidateSettingsCache();
   await audit({ actorType: "admin", actorId: admin.id, action: `settings.${key}.clear`, targetType: "settings", targetId: key });
@@ -322,6 +356,13 @@ export async function adminSettingsView() {
       effective: { source: map.source, configured: map.configured },
       saved: s.map ? { provider: s.map.value.provider, style: s.map.value.style, apiKey: s.map.value.apiKey, updatedAt: s.map.updatedAt.toISOString() } : null,
       styles: MAPTILER_STYLES,
+    },
+    quota: {
+      effective: s.quota
+        ? { source: "settings" as const, aiDailyCallLimit: s.quota.value.aiDailyCallLimit }
+        : { source: "env" as const, aiDailyCallLimit: env().AI_DAILY_CALL_LIMIT },
+      saved: s.quota ? { aiDailyCallLimit: s.quota.value.aiDailyCallLimit, updatedAt: s.quota.updatedAt.toISOString() } : null,
+      env: { aiDailyCallLimit: env().AI_DAILY_CALL_LIMIT },
     },
   };
 }

@@ -109,12 +109,14 @@ export function PhotoSubmit(props: {
       );
       router.push(`/attempts/${r.attemptId}`);
     } catch (e) {
-      const message = e instanceof ApiError && e.code === "AI_NOT_CONFIGURED" ? e.message : errorText(e);
+      const message =
+        e instanceof ApiError && (e.code === "AI_NOT_CONFIGURED" || e.code === "AI_DAILY_LIMIT_REACHED") ? e.message : errorText(e);
       setPhase({ kind: "error", message });
     }
   }
 
   const aiUnavailable = caps !== null && !caps.ai.available;
+  const limitReached = caps !== null && caps.ai.available && caps.ai.dailyLimitReached;
   const busy = phase.kind === "uploading" || phase.kind === "submitting";
 
   return (
@@ -143,6 +145,16 @@ export function PhotoSubmit(props: {
         </p>
       )}
 
+      {limitReached && (
+        <p className="notice notice-warn text-sm">
+          今天的照片核验名额已经用完，东京时间明天 0 点恢复。你可以先使用定位打卡，或去
+          <Link href="/demo" className="underline">
+            在线试玩
+          </Link>
+          。
+        </p>
+      )}
+
       <input ref={cameraInput} type="file" accept={ACCEPT} capture="environment" className="sr-only" onChange={(e) => choose(e.target.files?.[0])} tabIndex={-1} aria-hidden />
       <input ref={albumInput} type="file" accept={ACCEPT} className="sr-only" onChange={(e) => choose(e.target.files?.[0])} tabIndex={-1} aria-hidden />
 
@@ -163,7 +175,7 @@ export function PhotoSubmit(props: {
             <button type="button" className="btn btn-quiet" disabled={busy} onClick={() => albumInput.current?.click()}>
               更换照片
             </button>
-            <button type="button" className="btn btn-primary flex-1" disabled={busy || aiUnavailable} onClick={() => void submit()}>
+            <button type="button" className="btn btn-primary flex-1" disabled={busy || aiUnavailable || limitReached} onClick={() => void submit()}>
               {phase.kind === "uploading"
                 ? `上传中 ${Math.round(phase.fraction * 100)}%`
                 : phase.kind === "submitting"

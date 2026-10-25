@@ -18,6 +18,21 @@ interface SettingsView {
     saved: { provider: "maptiler"; style: string; apiKey: string; updatedAt: string } | null;
     styles: string[];
   };
+  quota: {
+    effective: { source: "settings" | "env"; aiDailyCallLimit: number };
+    saved: { aiDailyCallLimit: number; updatedAt: string } | null;
+    env: { aiDailyCallLimit: number };
+  };
+}
+
+interface QuotaStatus {
+  limit: number;
+  used: number;
+  pending: number;
+  estimatedCostUsd: number;
+  unpricedCalls: number;
+  resetsAt: string;
+  exhausted: boolean;
 }
 
 interface TestResult {
@@ -64,6 +79,7 @@ export function SettingsAdmin() {
   return (
     <div className="space-y-8">
       <AiSettings view={view} onSaved={setView} />
+      <QuotaSettings view={view} onSaved={setView} />
       <MapSettings view={view} onSaved={setView} />
     </div>
   );
@@ -192,6 +208,90 @@ function AiSettings({ view, onSaved }: { view: SettingsView; onSaved: (v: Settin
       )}
       <p className="text-xs text-muted">
         “测试连接”会用表单里的值发一次真实请求（一张纯色小图，会产生少量费用），不会保存。更换协议、接口地址或模型后，之前的识别结果不再复用，会重新调用模型。
+      </p>
+    </section>
+  );
+}
+
+function QuotaSettings({ view, onSaved }: { view: SettingsView; onSaved: (v: SettingsView) => void }) {
+  const saved = view.quota.saved;
+  const [limit, setLimit] = useState(String(view.quota.effective.aiDailyCallLimit));
+  const [status, setStatus] = useState<QuotaStatus | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+
+  const refresh = useCallback(() => {
+    apiGet<QuotaStatus>("/admin/settings/quota").then(setStatus).catch(() => setStatus(null));
+  }, []);
+  useEffect(refresh, [refresh]);
+
+  async function run(kind: "save" | "clear") {
+    setBusy(true);
+    setMsg(null);
+    try {
+      const next =
+        kind === "save"
+          ? await apiPost<SettingsView>("/admin/settings/quota", { aiDailyCallLimit: Number(limit) })
+          : await apiDelete<SettingsView>("/admin/settings/quota");
+      onSaved(next);
+      setLimit(String(next.quota.effective.aiDailyCallLimit));
+      setMsg({ ok: true, text: kind === "save" ? "已保存，最多 10 秒内生效。" : "已清除后台设置。" });
+      refresh();
+    } catch (e) {
+      setMsg({ ok: false, text: describe(e) });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const eff = view.quota.effective;
+  return (
+    <section className="card space-y-4 p-5" aria-labelledby="quota-settings">
+      <div>
+        <h2 id="quota-settings" className="text-lg font-bold">
+          照片核验 · 每日额度
+        </h2>
+        {status && (
+          <p className={`notice mt-2 text-sm ${status.exhausted ? "notice-warn" : "notice-ok"}`}>
+            今天（东京时间）已调用 {status.used} 次{status.pending > 0 && `，排队中的照片预计还要 ${status.pending} 次`}，上限 {status.limit} 次。
+            估算费用 ${status.estimatedCostUsd.toFixed(2)}
+            {status.unpricedCalls > 0 && `（另有 ${status.unpricedCalls} 次调用无法估算）`}。
+            {status.exhausted && ` 今日额度已用完，用户提交照片会被拒绝，${tokyoDateTime(status.resetsAt)} 恢复。`}
+          </p>
+        )}
+        <p className="mt-1 text-xs text-muted">
+          当前上限来自{eff.source === "settings" ? "后台设置" : `环境变量（.env，${view.quota.env.aiDailyCallLimit} 次）`}。
+          {saved && ` 上次保存：${tokyoDateTime(saved.updatedAt)}。`}
+        </p>
+      </div>
+      <form
+        className="grid gap-4 md:grid-cols-2"
+        onSubmit={(e) => {
+          e.preventDefault();
+          void run("save");
+        }}
+      >
+        <Field id="quota-limit" label="每日调用上限（次）" hint="全站每天（东京时间 0 点重置）最多调用模型的次数。一张照片通常调用 2 次：核验 1 次，匹配后评分 1 次。">
+          <input id="quota-limit" type="number" min={2} max={100000} step={1} className={INPUT} value={limit} onChange={(e) => setLimit(e.target.value)} required />
+        </Field>
+        <div className="flex flex-wrap items-end gap-2">
+          <button type="submit" className="btn btn-primary" disabled={busy}>
+            保存
+          </button>
+          {saved && (
+            <button type="button" className="btn btn-quiet" disabled={busy} onClick={() => void run("clear")}>
+              清除后台设置
+            </button>
+          )}
+        </div>
+      </form>
+      {msg && (
+        <p role="status" className={`notice text-sm ${msg.ok ? "notice-ok" : "notice-danger"}`}>
+          {msg.text}
+        </p>
+      )}
+      <p className="text-xs text-muted">
+        额度不够一张照片时，新的照片提交和重试会被拒绝，并提示用户明天再来或改用定位打卡；已经受理的照片会照常处理完。同一张照片在新故事里复用已有结果，不调用模型，也不受额度限制。“测试连接”不计入。
       </p>
     </section>
   );

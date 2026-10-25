@@ -20,6 +20,7 @@ import { describeAttempt, retryableStage, type Mode } from "../domain/status";
 import { AppError } from "../http/errors";
 import { enforceRateLimit } from "../infra/rate-limit";
 import { enqueueInTx } from "../queue/outbox";
+import { enforceAiDailyLimit } from "./ai-quota";
 import { evaluatePosition } from "./checkins";
 import { loadOwnReadyAsset } from "./photos";
 import { loadCheckinPlace } from "./places";
@@ -88,6 +89,17 @@ export async function createPhotoAttempt(
       .where(eq(photoAttempts.dedupeKey, dedupeKey))
       .limit(1);
     if (existing) return { attemptId: existing.id, created: false };
+
+    // Only work that will call the model counts against the daily budget; a
+    // finished evaluation (same photo in a new story context) is reused for free.
+    const [cached] = await tx
+      .select({ status: photoEvaluations.verificationStatus })
+      .from(photoEvaluations)
+      .where(eq(photoEvaluations.cacheKey, evalKey))
+      .limit(1);
+    if (!cached || !["matched", "uncertain", "mismatched"].includes(cached.status)) {
+      await enforceAiDailyLimit("verify");
+    }
 
     // Rate-limit only new work; returning an existing attempt is free.
     const e = env();
@@ -388,6 +400,7 @@ export async function retryAttempt(opts: { visitorId: string; attemptId: string 
     if (stage === "verify" && a.mode === "live" && !(await currentAiVersions("live"))) {
       throw new AppError("AI_NOT_CONFIGURED", "照片核验服务暂未开通");
     }
+    if (a.mode === "live") await enforceAiDailyLimit(stage);
     const retryCount = a.retryCount + 1;
     await tx
       .update(photoAttempts)

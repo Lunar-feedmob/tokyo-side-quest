@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { apiGet } from "@/lib/client/api";
 
 interface Caps {
-  ai: { available: boolean; testDouble: boolean };
+  ai: { available: boolean; testDouble: boolean; dailyLimitReached: boolean; resetsAt: string | null };
   storage: { available: boolean };
   map: { available: boolean; styleUrl: string | null };
   demo: boolean;
