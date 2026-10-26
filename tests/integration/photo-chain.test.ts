@@ -11,7 +11,8 @@ const attempts = await import("@tsq/core/services/attempts");
 const { processVerify, processRate, markStageFailed } = await import("@tsq/core/services/processing");
 const { locationCheckin } = await import("@tsq/core/services/checkins");
 const quests = await import("@tsq/core/services/quests");
-const { publishOutboxBatch } = await import("@tsq/core/queue/outbox");
+const { enqueueInTx, publishOutboxBatch, queueJobId } = await import("@tsq/core/queue/outbox");
+const { requestVisitorDeletion } = await import("@tsq/core/services/deletion");
 const { closeQueues, queue, QUEUES } = await import("@tsq/core/queue/queues");
 const { AppError } = await import("@tsq/core/http/errors");
 const { AiError } = await import("@tsq/core/ai/index");
@@ -33,6 +34,7 @@ beforeEach(async () => {
 });
 afterAll(async () => {
   await queue(QUEUES.attempts).obliterate({ force: true }).catch(() => undefined);
+  await queue(QUEUES.maintenance).obliterate({ force: true }).catch(() => undefined);
   await closeQueues();
   await closeRedis();
   await closeDb();
@@ -222,10 +224,47 @@ describe("photo vertical chain", () => {
     const { attemptId } = await submit(visitorId, "#c7372f");
     expect(await publishOutboxBatch()).toBe(1);
     expect(await publishOutboxBatch()).toBe(0);
-    const job = await queue(QUEUES.attempts).getJob(`${attemptId}:verify:0`);
+    const job = await queue(QUEUES.attempts).getJob(queueJobId(`${attemptId}:verify:0`));
     expect(job?.name).toBe("verify");
     const [row] = await db().select().from(schema.outboxEvents);
     expect(row?.publishedAt).not.toBeNull();
+  });
+
+  it("a visitor deletion request reaches the queue (its stored job id has a single colon)", async () => {
+    const visitorId = await newVisitor();
+    await requestVisitorDeletion(visitorId);
+    expect(await publishOutboxBatch()).toBe(1);
+    const [row] = await db().select().from(schema.outboxEvents);
+    expect(row?.jobId).toBe(`${visitorId}:visitor-delete`);
+    expect(row?.publishedAt).not.toBeNull();
+    expect(row?.lastError).toBeNull();
+    const job = await queue(QUEUES.maintenance).getJob(queueJobId(`${visitorId}:visitor-delete`));
+    expect(job?.name).toBe("visitor-delete");
+  });
+
+  it("a row the queue refuses is recorded and skipped; rows behind it still publish", async () => {
+    // BullMQ refuses integer custom ids, which stands in for any id it will never accept.
+    const refused = crypto.randomUUID();
+    await enqueueInTx(db(), "visitor.delete", refused, "424242");
+    const visitorId = await newVisitor();
+    await requestVisitorDeletion(visitorId);
+
+    const failures: { id: number; error: string }[] = [];
+    expect(await publishOutboxBatch(50, (f) => failures.push(f))).toBe(1);
+    expect(failures).toHaveLength(1);
+    expect(failures[0]!.error).toMatch(/integer/u);
+
+    const rows = await db().select().from(schema.outboxEvents).orderBy(schema.outboxEvents.id);
+    expect(rows[0]).toMatchObject({ aggregateId: refused, publishedAt: null, publishAttempts: 1 });
+    expect(rows[0]!.lastError).toMatch(/integer/u);
+    expect(rows[1]!.publishedAt).not.toBeNull();
+    expect(await queue(QUEUES.maintenance).getJob(queueJobId(`${visitorId}:visitor-delete`))).toBeTruthy();
+
+    // A later batch tries fresh rows first and the refused row again after them.
+    const fresh = await newVisitor();
+    await requestVisitorDeletion(fresh);
+    expect(await publishOutboxBatch(1)).toBe(1);
+    expect(await queue(QUEUES.maintenance).getJob(queueJobId(`${fresh}:visitor-delete`))).toBeTruthy();
   });
 
   it("without AI configured, live submission is refused instead of faked (I15)", async () => {

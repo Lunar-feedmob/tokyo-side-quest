@@ -91,8 +91,14 @@ async function main() {
   const publishLoop = async () => {
     while (!stopping) {
       try {
-        const n = await publishOutboxBatch();
-        if (n === 0) await new Promise((r) => setTimeout(r, 500));
+        let failed = 0;
+        const n = await publishOutboxBatch(50, (f) => {
+          failed += 1;
+          log("outbox publish failed", { outbox_id: f.id, type: f.type, error: f.error });
+        });
+        // Back off while some rows keep failing, so a refused row is not retried in a hot loop.
+        if (failed > 0) await new Promise((r) => setTimeout(r, 5000));
+        else if (n === 0) await new Promise((r) => setTimeout(r, 500));
       } catch (error) {
         log("outbox publish failed", { error: error instanceof Error ? error.message : String(error) });
         await new Promise((r) => setTimeout(r, 2000));
