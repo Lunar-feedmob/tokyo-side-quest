@@ -8,13 +8,20 @@ import type { PlaceContent } from "./schema";
 import { closeRedis } from "../infra/redis";
 import { ensureBucket } from "../storage/s3";
 
-// `pnpm db:seed`: imports the Yanaka launch content. Reference photos are
-// fetched from Wikimedia Commons (licences recorded in
-// content/sources/reference-images.json) and cached under content/.cache.
+// `pnpm db:seed [slug…]`: imports neighbourhood content (all of them, or only
+// the slugs given). Reference photos are fetched from Wikimedia Commons
+// (licences recorded in content/sources/reference-images.json) and cached
+// under content/.cache.
 
 const root = fileURLToPath(new URL("../../../../", import.meta.url));
 const cacheDir = `${root}content/.cache/commons`;
 const USER_AGENT = "TokyoSideQuest/0.1 (content seeding; https://github.com/toller892/tokyo-side-quest)";
+
+/** Content folders under content/, each with a places.json; quests are files in the same folder. */
+const NEIGHBORHOODS: { dir: string; quests: string[] }[] = [
+  { dir: "yanaka", quests: ["quest-lost-postcard.json"] },
+  { dir: "asakusabashi", quests: [] },
+];
 
 interface RefSource {
   /** Where the licence was checked; Commons when absent. */
@@ -94,8 +101,9 @@ async function unclearVariant(bytes: Buffer): Promise<Buffer> {
 }
 
 async function main() {
-  const placesFile = JSON.parse(await readFile(`${root}content/yanaka/places.json`, "utf8"));
-  const quest = JSON.parse(await readFile(`${root}content/yanaka/quest-lost-postcard.json`, "utf8")) as SeedQuest;
+  const only = process.argv.slice(2).filter((a) => a !== "--");
+  const unknown = only.filter((slug) => !NEIGHBORHOODS.some((n) => n.dir === slug));
+  if (unknown.length) throw new Error(`unknown neighbourhood: ${unknown.join(", ")}`);
   const sources = JSON.parse(await readFile(`${root}content/sources/reference-images.json`, "utf8")) as {
     places: Record<string, RefSource[]>;
   };
@@ -103,65 +111,70 @@ async function main() {
 
   // Location-only places whose rules forbid redistributing photos get no stored references.
   const skipReferences = new Set(["nezu-shrine", "yomise-dori"]);
-  // Demo samples: the last licensed photo of each place is held out of the reference set.
-  const demoMatch = new Map<string, Buffer>();
-
-  const seedPlaces: SeedPlace[] = [];
-  for (const p of placesFile.places as (Omit<SeedPlace, "references" | "content"> & { content: PlaceContent; photoNote?: string })[]) {
-    const refs = skipReferences.has(p.slug) ? [] : (sources.places[p.slug] ?? []);
-    const downloaded = [];
-    for (const r of refs) {
-      process.stdout.write(`  下载参考图 ${p.slug}: ${r.file}\n`);
-      downloaded.push({ src: r, bytes: await downloadReference(r) });
-    }
-    let references = downloaded;
-    if (p.photoEnabled && downloaded.length > 3) {
-      const held = downloaded[downloaded.length - 1]!;
-      demoMatch.set(p.slug, held.bytes);
-      references = downloaded.slice(0, -1);
-    } else if (p.photoEnabled && downloaded[0]) {
-      demoMatch.set(p.slug, downloaded[0].bytes);
-    }
-    seedPlaces.push({
-      slug: p.slug,
-      nameZh: p.nameZh,
-      nameJa: p.nameJa,
-      nameEn: p.nameEn,
-      latitude: p.latitude,
-      longitude: p.longitude,
-      radiusM: p.radiusM,
-      photoEnabled: p.photoEnabled,
-      tags: p.tags,
-      stayMinutes: p.stayMinutes,
-      content: p.content,
-      references: references.map(({ src, bytes }) => ({
-        bytes,
-        viewNote: src.viewNote,
-        sourceUrl: src.filePageUrl,
-        author: src.author,
-        license: src.license,
-        usageBasis: `${src.provider === "flickr" ? "Flickr" : "Wikimedia Commons"} ${src.license}${src.licenseUrl ? ` (${src.licenseUrl})` : ""}；需署名${src.license.includes("SA") ? "，衍生作品以相同协议发布" : ""}`,
-        publicDisplay: src.publicDisplay,
-        capturedOn: src.photoDate,
-      })),
-    });
-  }
-
   // "Other place" demo sample: a licensed photo of a different place (Nezu shrine gate).
   const nezu = sources.places["nezu-shrine"]?.[0];
   const otherPlace = nezu ? await downloadReference(nezu) : null;
 
-  const result = await seedContent({
-    neighborhood: placesFile.neighborhood,
-    places: seedPlaces,
-    quests: [quest],
-    sampleImages: async (slug) => {
-      const match = demoMatch.get(slug);
-      if (!match || !otherPlace) return null;
-      return { match, unclear: await unclearVariant(match), other: otherPlace };
-    },
-  });
-  console.log(`种子数据完成：${Object.keys(result.places).length} 个地点`);
+  for (const hood of NEIGHBORHOODS.filter((n) => only.length === 0 || only.includes(n.dir))) {
+    const placesFile = JSON.parse(await readFile(`${root}content/${hood.dir}/places.json`, "utf8"));
+    const quests: SeedQuest[] = [];
+    for (const file of hood.quests) quests.push(JSON.parse(await readFile(`${root}content/${hood.dir}/${file}`, "utf8")) as SeedQuest);
+
+    // Demo samples: the last licensed photo of each place is held out of the reference set.
+    const demoMatch = new Map<string, Buffer>();
+    const seedPlaces: SeedPlace[] = [];
+    for (const p of placesFile.places as (Omit<SeedPlace, "references" | "content"> & { content: PlaceContent; photoNote?: string })[]) {
+      const refs = skipReferences.has(p.slug) ? [] : (sources.places[p.slug] ?? []);
+      const downloaded = [];
+      for (const r of refs) {
+        process.stdout.write(`  下载参考图 ${p.slug}: ${r.file}\n`);
+        downloaded.push({ src: r, bytes: await downloadReference(r) });
+      }
+      let references = downloaded;
+      if (p.photoEnabled && downloaded.length > 3) {
+        const held = downloaded[downloaded.length - 1]!;
+        demoMatch.set(p.slug, held.bytes);
+        references = downloaded.slice(0, -1);
+      } else if (p.photoEnabled && downloaded[0]) {
+        demoMatch.set(p.slug, downloaded[0].bytes);
+      }
+      seedPlaces.push({
+        slug: p.slug,
+        nameZh: p.nameZh,
+        nameJa: p.nameJa,
+        nameEn: p.nameEn,
+        latitude: p.latitude,
+        longitude: p.longitude,
+        radiusM: p.radiusM,
+        photoEnabled: p.photoEnabled,
+        tags: p.tags,
+        stayMinutes: p.stayMinutes,
+        content: p.content,
+        references: references.map(({ src, bytes }) => ({
+          bytes,
+          viewNote: src.viewNote,
+          sourceUrl: src.filePageUrl,
+          author: src.author,
+          license: src.license,
+          usageBasis: `${src.provider === "flickr" ? "Flickr" : "Wikimedia Commons"} ${src.license}${src.licenseUrl ? ` (${src.licenseUrl})` : ""}；需署名${src.license.includes("SA") ? "，衍生作品以相同协议发布" : ""}`,
+          publicDisplay: src.publicDisplay,
+          capturedOn: src.photoDate,
+        })),
+      });
+    }
+
+    const result = await seedContent({
+      neighborhood: placesFile.neighborhood,
+      places: seedPlaces,
+      quests,
+      sampleImages: async (slug) => {
+        const match = demoMatch.get(slug);
+        if (!match || !otherPlace) return null;
+        return { match, unclear: await unclearVariant(match), other: otherPlace };
+      },
+    });
+    console.log(`种子数据完成：${placesFile.neighborhood.nameZh} ${Object.keys(result.places).length} 个地点`);
+  }
 }
 
 main()
