@@ -81,6 +81,7 @@ Docker 与 HTTPS 部署见 [docs/deployment.md](docs/deployment.md)。
 - [AI 评估](docs/ai-evaluation.md)
 - [验收报告](docs/acceptance.md)
 - [部署](docs/deployment.md)
+- [功能演示视频](docs/video/README.md)：4 分钟录屏讲解，带配音和字幕
 
 ## 许可证
 
