@@ -58,6 +58,8 @@ export interface SeedInput {
     nameEn: string | null;
     summary: string;
     center: { latitude: number; longitude: number };
+    /** Position in the neighbourhood picker; lower comes first. */
+    sortOrder?: number;
   };
   places: SeedPlace[];
   quests: SeedQuest[];
@@ -79,10 +81,11 @@ export async function seedContent(input: SeedInput) {
       summary: n.summary,
       center: point(n.center.latitude, n.center.longitude) as unknown as string,
       status: "published",
+      sortOrder: n.sortOrder ?? 0,
     })
     .onConflictDoUpdate({
       target: neighborhoods.slug,
-      set: { nameZh: n.nameZh, nameJa: n.nameJa, nameEn: n.nameEn, summary: n.summary, status: "published" },
+      set: { nameZh: n.nameZh, nameJa: n.nameJa, nameEn: n.nameEn, summary: n.summary, status: "published", sortOrder: n.sortOrder ?? 0 },
     })
     .returning({ id: neighborhoods.id });
 

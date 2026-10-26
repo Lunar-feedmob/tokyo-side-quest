@@ -12,6 +12,7 @@
 
 - 发现附近：只在用户主动点击后定位，定位失败、拒绝或超时时可以手动选择街区；PostGIS 按直线距离检索；有地图和列表两种视图（未配置底图时只显示列表）。
 - 首发街区谷中：6 个地点档案，坐标和资料都标注来源（桌面核对）；原创故事《猫店长的失落明信片》有 4 个主要任务。
+- 第二个街区浅草桥（2026-10-26 新增）：柳桥、鸟越神社 2 个自由探索地点，同样是桌面核对。
 - 定位打卡：由服务端计算距离，并检查定位精度和读数时间；靠近边界时提示重新定位；原始坐标在 24 小时后清除。
 - 拍照打卡：照片清除 EXIF 后异步处理，**先核对地点，再评价摄影**，七档等级由服务端根据分数计算；有缓存去重、失败重试和人工复核。
 - 访客身份（无需注册）、足迹、印章（数据库唯一约束保证不重复发放）、作品和历史最佳、故事进度（可结束、可恢复）。
@@ -31,7 +32,7 @@ pnpm fonts:fetch            # 下载并校验票根所需的 Noto CJK 字体（O
 cp .env.example .env        # 填写 SESSION_SECRET（openssl rand -hex 32）
 docker compose up -d        # PostGIS、Redis、SeaweedFS（S3 兼容）
 pnpm db:migrate
-pnpm db:seed                # 导入谷中内容；会从 Wikimedia Commons 下载授权参考图
+pnpm db:seed                # 导入全部街区内容；会从 Wikimedia Commons 下载授权参考图
 pnpm dev                    # Web：http://localhost:3000
 pnpm worker:dev             # 另开一个终端：后台 Worker（核验、评分、海报、删除）
 ```

@@ -18,6 +18,7 @@ docker build --build-arg APP_BASE_URL=https://你的域名 -t tokyo-side-quest:$
 cp .env.example tsq.env   # 填写生产值：SESSION_SECRET、存储、AI、MAP 等
 POSTGRES_PASSWORD=... TSQ_VERSION=<tag> docker compose -f docker-compose.prod.yml up -d
 docker compose -f docker-compose.prod.yml run --rm web pnpm db:seed      # 首次导入内容（需要访问 Wikimedia）
+docker compose -f docker-compose.prod.yml run --rm web pnpm db:seed asakusabashi   # 以后新增街区时只导入这个街区，已有街区不动
 docker compose -f docker-compose.prod.yml run --rm -it web pnpm admin:create
 ```
 

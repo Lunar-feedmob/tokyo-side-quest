@@ -1,5 +1,5 @@
 {
-  "_note": "Reference photos for photo verification. Real photos only (no AI-generated images). Generated from content/research/yanaka-places.json on 2026-10-23; licences as stated on each Wikimedia Commons file page at that date. Entries with \"provider\": \"flickr\" were added on 2026-10-25 with the licence shown on the Flickr photo page; they are downloaded from originalUrl as published there. Not legal advice.",
+  "_note": "Reference photos for photo verification. Real photos only (no AI-generated images). Generated from content/research/yanaka-places.json on 2026-10-23; licences as stated on each Wikimedia Commons file page at that date. Entries with \"provider\": \"flickr\" were added on 2026-10-25 with the licence shown on the Flickr photo page; they are downloaded from originalUrl as published there. Not legal advice. Entries for \"yanagibashi\" and \"torigoe-jinja\" (Asakusabashi) were added on 2026-10-26 with the licence on each Commons file page at that date.",
   "places": {
     "yuyake-dandan": [
       {
@@ -321,6 +321,142 @@
         "photoDate": "2022-04-09 11:29:24",
         "viewNote": "Wide view from the approach: 神橋, 楼門, trees, gravel plaza. 2022-04.",
         "publicDisplay": false
+      }
+    ],
+    "yanagibashi": [
+      {
+        "file": "File:隅田川 柳橋 ぺんてる 2014 (15701363132).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:%E9%9A%85%E7%94%B0%E5%B7%9D_%E6%9F%B3%E6%A9%8B_%E3%81%BA%E3%82%93%E3%81%A6%E3%82%8B_2014_(15701363132).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/%E9%9A%85%E7%94%B0%E5%B7%9D_%E6%9F%B3%E6%A9%8B_%E3%81%BA%E3%82%93%E3%81%A6%E3%82%8B_2014_%2815701363132%29.jpg",
+        "author": "Jim Shine from Tokyo, Japan",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "photoDate": "Taken on 3 November 2014, 14:53",
+        "viewNote": "Daytime at one bridge end: both green riveted arch ribs over the roadway, hangers, green railings and stone footway. 2014-11.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:015 柳橋 - panoramio.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:015_%E6%9F%B3%E6%A9%8B_-_panoramio.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/015_%E6%9F%B3%E6%A9%8B_-_panoramio.jpg",
+        "author": "arashio1",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "photoDate": "Taken on 29 October 2011",
+        "viewNote": "Daytime from the road at the bridge end: green arch ribs framing the roadway, green railings, a roadside tree. 2011-10.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Asakusabashi stand boat IMG 9893.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Asakusabashi_stand_boat_IMG_9893.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Asakusabashi_stand_boat_IMG_9893.jpg",
+        "author": "Bject",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "Taken on 16 July 2022, 14:08:10",
+        "viewNote": "Daytime from Asakusabashi looking downstream (east): wooden boathouses and moored yakatabune on the Kanda River, Yanagibashi's green arch in the distance. 2022-07.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Yahagibashi.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yahagibashi.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Yahagibashi.jpg",
+        "author": "Takaxtaka01",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "photoDate": "2008-05-17 (date stamp in image)",
+        "viewNote": "Night on the bridge footway: green arch rib with lit strip along its top, hangers and footway lamps. 2008-05 (date stamped in the image; file title misspelt).",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Kanda-gawa river.神田川 (14745522706).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kanda-gawa_river.%E7%A5%9E%E7%94%B0%E5%B7%9D_(14745522706).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/27/Kanda-gawa_river.%E7%A5%9E%E7%94%B0%E5%B7%9D_%2814745522706%29.jpg",
+        "author": "T.Kiya from Japan",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "photoDate": "Taken on 28 July 2014 22:07",
+        "viewNote": "Night from Asakusabashi looking downstream: houseboats on both banks, Yanagibashi lit green at the far end, reflections. 2014-07.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Yanagi-bash bridge. 柳橋 (14714842581).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Yanagi-bash_bridge._%E6%9F%B3%E6%A9%8B_(14714842581).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Yanagi-bash_bridge._%E6%9F%B3%E6%A9%8B_%2814714842581%29.jpg",
+        "author": "T.Kiya from Japan",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "photoDate": "Taken on 22 July 2014 22:19",
+        "viewNote": "Night from Asakusabashi bridge (GPS on file page) looking downstream: moored houseboats and the green-lit arch of Yanagibashi. 2014-07.",
+        "publicDisplay": true
+      }
+    ],
+    "torigoe-jinja": [
+      {
+        "file": "File:Torikoe Shrine, June 2023 (left).jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Torikoe_Shrine,_June_2023_(left).jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/77/Torikoe_Shrine%2C_June_2023_%28left%29.jpg",
+        "author": "Uraniwa",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "photoDate": "2023-06-17 11:35:27",
+        "viewNote": "Haiden front: karahafu gable with white edge, dark wooden frame, black offering box with gold crest, left komainu on tall stone base, white stone fence. A visitor with a parasol at the right edge. 2023-06.",
+        "publicDisplay": false
+      },
+      {
+        "file": "File:鳥越神社社殿20220423-P1350761.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:%E9%B3%A5%E8%B6%8A%E7%A5%9E%E7%A4%BE%E7%A4%BE%E6%AE%BF20220423-P1350761.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/%E9%B3%A5%E8%B6%8A%E7%A5%9E%E7%A4%BE%E7%A4%BE%E6%AE%BF20220423-P1350761.jpg",
+        "author": "くろふね",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "photoDate": "2022-04-23 09:37:01",
+        "viewNote": "Haiden front from the stone-paved approach: karahafu, komainu on both sides, low wooden barriers. 2022-04.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Torikoe Shrine-2.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Torikoe_Shrine-2.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Torikoe_Shrine-2.jpg",
+        "author": "Immanuelle",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "photoDate": "10 August 2024, 10:08:48",
+        "viewNote": "Portrait view along the stone-paved approach toward the haiden, from beside a building on the left. 2024-08.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:TorigoeJinja.JPG",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:TorigoeJinja.JPG",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/TorigoeJinja.JPG",
+        "author": "Saxup",
+        "license": "Public domain",
+        "licenseUrl": null,
+        "photoDate": "before 2009-06-01 (upload date)",
+        "viewNote": "Haiden front in spring with a flowering tree at left; left komainu and white fence. Undated; uploaded 2009-06.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:鳥越神社 - panoramio.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:%E9%B3%A5%E8%B6%8A%E7%A5%9E%E7%A4%BE_-_panoramio.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/%E9%B3%A5%E8%B6%8A%E7%A5%9E%E7%A4%BE_-_panoramio.jpg",
+        "author": "Akeiro Torii",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "photoDate": "Taken on 25 January 2009",
+        "viewNote": "Haiden front from the end of the approach: both komainu, white fences, flat paving. 2009-01.",
+        "publicDisplay": true
+      },
+      {
+        "file": "File:Torikoe Shrine-1.jpg",
+        "filePageUrl": "https://commons.wikimedia.org/wiki/File:Torikoe_Shrine-1.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/73/Torikoe_Shrine-1.jpg",
+        "author": "Immanuelle",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "photoDate": "10 August 2024, 10:08:47",
+        "viewNote": "Portrait view down the long stone-paved approach to the haiden, eaves of a side building at left. 2024-08.",
+        "publicDisplay": true
       }
     ]
   }

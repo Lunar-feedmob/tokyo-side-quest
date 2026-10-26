@@ -1,0 +1,95 @@
+{
+  "_note": "第二个街区（自由探索，没有故事）。坐标、介绍与文化细节为桌面核对（verificationLevel=desk），尚未实地核验。来源见各条目与 content/research/asakusabashi-places.md。",
+  "neighborhood": {
+    "slug": "asakusabashi",
+    "nameZh": "浅草桥",
+    "nameJa": "浅草橋",
+    "nameEn": "Asakusabashi",
+    "summary": "神田川汇入隅田川的河口一带：昭和初年的钢拱桥、屋形船停泊的河岸和下町老神社，从 JR 浅草桥站步行可到。",
+    "center": { "latitude": 35.6986, "longitude": 139.7866 },
+    "centerNote": "由下列两个地点坐标估算的街区中心（JR 浅草桥站附近），仅用于地图初始视角。",
+    "sortOrder": 1
+  },
+  "places": [
+    {
+      "slug": "yanagibashi",
+      "nameZh": "柳桥",
+      "nameJa": "柳橋",
+      "nameEn": "Yanagibashi Bridge",
+      "latitude": 35.6952066,
+      "longitude": 139.7874674,
+      "radiusM": 50,
+      "photoEnabled": true,
+      "photoNote": "参考图拍摄于 2008–2022 年，夜景和白天各半；桥本体是登录文化财，核验以绿色拱桥本体为准。",
+      "tags": ["桥梁", "河岸", "近代建筑"],
+      "stayMinutes": 15,
+      "content": {
+        "intro": "柳桥架在神田川汇入隅田川前的最后一段，连接台东区柳桥一丁目与中央区东日本桥二丁目，从 JR 浅草桥站步行约 5 分钟。现在的桥于 1929 年竣工，是关东大地震后的复兴桥梁，为下承式钢制系杆拱桥，长约 38 米、宽约 11 米，1999 年登录为中央区区民有形文化财。",
+        "cultureNote": "据中央区介绍，这里在元禄十一年（1698 年）初次架桥时叫“川口出口之桥”，1887 年改为钢桁架桥。桥畔聚集着船宿，逐渐形成与新桥并称“柳新二桥”的花街。现在的桥沿用了永代桥的设计，桥墩少，不妨碍行船。",
+        "cultureSources": [
+          { "label": "中央区 区民有形文化财：柳桥", "url": "https://www.city.chuo.lg.jp/kusei/syokai/tyuobunkazai/yanagibashi.html", "accessedOn": "2026-10-26" },
+          { "label": "台东区 Film Commission 外景地：柳桥", "url": "https://filmcommission.city.taito.lg.jp/location/yanagi-bashi/", "accessedOn": "2026-10-26" }
+        ],
+        "shootingTips": "两种拍法都可以：在桥头把两道绿色拱肋和桥面一起拍进来；或者站在上游的浅草桥上向下游（东）拍，让两岸停泊的屋形船和远处的柳桥同框。桥上有车辆通行，请在人行道上拍摄。",
+        "distinctiveFeatures": [
+          "两道漆成绿色的钢制拱肋横跨车道，拱肋表面布满铆钉，下方有竖向吊杆",
+          "桥两侧同为绿色的铁栏杆和石板人行道",
+          "参考图中夜间拱肋沿线亮着绿色灯带，倒映在河面上",
+          "上游神田川两岸成排停泊的屋形船和木结构船宿"
+        ],
+        "confusablePlaces": [
+          "上游约 200 米的浅草桥（江户通的桥，没有拱肋）",
+          "隅田川上的两国桥、永代桥（柳桥沿用了永代桥的设计，但规模大得多）",
+          "中野区神田川上游的同名“柳桥”",
+          "东京其他漆成绿色或蓝色的钢拱桥"
+        ],
+        "unsuitableAngles": ["只拍河面或屋形船、看不到柳桥的画面", "站在柳桥上向上游拍、桥本身不在画面里", "屋形船内部或船上乘客"],
+        "restrictions": null,
+        "coordinateSource": { "label": "OpenStreetMap way 43100780（桥面中点）", "url": "https://www.openstreetmap.org/way/43100780", "accessedOn": "2026-10-26", "note": "桥面长 43 m（OSM；中央区资料为约 38 m），打卡点取中点，两端离它 22 m，半径 50 m。与 Wikidata Q21019765 相差 2 m。尚未实地验证。" },
+        "verificationLevel": "desk"
+      }
+    },
+    {
+      "slug": "torigoe-jinja",
+      "nameZh": "鸟越神社",
+      "nameJa": "鳥越神社",
+      "nameEn": "Torigoe Shrine",
+      "latitude": 35.7019291,
+      "longitude": 139.7857553,
+      "radiusM": 70,
+      "photoEnabled": true,
+      "photoNote": "参考图拍摄于 2009–2024 年，以拜殿正面为主。神社的拍摄规定没有找到来源，请先参拜再拍照。",
+      "tags": ["神社", "祭礼", "下町"],
+      "stayMinutes": 15,
+      "content": {
+        "intro": "鸟越神社位于台东区鸟越二丁目，从 JR 浅草桥站步行约 8 分钟。据台东区介绍，神社以日本武尊为祭神，相传创建于白雉二年（651 年）。这里原本是比周围高出一截的小丘，德川氏入主江户后，为了腾出武家宅地，小丘被削平。",
+        "cultureNote": "每年 6 月上旬的鸟越祭以“千贯神舆”闻名，台东区称其重量为都内第一。神舆由各町会接力抬着巡行；傍晚神舆上的提灯点亮，神舆在灯火中回到神社，这段“宫入”被称为“鸟越夜祭”。",
+        "cultureSources": [
+          { "label": "台东区 文化探访：鸟越祭", "url": "https://www.culture.city.taito.lg.jp/bunkatanbou/customs/torikoe/japanese/page_01.html", "accessedOn": "2026-10-26" },
+          { "label": "台东区 活动介绍：鸟越祭", "url": "https://www.city.taito.lg.jp/event/kanko/torikoematsuri.html", "accessedOn": "2026-10-26" }
+        ],
+        "shootingTips": "先参拜，再站到参道一侧拍拜殿正面：把唐破风屋檐、两侧的石狛犬和拜殿前的白色矮栏一起拍进来。不要站在参道中央挡住参拜的人。",
+        "distinctiveFeatures": [
+          "拜殿正面的唐破风：屋檐中央向上拱起成弧形，檐边为白色",
+          "深色木柱、格子窗和白墙组成的拜殿正面，中央是带金色纹样的黑色赛钱箱",
+          "参道两侧高石座上的一对石狛犬",
+          "拜殿前的白色石栏和平整的石板参道",
+          "拜殿两侧高大的树木"
+        ],
+        "confusablePlaces": [
+          "附近的银杏冈八幡神社、须贺神社等小神社",
+          "东京其他带唐破风拜殿的神社"
+        ],
+        "unsuitableAngles": ["拜殿内部", "以神职人员、巫女或其他参拜者为主的画面", "只拍手水舍、说明牌或树木的特写", "只拍神舆、屋台或祭礼人群"],
+        "restrictions": [
+          {
+            "text": "没有找到神社公布的拍摄规定和境内开放时间，记为未知。每年 6 月上旬鸟越祭期间（2026 年为 6 月 6、7、9 日）神社内外人多。神社电话 03-3851-5033。",
+            "source": { "label": "台东区 活动介绍：鸟越祭", "url": "https://www.city.taito.lg.jp/event/kanko/torikoematsuri.html", "accessedOn": "2026-10-26" }
+          }
+        ],
+        "coordinateSource": { "label": "OpenStreetMap way 507462590（境内范围中心）", "url": "https://www.openstreetmap.org/way/507462590", "accessedOn": "2026-10-26", "note": "境内东西约 71 m、南北约 41 m，打卡点取范围中心，边缘离它最远 46 m，半径 70 m。与 Wikidata Q11675149 相差 18 m。尚未实地验证。" },
+        "verificationLevel": "desk"
+      }
+    }
+  ]
+}
